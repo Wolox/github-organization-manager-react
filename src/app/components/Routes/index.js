@@ -11,6 +11,7 @@ import styles from './styles.scss';
 
 const Home = lazy(() => import('../../screens/Dashboard'));
 const Login = lazy(() => import('../../screens/Login'));
+const RepoCreation = lazy(() => import('../../screens/RepoCreation'));
 
 function AppRoutes() {
   return (
@@ -20,6 +21,7 @@ function AppRoutes() {
           <Switch>
             <AuthenticatedRoute isPrivateRoute exact path={Routes.HOME} component={Home} />
             <AuthenticatedRoute isPublicRoute exact path={Routes.LOGIN} component={Login} />
+            <AuthenticatedRoute isPrivateRoute exact path={Routes.REPO_CREATION} component={RepoCreation} />
           </Switch>
         </Suspense>
       </div>
