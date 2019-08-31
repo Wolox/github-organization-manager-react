@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
-import { actionCreators as repositoryActions } from '';
+import { actionCreators as repositoryActions } from '../../../redux/Repository/actions';
 
 import RepoCreation from './layout';
 
