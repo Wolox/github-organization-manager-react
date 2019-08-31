@@ -39,14 +39,14 @@ function AuthenticatedRoute({
              * if (currentUser && isPublicRoute) {
              * do not allow logged users to access public routes. redirect to app
              */
-            return (
-              <Redirect
-                to={{
-                  pathname: DEFAULT_PRIVATE_ROUTE,
-                  state: { from: props.location }
-                }}
-              />
-            );
+            // return (
+            //   <Redirect
+            //     to={{
+            //       pathname: DEFAULT_PRIVATE_ROUTE,
+            //       state: { from: props.location }
+            //     }}
+            //   />
+            // );
           }
         } else if (isPrivateRoute) {
           // Do not allow unlogged users to access app. redirect to signin

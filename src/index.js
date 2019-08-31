@@ -19,7 +19,7 @@ const render = () => {
     <Auth0Provider
       domain={config.domain}
       client_id={config.clientId}
-      redirect_uri={window.location.href}
+      redirect_uri={window.location.origin}
       onRedirectCallback={onRedirectCallback}
     >
       <AppContainer>
