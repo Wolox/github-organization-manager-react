@@ -1,6 +1,4 @@
-// import { push } from 'connected-react-router';
-
-import * as RepositoryService from '../../services/RepositoryService'; // cambiar
+import * as RepositoryService from '../../services/RepositoryService';
 import { stringArrayToObject } from '../../utils/array';
 
 export const actions = stringArrayToObject(

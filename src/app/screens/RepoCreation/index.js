@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import { actionCreators as repositoryActions } from '../../../redux/Repository/actions';
 
 import RepoCreation from './layout';
+import { TECHNOLOGIES } from './constants';
 
 class RepoCreationContainer extends Component {
   handleSubmit = values => {
@@ -18,24 +19,33 @@ class RepoCreationContainer extends Component {
 
 RepoCreationContainer.propTypes = {
   createRepo: PropTypes.func.isRequired,
-  isError: PropTypes.bool,
+  // isError: PropTypes.bool,
   repoCreated: PropTypes.bool
 };
 
 RepoCreationContainer.defaultProps = {
-  isError: false,
+  // isError: false,
   repoCreated: false
 };
 
 const mapStateToProps = state => ({
   // obtener loading, lo cambia el action de registration
-  isError: state.repository.isError,
+  // isError: state.repository.isError,
   repoCreated: state.repository.repoCreated
 });
 
 const mapDispatchToProps = dispatch => ({
   // funciones que llaman acciones
-  createRepo: values => dispatch(repositoryActions.createRepository(values))
+  createRepo: values => {
+    console.log('aaaaa', values);
+    const techs = [];
+    Object.keys(TECHNOLOGIES).forEach(tech => {
+      values[tech] && techs.push(tech);
+    });
+    /* eslint-disable no-param-reassign */
+    values = { ...values, techs };
+    return dispatch(repositoryActions.createRepository(values));
+  }
 });
 
 export default connect(

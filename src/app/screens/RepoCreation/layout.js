@@ -13,8 +13,8 @@ function RepoCreation({ handleSubmit, repoCreated }) {
   return (
     <form className={`column center full-width m-top-8 ${styles.formContainer}`} onSubmit={handleSubmit}>
       <div className="column center m-bottom-3">
-        <h2 className="m-bottom-1">{t('Login:login')}</h2>
-        <h3>{t('Login:loginExplanation')}</h3>
+        <h1>{t('RepoCreation:createNewRepository')}</h1>
+        <h3>{t('RepoCreation:createNewRepositoryAdvise')}</h3>
       </div>
       <div className={`column m-bottom-2 ${styles.sectionContainer}`}>
         <Field
@@ -23,30 +23,23 @@ function RepoCreation({ handleSubmit, repoCreated }) {
           dataFor="repositoryName"
           inputId="repositoryName"
           inputType="text"
-          label="completá nombre proyecto"
+          label={t('RepoCreation:projectName')}
         />
       </div>
       <div>
-        <Field name="isPrivate" component={Checkbox} label="Private" />
+        <Field name="isPrivate" component={Checkbox} label={t('RepoCreation:private')} />
       </div>
       <div>
-        <div>
-          <Field name="technology" component="select">
-            <option />
-            {Object.values(TECHNOLOGIES).map(technology => (
-              <option key={technology} value={technology}>
-                {technology}
-              </option>
-            ))}
-          </Field>
-        </div>
+        {Object.keys(TECHNOLOGIES).map(technology => (
+          <Field key={technology} name={technology} component={Checkbox} label={TECHNOLOGIES[technology]} />
+        ))}
       </div>
       <div className={`column center ${styles.sectionContainer}`}>
         <button type="submit" className={`full-width m-bottom-1 ${styles.button}`}>
-          {'holaaaa'}
+          {t('RepoCreation:create')}
         </button>
       </div>
-      {repoCreated && <label> vamos la reconcha de tu madreeeee </label>}
+      {repoCreated && <label> El/los repositorios se crearon con éxito </label>}
     </form>
   );
 }
