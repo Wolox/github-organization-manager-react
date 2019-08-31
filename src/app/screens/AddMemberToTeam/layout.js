@@ -4,7 +4,6 @@ import { t } from 'i18next';
 import { Field, reduxForm } from 'redux-form';
 import Select from 'react-select';
 
-
 import InputLabel from '../../components/InputLabel';
 import Checkbox from '../../components/Checkbox';
 
@@ -24,13 +23,7 @@ function AddTeamToMember({ handleSubmit, memberAdded, data }) {
           label={t('AddTeamToMember:teams')}
         />
       </div>
-      <Field
-          name="team"
-          component={Select}
-          options={ data }
-          dataFor="value"
-          inputId="value"
-        />
+      <Field name="team" component={Select} options={data} dataFor="value" inputId="value" />
       <div className={`column center ${styles.sectionContainer}`}>
         <button type="submit" className={`full-width m-bottom-1 ${styles.button}`}>
           {t('AddTeamToMember:add')}

@@ -27,7 +27,12 @@ function AppRoutes() {
             <AuthenticatedRoute isPublicRoute exact path={Routes.LOGIN} component={Login} />
             <AuthenticatedRoute isPublicRoute exact path={Routes.REPO_CREATION} component={RepoCreation} />
             <AuthenticatedRoute isPublicRoute exact path={Routes.TEAMS} component={Teams} />
-            <AuthenticatedRoute isPublicRoute exact path={Routes.ADD_MEMBER_TO_TEAMS} component={AddMemberToTeam} />
+            <AuthenticatedRoute
+              isPublicRoute
+              exact
+              path={Routes.ADD_MEMBER_TO_TEAMS}
+              component={AddMemberToTeam}
+            />
             <AuthenticatedRoute isPublicRoute exact path={Routes.ADD_MEMBER} component={AddMember} />
           </Switch>
         </Suspense>
