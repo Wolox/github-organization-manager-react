@@ -5,11 +5,12 @@ import { Field, reduxForm } from 'redux-form';
 
 import InputLabel from '../../components/InputLabel';
 import Checkbox from '../../components/Checkbox';
+import SimpleSpinner from '../../components/SimpleSpinner';
 
 import { TECHNOLOGIES } from './constants';
 import styles from './styles.module.scss';
 
-function RepoCreation({ handleSubmit, repoCreated }) {
+function RepoCreation({ handleSubmit, repoCreated, loading }) {
   return (
     <form className={`column center full-width m-top-8 ${styles.formContainer}`} onSubmit={handleSubmit}>
       <div className="column center m-bottom-3">
@@ -39,6 +40,7 @@ function RepoCreation({ handleSubmit, repoCreated }) {
           {t('RepoCreation:create')}
         </button>
       </div>
+      {loading && <SimpleSpinner className={styles.spinner} />}
       {repoCreated && <label> El/los repositorios se crearon con éxito </label>}
     </form>
   );
@@ -46,6 +48,7 @@ function RepoCreation({ handleSubmit, repoCreated }) {
 
 RepoCreation.propTypes = {
   handleSubmit: PropTypes.func.isRequired,
+  loading: PropTypes.bool.isRequired,
   repoCreated: PropTypes.bool.isRequired
 };
 

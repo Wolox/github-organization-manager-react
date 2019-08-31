@@ -6,6 +6,7 @@
     "@redux-beacon/google-analytics": "^1.2.3",
     "apisauce": "^1.1.0",
     "babel-plugin-module-resolver": "^3.2.0",
+    "classnames": "^2.2.6",
     "connected-react-router": "^6.5.2",
     "history": "^4.9.0",
     "i18next": "^13.1.5",
@@ -27,6 +28,7 @@
     "redux-thunk": "^2.3.0",
     "reselect": "^4.0.0",
     "seamless-immutable": "^7.1.4",
+    "storybook": "^1.0.0",
     "wolox-equalizer": "0.0.3"
   },
   "scripts": {

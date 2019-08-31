@@ -19,9 +19,10 @@ export const actionCreators = {
   createRepository(values) {
     return async dispatch => {
       // hacer try catch
+      dispatch({ type: actions.REPO_CREATION });
       const response = await RepositoryService.createRepository(values);
-      dispatch({ type: actions.REPO_CREATION_SUCCESS });
       // acciones en caso de exitoso o falla
+      dispatch({ type: actions.REPO_CREATION_SUCCESS });
       console.log('ressssssssssssssss', response);
     };
   },

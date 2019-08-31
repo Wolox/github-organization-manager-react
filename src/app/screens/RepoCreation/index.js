@@ -13,25 +13,33 @@ class RepoCreationContainer extends Component {
   };
 
   render() {
-    return <RepoCreation onSubmit={this.handleSubmit} repoCreated={this.props.repoCreated} />;
+    return (
+      <div>
+        <RepoCreation
+          onSubmit={this.handleSubmit}
+          repoCreated={this.props.repoCreated}
+          loading={this.props.loading}
+        />
+      </div>
+    );
   }
 }
 
 RepoCreationContainer.propTypes = {
   createRepo: PropTypes.func.isRequired,
-  // isError: PropTypes.bool,
+  loading: PropTypes.bool,
   repoCreated: PropTypes.bool
 };
 
 RepoCreationContainer.defaultProps = {
-  // isError: false,
-  repoCreated: false
+  repoCreated: false,
+  loading: false
 };
 
 const mapStateToProps = state => ({
   // obtener loading, lo cambia el action de registration
-  // isError: state.repository.isError,
-  repoCreated: state.repository.repoCreated
+  repoCreated: state.repository.repoCreated,
+  loading: state.repository.loading
 });
 
 const mapDispatchToProps = dispatch => ({
