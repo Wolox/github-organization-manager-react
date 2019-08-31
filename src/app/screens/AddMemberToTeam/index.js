@@ -9,17 +9,17 @@ import { TECHNOLOGIES } from './constants';
 
 class AddTeamToMemberContainer extends Component {
   constructor(props) {
-      super(props);
-      this.state = {
-        data: []
-      };
-    }
+    super(props);
+    this.state = {
+      data: []
+    };
+  }
 
   componentDidMount() {
     teamActions.getTeams().then(response => {
-        this.setState({data: response.teams})
-    })
-  };
+      this.setState({ data: response.teams });
+    });
+  }
 
   handleSubmit = values => {
     console.log(values);
@@ -27,7 +27,13 @@ class AddTeamToMemberContainer extends Component {
   };
 
   render() {
-    return <AddTeamToMember onSubmit={this.handleSubmit} memberAdded={this.props.memberAdded} data={this.state.data.map(team => ({label: team.name, value: team}))} />;
+    return (
+      <AddTeamToMember
+        onSubmit={this.handleSubmit}
+        memberAdded={this.props.memberAdded}
+        data={this.state.data.map(team => ({ label: team.name, value: team }))}
+      />
+    );
   }
 }
 

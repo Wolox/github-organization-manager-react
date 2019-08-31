@@ -11,7 +11,7 @@ export const createTeam = async values => {
 
 export const addMembersToTeam = async values => {
   console.log('valuesssss', values);
-  const response = await api.post(`/teams/3387905/members`, {usernames: values.usernames.split(',')});
+  const response = await api.post('/teams/3387905/members', { usernames: values.usernames.split(',') });
   if (response.ok) {
     return response.data;
   }
@@ -19,7 +19,7 @@ export const addMembersToTeam = async values => {
 };
 
 export const getTeams = async () => {
-  const response = await api.get(`/teams/`);
+  const response = await api.get('/teams/');
   if (response.ok) {
     return response.data;
   }

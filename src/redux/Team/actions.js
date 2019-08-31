@@ -35,5 +35,7 @@ export const actionCreators = {
       // acciones en caso de exitoso o falla
     };
   },
-  getTeams() { return TeamService.getTeams()}
+  getTeams() {
+    return TeamService.getTeams();
+  }
 };
