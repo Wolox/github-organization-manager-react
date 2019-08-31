@@ -23,6 +23,11 @@ export function reducer(state = Immutable(defaultState), action) {
         repoCreated: true
       });
     }
+    case actions.MEMBER_ADDED: {
+      return state.merge({
+        memberAdded: true
+      });
+    }
     default: {
       return state;
     }
