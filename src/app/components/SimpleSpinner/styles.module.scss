@@ -34,9 +34,11 @@
 }
 
 @keyframes spinner {
+
   to {
     transform: rotate(0deg);
   }
+
   from {
     transform: rotate(360deg);
   }

@@ -6,7 +6,7 @@ import { actionCreators as repositoryActions } from '../../../redux/Repository/a
 
 import RepoCreation from './layout';
 import { TECHNOLOGIES } from './constants';
-import styles from "./styles.module.scss";
+import styles from './styles.module.scss';
 
 class RepoCreationContainer extends Component {
   handleSubmit = values => {
