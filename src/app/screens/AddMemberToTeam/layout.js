@@ -5,10 +5,11 @@ import { Field, reduxForm } from 'redux-form';
 import Select from 'react-select';
 
 import InputLabelNew from '../../components/InputLabelNew';
+import SimpleSpinner from '../../components/SimpleSpinner';
 
 import styles from './styles.module.scss';
 
-function AddTeamToMember({ handleSubmit, memberAdded, data, handleOnChange }) {
+function AddTeamToMember({ handleSubmit, memberAdded, data, handleOnChange, loading }) {
   return (
     <div className={`card ${styles.card}`}>
       <form className="container" onSubmit={handleSubmit}>
@@ -58,6 +59,7 @@ function AddTeamToMember({ handleSubmit, memberAdded, data, handleOnChange }) {
               </div>
             </div>
           )}
+          {loading && <SimpleSpinner className={styles.spinner} />}
         </div>
       </form>
     </div>
@@ -66,6 +68,7 @@ function AddTeamToMember({ handleSubmit, memberAdded, data, handleOnChange }) {
 
 AddTeamToMember.propTypes = {
   handleSubmit: PropTypes.func.isRequired,
+  loading: PropTypes.bool.isRequired,
   memberAdded: PropTypes.bool.isRequired
 };
 

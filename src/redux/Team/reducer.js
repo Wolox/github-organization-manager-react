@@ -27,8 +27,19 @@ export function reducer(state = Immutable(defaultState), action) {
     }
     case actions.TEAM_CREATION_FAILURE: {
       return state.merge({
+        loading: false
+      });
+    }
+    case actions.ADDING_MEMBERS: {
+      console.log('aaaaaaaaaaaaaaaaaaaaaaaaaaaaa');
+      return state.merge({
+        loading: true
+      });
+    }
+    case actions.MEMBER_ADDED_SUCCESS: {
+      return state.merge({
         loading: false,
-        err: action.payload.err
+        memberAdded: true
       });
     }
     default: {

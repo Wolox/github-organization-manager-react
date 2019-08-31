@@ -46,6 +46,7 @@ class AddTeamToMemberContainer extends Component {
                     memberAdded={this.props.memberAdded}
                     data={this.state.data.map(team => ({ label: team.name, value: team }))}
                     handleOnChange={this.handleOnChange}
+                    loading={this.props.loading}
                   />
                 </div>
               </div>
@@ -60,18 +61,21 @@ class AddTeamToMemberContainer extends Component {
 AddTeamToMemberContainer.propTypes = {
   addMembersToTeam: PropTypes.func.isRequired,
   // isError: PropTypes.bool,
+  loading: PropTypes.bool,
   memberAdded: PropTypes.bool
 };
 
 AddTeamToMemberContainer.defaultProps = {
   // isError: false,
-  memberAdded: false
+  memberAdded: false,
+  loading: false
 };
 
 const mapStateToProps = state => ({
   // obtener loading, lo cambia el action de registration
   // isError: state.team.isError,
-  memberAdded: state.team.memberAdded
+  memberAdded: state.team.memberAdded,
+  loading: state.team.loading
 });
 
 const mapDispatchToProps = dispatch => ({
