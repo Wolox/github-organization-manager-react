@@ -25,8 +25,9 @@ const privateActionCreators = {
 export const actionCreators = {
   createTeam(values) {
     return async dispatch => {
+      dispatch({ type: actions.TEAM_CREATION });
       const response = await TeamService.createTeam(values);
-      // acciones en caso de exitoso o falla
+      dispatch({ type: actions.TEAM_CREATION_SUCCESS });
     };
   },
   addMembersToTeam(values) {

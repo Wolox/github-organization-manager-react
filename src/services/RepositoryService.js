@@ -20,7 +20,9 @@ export const addMemberToOrg = async values => {
 
 export const addOwnerToRepo = async values => {
   console.log('owner', values);
-  const response = await api.post(`/repositories/${values.repository}/codeowners/`,  { codeowners: values.owners.split(',')});
+  const response = await api.post(`/repositories/${values.repository}/codeowners/`, {
+    codeowners: values.owners.split(',')
+  });
   if (response.ok) {
     return response.data;
   }
