@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import { actionCreators as repositoryActions } from '../../../redux/Repository/actions';
 
 import AddOwner from './layout';
-// import { TECHNOLOGIES } from './constants';
+import styles from "./styles.module.scss";
 
 class AddOwnerToRepoContainer extends Component {
   constructor(props) {
@@ -28,11 +28,24 @@ class AddOwnerToRepoContainer extends Component {
 
   render() {
     return (
-      <AddOwner
-        onSubmit={this.handleSubmit}
-        ownerAdded={this.props.ownerAdded}
-        data={this.state.data.map(repository => ({label: repository, value: repository}))}
-      />
+      <>
+        <div className={`page-header ${styles.pageHeader}`} data-parallax="true" />
+        <div className="main main-raised">
+          <div className="profile-content">
+            <div className="container">
+              <div className="row">
+                <div className="col-md-6 ml-auto mr-auto">
+                  <AddOwner
+                    onSubmit={this.handleSubmit}
+                    ownerAdded={this.props.ownerAdded}
+                    data={this.state.data.map(repository => ({label: repository, value: repository}))}
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </>
     );
   }
 }
