@@ -6,6 +6,7 @@ import { actionCreators as teamActions } from '../../../redux/Team/actions';
 
 import AddTeamToMember from './layout';
 import { TECHNOLOGIES } from './constants';
+import styles from "../Teams/styles.module.scss";
 
 class AddTeamToMemberContainer extends Component {
   constructor(props) {
@@ -28,11 +29,24 @@ class AddTeamToMemberContainer extends Component {
 
   render() {
     return (
-      <AddTeamToMember
-        onSubmit={this.handleSubmit}
-        memberAdded={this.props.memberAdded}
-        data={this.state.data.map(team => ({ label: team.name, value: team }))}
-      />
+      <>
+        <div className={`page-header ${styles.pageHeader}`} data-parallax="true" />
+        <div className="main main-raised">
+          <div className="profile-content">
+            <div className="container">
+              <div className="row">
+                <div className="col-md-6 ml-auto mr-auto">
+                  <AddTeamToMember
+                    onSubmit={this.handleSubmit}
+                    memberAdded={this.props.memberAdded}
+                    data={this.state.data.map(team => ({ label: team.name, value: team }))}
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </>
     );
   }
 }
