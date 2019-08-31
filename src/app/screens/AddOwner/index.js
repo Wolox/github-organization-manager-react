@@ -17,7 +17,7 @@ class AddOwnerToRepoContainer extends Component {
 
   componentDidMount() {
     repositoryActions.getRepositories().then(response => {
-      this.setState({ data: response.teams });
+      this.setState({ data: response });
     });
   }
 
@@ -30,9 +30,8 @@ class AddOwnerToRepoContainer extends Component {
     return (
       <AddOwner
         onSubmit={this.handleSubmit}
-        ownerAdded={
-          this.props.ownerAdded
-        } /* data={this.state.data.map(repository => ({label: repository.name, value: repository}))} */
+        ownerAdded={this.props.ownerAdded}
+        data={this.state.data.map(repository => ({label: repository, value: repository}))}
       />
     );
   }
