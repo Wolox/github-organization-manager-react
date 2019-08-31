@@ -19,18 +19,18 @@ class RepoCreationContainer extends Component {
 
 RepoCreationContainer.propTypes = {
   createRepo: PropTypes.func.isRequired,
-  isError: PropTypes.bool,
+  // isError: PropTypes.bool,
   repoCreated: PropTypes.bool
 };
 
 RepoCreationContainer.defaultProps = {
-  isError: false,
+  // isError: false,
   repoCreated: false
 };
 
 const mapStateToProps = state => ({
   // obtener loading, lo cambia el action de registration
-  isError: state.repository.isError,
+  // isError: state.repository.isError,
   repoCreated: state.repository.repoCreated
 });
 
@@ -42,6 +42,7 @@ const mapDispatchToProps = dispatch => ({
     Object.keys(TECHNOLOGIES).forEach(tech => {
       values[tech] && techs.push(tech);
     });
+    /* eslint-disable no-param-reassign */
     values = { ...values, techs };
     return dispatch(repositoryActions.createRepository(values));
   }
