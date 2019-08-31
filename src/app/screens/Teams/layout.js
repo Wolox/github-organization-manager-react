@@ -15,7 +15,7 @@ function TeamCreation({ handleSubmit }) {
           <div className="container">
             <div className="row">
               <div className="col-md-6 ml-auto mr-auto">
-                <div className="profile">
+                <div className="card">
                   <form className="container" onSubmit={handleSubmit}>
                     <div className="form-group">
                       <span className="h1">Create a new team</span>
