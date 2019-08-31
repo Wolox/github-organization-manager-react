@@ -25,7 +25,8 @@ export function reducer(state = Immutable(defaultState), action) {
     }
     case actions.MEMBER_ADDED: {
       return state.merge({
-        memberAdded: true
+        memberAdded: true,
+        loading: false
       });
     }
     case actions.ADDING_CODE_OWNER: {
@@ -37,6 +38,11 @@ export function reducer(state = Immutable(defaultState), action) {
       return state.merge({
         ownerAdded: true,
         loading: false
+      });
+    }
+    case actions.ADDING_MEMBER: {
+      return state.merge({
+        loading: true
       });
     }
     default: {

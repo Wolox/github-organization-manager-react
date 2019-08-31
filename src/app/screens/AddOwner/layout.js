@@ -5,6 +5,7 @@ import { Field, reduxForm } from 'redux-form';
 import Select from 'react-select';
 
 import InputLabelNew from '~components/InputLabelNew';
+
 import SimpleSpinner from '../../components/SimpleSpinner';
 
 import styles from './styles.module.scss';
