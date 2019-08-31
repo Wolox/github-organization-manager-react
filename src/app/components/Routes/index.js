@@ -31,11 +31,16 @@ function AppRoutes() {
             <AuthenticatedRoute
               isPublicRoute
               exact
-              path={Routes.ADD_MEMBER_TO_TEAMS}
+              path={Routes.ADD_MEMBER_TO_TEAM}
               component={AddMemberToTeam}
             />
             <AuthenticatedRoute isPublicRoute exact path={Routes.ADD_MEMBER} component={AddMember} />
-            <AuthenticatedRoute isPublicRoute exact path={Routes.ADD_OWNER_TO_REPO} component={AddOwnerToRepo} />
+            <AuthenticatedRoute
+              isPublicRoute
+              exact
+              path={Routes.ADD_OWNER_TO_REPO}
+              component={AddOwnerToRepo}
+            />
           </Switch>
         </Suspense>
       </div>
