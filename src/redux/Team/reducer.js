@@ -40,5 +40,5 @@ export function reducer(state = Immutable(defaultState), action) {
 /* ------------- Auth propTypes ------------- */
 export const propTypes = {
   loading: PropTypes.bool.isRequired,
-  initialLoading: PropTypes.bool.isRequired,
+  initialLoading: PropTypes.bool.isRequired
 };
