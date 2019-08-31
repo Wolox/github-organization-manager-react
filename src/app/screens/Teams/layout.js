@@ -10,6 +10,7 @@ function TeamCreation({ handleSubmit }) {
       <div className="form-group">
         <span className="h1">Create a new team</span>
       </div>
+
       <div className="form-group">
         <label htmlFor="exampleInputEmail1">Team Name</label>
         <Field

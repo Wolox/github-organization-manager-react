@@ -1,6 +1,9 @@
 module.exports = {
   extends: ['wolox-react'],
   settings: {
+    'react': {
+      'version': '^16.9.0'
+    },
     'import/resolver': {
       'babel-module': {
         alias: {
@@ -14,5 +17,5 @@ module.exports = {
         }
       }
     }
-   } 
+   }
 };
