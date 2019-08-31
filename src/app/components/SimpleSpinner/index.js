@@ -3,11 +3,12 @@ import { string } from 'prop-types';
 import cn from 'classnames';
 
 import styles from './styles.module.scss';
+import spinner from './spinner.svg';
 
-function SimpleSpinner({ className, containerClassName }) {
+function SimpleSpinner({ className }) {
   return (
-    <div className={cn('item-1 row middle center', containerClassName)}>
-      <div className={cn(styles.spinner, className)} />
+    <div className="container">
+      <img src={spinner} alt="" className={styles.spinnero} />
     </div>
   );
 }
