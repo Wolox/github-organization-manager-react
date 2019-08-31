@@ -24,7 +24,7 @@ function AppRoutes() {
       <div className={styles.container}>
         <Suspense>
           <Switch>
-            <AuthenticatedRoute isPrivateRoute exact path={Routes.HOME} component={Home} />
+            <AuthenticatedRoute isPublicRoute exact path={Routes.HOME} component={Home} />
             <AuthenticatedRoute isPublicRoute exact path={Routes.LOGIN} component={Login} />
             <AuthenticatedRoute isPublicRoute exact path={Routes.REPO_CREATION} component={RepoCreation} />
             <AuthenticatedRoute isPublicRoute exact path={Routes.TEAMS} component={Teams} />
