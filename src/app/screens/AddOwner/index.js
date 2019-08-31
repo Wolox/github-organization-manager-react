@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
-// import { actionCreators as teamActions } from '../../../redux/Team/actions';
+import { actionCreators as repositoryActions } from '../../../redux/Repository/actions';
 
-// import AddTeamToMember from './layout';
+import AddOwner from './layout';
 // import { TECHNOLOGIES } from './constants';
 
 class AddOwnerToRepoContainer extends Component {
@@ -16,9 +16,9 @@ class AddOwnerToRepoContainer extends Component {
     }
 
   componentDidMount() {
-    // teamActions.getTeams().then(response => {
-    //     this.setState({data: response.teams})
-    // })
+    repositoryActions.getRepositories().then(response => {
+        this.setState({data: response.teams})
+    })
   };
 
   handleSubmit = values => {
@@ -27,8 +27,7 @@ class AddOwnerToRepoContainer extends Component {
   };
 
   render() {
-    return ''; // TODO Remove this
-    // return <AddTeamToMember onSubmit={this.handleSubmit} ownerAdded={this.props.ownerAdded} data={this.state.data.map(team => ({label: team.name, value: team}))} />;
+    return <AddOwner onSubmit={this.handleSubmit} ownerAdded={this.props.ownerAdded} /* data={this.state.data.map(repository => ({label: repository.name, value: repository}))} */ />;
   }
 }
 
@@ -45,22 +44,21 @@ AddOwnerToRepoContainer.defaultProps = {
 
 const mapStateToProps = state => ({
   // obtener loading, lo cambia el action de registration
-  // isError: state.team.isError,
-  ownerAdded: state.team.ownerAdded
+  // isError: state.repository.isError,
+  ownerAdded: state.repository.ownerAdded
 });
 
 const mapDispatchToProps = dispatch => ({
   // funciones que llaman acciones
   addOwnersToRepo: values => {
-    // console.log('aaaaa', values);
+    console.log('aaaaa', values);
     // const techs = [];
     // Object.keys(TECHNOLOGIES).forEach(tech => {
     //   values[tech] && techs.push(tech);
     // });
     /* eslint-disable no-param-reassign */
     // values = { ...values, techs };
-    return ''; // TODO Remove this
-    // return dispatch(teamActions.addOwnersToRepo(values));
+    return dispatch(repositoryActions.addOwnerToRepository(values));
   }
 });
 
