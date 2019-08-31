@@ -42,6 +42,7 @@ class AddOwnerToRepoContainer extends Component {
                     onSubmit={this.handleSubmit}
                     ownerAdded={this.props.ownerAdded}
                     data={this.state.data.map(repository => ({ label: repository, value: repository }))}
+                    loading={this.props.loading}
                   />
                 </div>
               </div>
@@ -56,18 +57,21 @@ class AddOwnerToRepoContainer extends Component {
 AddOwnerToRepoContainer.propTypes = {
   addOwnersToRepo: PropTypes.func.isRequired,
   // isError: PropTypes.bool,
-  ownerAdded: PropTypes.bool
+  ownerAdded: PropTypes.bool,
+  loading: PropTypes.bool
 };
 
 AddOwnerToRepoContainer.defaultProps = {
   // isError: false,
-  ownerAdded: false
+  ownerAdded: false,
+  loading: false
 };
 
 const mapStateToProps = state => ({
   // obtener loading, lo cambia el action de registration
   // isError: state.repository.isError,
-  ownerAdded: state.repository.ownerAdded
+  ownerAdded: state.repository.ownerAdded,
+  loading: state.repository.loading
 });
 
 const mapDispatchToProps = dispatch => ({

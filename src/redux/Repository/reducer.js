@@ -28,6 +28,17 @@ export function reducer(state = Immutable(defaultState), action) {
         memberAdded: true
       });
     }
+    case actions.ADDING_CODE_OWNER: {
+      return state.merge({
+        loading: true
+      });
+    }
+    case actions.CODE_OWNER_ADDED_SUCCESS: {
+      return state.merge({
+        ownerAdded: true,
+        loading: false
+      });
+    }
     default: {
       return state;
     }

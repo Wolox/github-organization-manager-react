@@ -2,7 +2,8 @@ import * as RepositoryService from '../../services/RepositoryService';
 import { stringArrayToObject } from '../../utils/array';
 
 export const actions = stringArrayToObject(
-  ['REPO_CREATION', 'REPO_CREATION_SUCCESS', 'MEMBER_ADDED', 'REPO_CREATION_FAILURE, OWNER_ADDED'],
+  ['REPO_CREATION', 'REPO_CREATION_SUCCESS', 'MEMBER_ADDED', 'REPO_CREATION_FAILURE, OWNER_ADDED',
+    'ADDING_CODE_OWNER', 'CODE_OWNER_ADDED_SUCCESS'],
   '@@REPOSITORY'
 );
 
@@ -36,9 +37,9 @@ export const actionCreators = {
   },
   addOwnerToRepository(values) {
     return async dispatch => {
-      // hacer try catch
+      dispatch({ type: actions.ADDING_CODE_OWNER });
       const response = await RepositoryService.addOwnerToRepo(values);
-      // console.log('addMemberToOrg res', response);
+      dispatch({ type: actions.CODE_OWNER_ADDED_SUCCESS });
     };
   },
   getRepositories() {

@@ -5,10 +5,11 @@ import { Field, reduxForm } from 'redux-form';
 import Select from 'react-select';
 
 import InputLabelNew from '~components/InputLabelNew';
+import SimpleSpinner from '../../components/SimpleSpinner';
 
 import styles from './styles.module.scss';
 
-function AddOwner({ handleSubmit, ownerAdded, data }) {
+function AddOwner({ handleSubmit, ownerAdded, data, loading }) {
   return (
     <div className={`card ${styles.card}`}>
       <form className="container" onSubmit={handleSubmit}>
@@ -54,10 +55,11 @@ function AddOwner({ handleSubmit, ownerAdded, data }) {
                 <div className="alert-icon">
                   <i className="material-icons">check</i>
                 </div>
-                ¡Los miembros se agregaron!
+                ¡Los code owner se agregaron!
               </div>
             </div>
           )}
+          {loading && <SimpleSpinner className={styles.spinner} />}
         </div>
       </form>
     </div>
