@@ -9,15 +9,7 @@ import Checkbox from '../../components/Checkbox';
 import { TECHNOLOGIES } from './constants';
 import styles from './styles.module.scss';
 
-// const {
-//   DOM: { input, select }
-// } = React;
-
-function RepoCreation({ handleSubmit }) {
-  const options = Object.values(TECHNOLOGIES).map(technology =>
-    <option value={technology}>{technology}</option>
-  );
-  console.log(options);
+function RepoCreation({ handleSubmit, repoCreated }) {
   return (
     <form className={`column center full-width m-top-8 ${styles.formContainer}`} onSubmit={handleSubmit}>
       <div className="column center m-bottom-3">
@@ -26,25 +18,26 @@ function RepoCreation({ handleSubmit }) {
       </div>
       <div className={`column m-bottom-2 ${styles.sectionContainer}`}>
         <Field
-          name="projectName"
+          name="repositoryName"
           component={InputLabel}
-          dataFor="projectName"
-          inputId="projectName"
+          dataFor="repositoryName"
+          inputId="repositoryName"
           inputType="text"
           label="completá nombre proyecto"
         />
       </div>
       <div>
         <Field name="isPrivate" component={Checkbox} label="Private" />
-        <Field name="isFork" component={Checkbox} label="Fork" />
       </div>
       <div>
         <div>
           <Field name="technology" component="select">
             <option />
-            {Object.values(TECHNOLOGIES).map(technology =>
-              <option value={technology}>{technology}</option>
-            )}
+            {Object.values(TECHNOLOGIES).map(technology => (
+              <option key={technology} value={technology}>
+                {technology}
+              </option>
+            ))}
           </Field>
         </div>
       </div>
@@ -53,12 +46,14 @@ function RepoCreation({ handleSubmit }) {
           {'holaaaa'}
         </button>
       </div>
+      {repoCreated && <label> vamos la reconcha de tu madreeeee </label>}
     </form>
   );
 }
 
 RepoCreation.propTypes = {
-  handleSubmit: PropTypes.func.isRequired
+  handleSubmit: PropTypes.func.isRequired,
+  repoCreated: PropTypes.bool.isRequired
 };
 
 export default reduxForm({

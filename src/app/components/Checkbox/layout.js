@@ -10,7 +10,8 @@ function Checkbox({
   isChecked,
   onToggle,
   disabled,
-  required
+  required,
+  input
 }) {
   return (
     <div className={className}>
@@ -24,6 +25,7 @@ function Checkbox({
         onChange={onToggle}
         disabled={disabled}
         required={required}
+        {...input}
       />
       {label && (
         <label className={labelClassName} htmlFor={label}>
@@ -41,6 +43,7 @@ Checkbox.defaultProps = {
 };
 
 Checkbox.propTypes = {
+  input: PropTypes.object.isRequired,
   onToggle: PropTypes.func.isRequired,
   className: PropTypes.string,
   disabled: PropTypes.bool,
