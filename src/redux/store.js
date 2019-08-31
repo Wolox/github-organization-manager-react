@@ -10,6 +10,7 @@ import thunk from 'redux-thunk';
  */
 import { reducer as auth } from './Auth/reducer';
 import { reducer as repository } from './Repository/reducer';
+import { reducer as team } from './Team/reducer';
 
 export const history = createBrowserHistory();
 
@@ -17,6 +18,7 @@ export const history = createBrowserHistory();
 const reducers = combineReducers({
   auth,
   repository,
+  team,
   form,
   router: connectRouter(history)
 });
