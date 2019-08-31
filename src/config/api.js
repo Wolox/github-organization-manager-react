@@ -1,6 +1,6 @@
 import { create } from 'apisauce';
 
-const baseURL = 'http://wolox.com';
+const baseURL = process.env.REACT_APP_BASE_URL;
 
 if (baseURL === 'http://wolox.com') {
   console.warn('API baseURL has not been properly initialized'); // eslint-disable-line no-console
