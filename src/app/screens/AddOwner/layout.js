@@ -36,8 +36,13 @@ function AddOwner({ handleSubmit, ownerAdded, data, loading }) {
               placeholder="Usuarios de github"
             />
           </div>
-          <div className={styles.select}>
-            <Field name="repository" component="select" inputClassName="form-control">
+          <div className="input-group">
+            <div className="input-group-prepend">
+              <span className="input-group-text">
+                <i className="material-icons">list</i>
+              </span>
+            </div>
+            <Field name="repository" component="select" className="form-control selectpicker">
               {data.map(opt => (
                 <option value={opt.label}>{opt.label}</option>
               ))}
@@ -45,11 +50,9 @@ function AddOwner({ handleSubmit, ownerAdded, data, loading }) {
           </div>
         </div>
         <div className={`footer text-center ${styles.footer}`}>
-          {!ownerAdded && (
-            <button type="submit" className="btn btn-primary btn-wd btn-lg">
-              {t('AddOwner:add')}
-            </button>
-          )}
+          <button type="submit" className="btn btn-primary btn-wd btn-lg">
+            {t('AddOwner:add')}
+          </button>
           {ownerAdded && (
             <div className="alert alert-success">
               <div className="container">
