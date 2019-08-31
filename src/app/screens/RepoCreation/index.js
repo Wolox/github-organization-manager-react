@@ -17,9 +17,13 @@ class RepoCreationContainer extends Component {
   }
 }
 
-RepoCreationContainer.PropTypes = {
-  createRepo: propTypes.funct,
-  isError: fdsf
+RepoCreationContainer.propTypes = {
+  createRepo: PropTypes.func.isRequired,
+  isError: PropTypes.bool
+};
+
+RepoCreationContainer.defaultProps = {
+  isError: false
 };
 
 const mapStateToProps = state => ({

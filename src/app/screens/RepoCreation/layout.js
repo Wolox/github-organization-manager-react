@@ -4,12 +4,20 @@ import { t } from 'i18next';
 import { Field, reduxForm } from 'redux-form';
 
 import InputLabel from '../../components/InputLabel';
-// import Routes from '../../../constants/routes';
+import Checkbox from '../../components/Checkbox';
 
-// import { TECHNOLOGIES } from './constants';
+import { TECHNOLOGIES } from './constants';
 import styles from './styles.module.scss';
 
+// const {
+//   DOM: { input, select }
+// } = React;
+
 function RepoCreation({ handleSubmit }) {
+  const options = Object.values(TECHNOLOGIES).map(technology =>
+    <option value={technology}>{technology}</option>
+  );
+  console.log(options);
   return (
     <form className={`column center full-width m-top-8 ${styles.formContainer}`} onSubmit={handleSubmit}>
       <div className="column center m-bottom-3">
@@ -18,13 +26,27 @@ function RepoCreation({ handleSubmit }) {
       </div>
       <div className={`column m-bottom-2 ${styles.sectionContainer}`}>
         <Field
-          name="nombreProyecto"
+          name="projectName"
           component={InputLabel}
-          dataFor="nombreProyecto"
-          inputId="nombreProyecto"
+          dataFor="projectName"
+          inputId="projectName"
           inputType="text"
           label="completá nombre proyecto"
         />
+      </div>
+      <div>
+        <Field name="isPrivate" component={Checkbox} label="Private" />
+        <Field name="isFork" component={Checkbox} label="Fork" />
+      </div>
+      <div>
+        <div>
+          <Field name="technology" component="select">
+            <option />
+            {Object.values(TECHNOLOGIES).map(technology =>
+              <option value={technology}>{technology}</option>
+            )}
+          </Field>
+        </div>
       </div>
       <div className={`column center ${styles.sectionContainer}`}>
         <button type="submit" className={`full-width m-bottom-1 ${styles.button}`}>
