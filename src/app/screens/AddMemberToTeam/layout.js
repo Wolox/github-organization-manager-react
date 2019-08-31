@@ -10,7 +10,7 @@ import Checkbox from '../../components/Checkbox';
 import { TECHNOLOGIES } from './constants';
 import styles from './styles.module.scss';
 
-function AddTeamToMember({ handleSubmit, memberAdded, data }) {
+function AddTeamToMember({ handleSubmit, memberAdded, data, handleOnChange }) {
   return (
     <form className={`column center full-width m-top-8 ${styles.formContainer}`} onSubmit={handleSubmit}>
       <div className={`column m-bottom-2 ${styles.sectionContainer}`}>
@@ -20,10 +20,12 @@ function AddTeamToMember({ handleSubmit, memberAdded, data }) {
           dataFor="usernames"
           inputId="usernames"
           inputType="text"
-          label={t('AddTeamToMember:teams')}
+          label={t('AddTeamToMember:users')}
         />
       </div>
-      <Field name="team" component={Select} options={data} dataFor="value" inputId="value" />
+      <Field name="team" component="select" onChange={handleOnChange}>
+          {data.map(opt => <option value={opt.value.id}>{opt.label}</option>)}
+      </Field>
       <div className={`column center ${styles.sectionContainer}`}>
         <button type="submit" className={`full-width m-bottom-1 ${styles.button}`}>
           {t('AddTeamToMember:add')}

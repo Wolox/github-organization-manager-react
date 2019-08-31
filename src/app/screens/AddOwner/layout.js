@@ -19,7 +19,9 @@ function AddOwner({ handleSubmit, ownerAdded, data }) {
           label={t('AddOwner:owners')}
         />
       </div>
-      <Field name="repository" component={Select} options={data} dataFor="value" inputId="value" />
+      <Field name="repository" component="select">
+          {data.map(opt => <option value={opt.label}>{opt.label}</option>)}
+      </Field>
       <div className="column center">
         <button type="submit" className="full-width m-bottom-1">
           {t('AddOwner:add')}

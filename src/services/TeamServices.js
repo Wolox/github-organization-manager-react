@@ -10,8 +10,8 @@ export const createTeam = async values => {
 };
 
 export const addMembersToTeam = async values => {
-  console.log('valuesssss', values);
-  const response = await api.post('/teams/3387905/members', { usernames: values.usernames.split(',') });
+  console.log('valuesssss', values.team);
+  const response = await api.post(`/teams/${values.team}/members`, { usernames: values.usernames.split(',') });
   if (response.ok) {
     return response.data;
   }
