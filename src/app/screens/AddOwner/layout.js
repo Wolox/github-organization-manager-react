@@ -16,7 +16,7 @@ function AddOwner({ handleSubmit, ownerAdded, data }) {
           dataFor="owners"
           inputId="owners"
           inputType="text"
-          label={t('AddOwner:teams')}
+          label={t('AddOwner:owners')}
         />
       </div>
       <Field name="repository" component={Select} options={data} dataFor="value" inputId="value" />
