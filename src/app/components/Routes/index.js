@@ -13,6 +13,9 @@ const Home = lazy(() => import('../../screens/Dashboard'));
 const Login = lazy(() => import('../../screens/Login'));
 const RepoCreation = lazy(() => import('../../screens/RepoCreation'));
 const Teams = lazy(() => import('../../screens/Teams'));
+const AddMemberToTeam = lazy(() => import('../../screens/AddMemberToTeam'));
+const AddMember = lazy(() => import('../../screens/AddMember'));
+const AddOwnerToRepo = lazy(() => import('../../screens/AddOwner'));
 
 // TODO: poner REPO_CREATION privada. fijarme qué les pide a las rutas privadas
 function AppRoutes() {
@@ -21,10 +24,23 @@ function AppRoutes() {
       <div className={styles.container}>
         <Suspense>
           <Switch>
-            <AuthenticatedRoute isPrivateRoute exact path={Routes.HOME} component={Home} />
+            <AuthenticatedRoute isPublicRoute exact path={Routes.HOME} component={Home} />
             <AuthenticatedRoute isPublicRoute exact path={Routes.LOGIN} component={Login} />
             <AuthenticatedRoute isPublicRoute exact path={Routes.REPO_CREATION} component={RepoCreation} />
             <AuthenticatedRoute isPublicRoute exact path={Routes.TEAMS} component={Teams} />
+            <AuthenticatedRoute
+              isPublicRoute
+              exact
+              path={Routes.ADD_MEMBER_TO_TEAM}
+              component={AddMemberToTeam}
+            />
+            <AuthenticatedRoute isPublicRoute exact path={Routes.ADD_MEMBER} component={AddMember} />
+            <AuthenticatedRoute
+              isPublicRoute
+              exact
+              path={Routes.ADD_OWNER_TO_REPO}
+              component={AddOwnerToRepo}
+            />
           </Switch>
         </Suspense>
       </div>

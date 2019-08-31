@@ -1,3 +1,4 @@
+/* eslint-disable react/forbid-prop-types */
 import React from 'react';
 import PropTypes from 'prop-types';
 
@@ -37,6 +38,7 @@ function InputLabel({
 InputLabel.propTypes = {
   dataFor: PropTypes.string.isRequired,
   handleChange: PropTypes.func.isRequired,
+  input: PropTypes.object.isRequired,
   inputId: PropTypes.string.isRequired,
   inputType: PropTypes.string.isRequired,
   label: PropTypes.string.isRequired,

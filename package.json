@@ -3,9 +3,11 @@
   "version": "1.0.0",
   "private": true,
   "dependencies": {
+    "@auth0/auth0-spa-js": "^1.2.2",
     "@redux-beacon/google-analytics": "^1.2.3",
     "apisauce": "^1.1.0",
     "babel-plugin-module-resolver": "^3.2.0",
+    "classnames": "^2.2.6",
     "connected-react-router": "^6.5.2",
     "history": "^4.9.0",
     "i18next": "^13.1.5",
@@ -18,6 +20,7 @@
     "react-router": "^4.3.1",
     "react-router-dom": "^4.3.1",
     "react-scripts": "3.1.1",
+    "react-select": "^3.0.4",
     "react-spinkit": "^3.0.0",
     "redux": "^4.0.4",
     "redux-beacon": "^2.1.0",
@@ -26,6 +29,7 @@
     "redux-thunk": "^2.3.0",
     "reselect": "^4.0.0",
     "seamless-immutable": "^7.1.4",
+    "storybook": "^1.0.0",
     "wolox-equalizer": "0.0.3"
   },
   "scripts": {
