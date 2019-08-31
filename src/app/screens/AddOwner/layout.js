@@ -8,8 +8,8 @@ import InputLabel from '../../components/InputLabel';
 
 function AddOwner({ handleSubmit, ownerAdded, data }) {
   return (
-    <form className={`column center full-width m-top-8`} onSubmit={handleSubmit}>
-      <div className={`column m-bottom-2`}>
+    <form className="column center full-width m-top-8" onSubmit={handleSubmit}>
+      <div className="column m-bottom-2">
         <Field
           name="owners"
           component={InputLabel}
@@ -19,15 +19,9 @@ function AddOwner({ handleSubmit, ownerAdded, data }) {
           label={t('AddOwner:teams')}
         />
       </div>
-      <Field
-          name="repository"
-          component={Select}
-          options={ data }
-          dataFor="value"
-          inputId="value"
-        />
-      <div className={`column center`}>
-        <button type="submit" className={`full-width m-bottom-1`}>
+      <Field name="repository" component={Select} options={data} dataFor="value" inputId="value" />
+      <div className="column center">
+        <button type="submit" className="full-width m-bottom-1">
           {t('AddOwner:add')}
         </button>
       </div>

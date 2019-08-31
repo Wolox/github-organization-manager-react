@@ -9,17 +9,17 @@ import AddOwner from './layout';
 
 class AddOwnerToRepoContainer extends Component {
   constructor(props) {
-      super(props);
-      this.state = {
-        data: []
-      };
-    }
+    super(props);
+    this.state = {
+      data: []
+    };
+  }
 
   componentDidMount() {
     repositoryActions.getRepositories().then(response => {
-        this.setState({data: response.teams})
-    })
-  };
+      this.setState({ data: response.teams });
+    });
+  }
 
   handleSubmit = values => {
     console.log(values);
@@ -27,7 +27,14 @@ class AddOwnerToRepoContainer extends Component {
   };
 
   render() {
-    return <AddOwner onSubmit={this.handleSubmit} ownerAdded={this.props.ownerAdded} /* data={this.state.data.map(repository => ({label: repository.name, value: repository}))} */ />;
+    return (
+      <AddOwner
+        onSubmit={this.handleSubmit}
+        ownerAdded={
+          this.props.ownerAdded
+        } /* data={this.state.data.map(repository => ({label: repository.name, value: repository}))} */
+      />
+    );
   }
 }
 

@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import { actionCreators as teamActions } from '../../../redux/Team/actions';
 
 import TeamCreation from './layout';
-import styles from "./styles.module.scss";
+import styles from './styles.module.scss';
 
 class TeamsContainer extends Component {
   handleSubmit = values => {

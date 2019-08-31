@@ -2,10 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Field, reduxForm } from 'redux-form';
 
-import InputLabelNew from "~components/InputLabelNew";
+import InputLabelNew from '~components/InputLabelNew';
 
 import styles from './styles.module.scss';
-import {FIELDS} from "./constants";
+import { FIELDS } from './constants';
 
 function TeamCreation({ handleSubmit, isError }) {
   return (
@@ -39,21 +39,22 @@ function TeamCreation({ handleSubmit, isError }) {
             Create
           </button>
         </div>
-        {
-          isError &&
-            <div className="alert alert-danger">
-              <div className="container">
-                <div className="alert-icon">
-                  <i className="material-icons">error_outline</i>
-                </div>
-                <button type="button" className="close" data-dismiss="alert" aria-label="Close">
-                  <span aria-hidden="true"><i className="material-icons">clear</i></span>
-                </button>
-                <b>Error Alert:</b> Damn man! You screwed up the server this time. You should find a good excuse for your
-                Boss...
+        {isError && (
+          <div className="alert alert-danger">
+            <div className="container">
+              <div className="alert-icon">
+                <i className="material-icons">error_outline</i>
               </div>
+              <button type="button" className="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">
+                  <i className="material-icons">clear</i>
+                </span>
+              </button>
+              <b>Error Alert:</b> Damn man! You screwed up the server this time. You should find a good excuse
+              for your Boss...
             </div>
-        }
+          </div>
+        )}
       </form>
     </div>
   );
