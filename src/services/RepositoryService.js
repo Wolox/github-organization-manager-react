@@ -20,7 +20,7 @@ export const addMemberToOrg = async values => {
 
 export const addOwnerToRepo = async values => {
   console.log('owner', values);
-  const response = await api.post(`/repositories/${values.repository}/codeowners/`);
+  const response = await api.post(`/repositories/${values.repository}/codeowners/`,  { codeowners: values.owners.split(',')});
   if (response.ok) {
     return response.data;
   }
@@ -28,7 +28,7 @@ export const addOwnerToRepo = async values => {
 };
 
 export const getRepositories = async () => {
-  const response = await api.get('/repositories/');
+  const response = await api.get('/repositories?limit=100&page=2');
   if (response.ok) {
     return response.data;
   }

@@ -8,7 +8,7 @@ import InputLabelNew from '../../components/InputLabelNew';
 
 import styles from './styles.module.scss';
 
-function AddTeamToMember({ handleSubmit, memberAdded, data }) {
+function AddTeamToMember({ handleSubmit, memberAdded, data, handleOnChange }) {
   return (
     <div className={`card ${styles.card}`}>
       <form className="container" onSubmit={handleSubmit}>
@@ -35,14 +35,9 @@ function AddTeamToMember({ handleSubmit, memberAdded, data }) {
             />
           </div>
           <div className={styles.select}>
-            <Field
-              inputClassName="form-control"
-              name="team"
-              component={Select}
-              options={data}
-              dataFor="value"
-              inputId="value"
-            />
+          <Field name="team" component="select" onChange={handleOnChange} inputClassName="form-control">
+          {data.map(opt => <option value={opt.value.id}>{opt.label}</option>)}
+          </Field>
           </div>
         </div>
         <div className={`footer text-center ${styles.footer}`}>

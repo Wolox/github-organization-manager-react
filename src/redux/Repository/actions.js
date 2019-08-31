@@ -38,7 +38,6 @@ export const actionCreators = {
     return async dispatch => {
       // hacer try catch
       const response = await RepositoryService.addOwnerToRepo(values);
-      dispatch({ type: actions.OWNER_ADDED });
       // console.log('addMemberToOrg res', response);
     };
   },
