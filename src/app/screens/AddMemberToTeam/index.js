@@ -22,6 +22,8 @@ class AddTeamToMemberContainer extends Component {
     });
   }
 
+  handleOnChange = value => console.log(value);
+
   handleSubmit = values => {
     console.log(values);
     this.props.addMembersToTeam(values);
@@ -36,11 +38,12 @@ class AddTeamToMemberContainer extends Component {
             <div className="container">
               <div className="row">
                 <div className="col-md-6 ml-auto mr-auto">
-                  <AddTeamToMember
-                    onSubmit={this.handleSubmit}
-                    memberAdded={this.props.memberAdded}
-                    data={this.state.data.map(team => ({ label: team.name, value: team }))}
-                  />
+                <AddTeamToMember
+        onSubmit={this.handleSubmit}
+        memberAdded={this.props.memberAdded}
+        data={this.state.data.map(team => ({ label: team.name, value: team }))}
+        handleOnChange={this.handleOnChange}
+      />
                 </div>
               </div>
             </div>

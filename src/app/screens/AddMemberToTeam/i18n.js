@@ -6,5 +6,6 @@ i18next.addResources('es', 'AddTeamToMember', {
     'Se requiere nombre y tecnología/s del proyecto. Enviar el formulario sin ellos no tendrá ningún efecto.',
   teams: 'Equipos',
   private: 'Privado',
-  add: 'Agregar'
+  add: 'Agregar',
+  users: 'Usuarios'
 });

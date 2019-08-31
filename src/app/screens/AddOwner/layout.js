@@ -35,14 +35,9 @@ function AddOwner({ handleSubmit, ownerAdded, data }) {
             />
           </div>
           <div className={styles.select}>
-            <Field
-              inputClassName="form-control"
-              name="repository"
-              component={Select}
-              options={data}
-              dataFor="value"
-              inputId="value"
-            />
+        <Field name="repository" component="select" inputClassName="form-control">
+          {data.map(opt => <option value={opt.label}>{opt.label}</option>)}
+      </Field>
           </div>
         </div>
         <div className={`footer text-center ${styles.footer}`}>
