@@ -6,7 +6,7 @@ import { actionCreators as teamActions } from '../../../redux/Team/actions';
 
 import AddTeamToMember from './layout';
 import { TECHNOLOGIES } from './constants';
-import styles from "../Teams/styles.module.scss";
+import styles from "./styles.module.scss";
 
 class AddTeamToMemberContainer extends Component {
   constructor(props) {
