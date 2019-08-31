@@ -14,7 +14,3 @@ export const TECHNOLOGIES = {
   php: 'PHP',
   unity: 'Unity'
 };
-
-export const FORK = 'Fork';
-
-export const CREATE = 'Create';
