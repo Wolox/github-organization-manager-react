@@ -14,10 +14,10 @@ function TeamCreation({ handleSubmit }) {
         <label htmlFor="exampleInputEmail1">Team Name</label>
         <Field
           className="form-control"
-          name="teamName"
+          name="name"
           component={InputLabel}
-          dataFor="teamName"
-          inputId="teamName"
+          dataFor="name"
+          inputId="name"
           inputType="text"
           label="Team name"
         />
