@@ -6,6 +6,7 @@ import { actionCreators as repositoryActions } from '../../../redux/Repository/a
 
 import RepoCreation from './layout';
 import { TECHNOLOGIES } from './constants';
+import styles from "./styles.module.scss";
 
 class RepoCreationContainer extends Component {
   handleSubmit = values => {
@@ -14,13 +15,24 @@ class RepoCreationContainer extends Component {
 
   render() {
     return (
-      <div>
-        <RepoCreation
-          onSubmit={this.handleSubmit}
-          repoCreated={this.props.repoCreated}
-          loading={this.props.loading}
-        />
-      </div>
+      <>
+        <div className={`page-header ${styles.pageHeader}`} data-parallax="true" />
+        <div className="main main-raised">
+          <div className="profile-content">
+            <div className="container">
+              <div className="row">
+                <div className="col-md-6 ml-auto mr-auto">
+                  <RepoCreation
+                    onSubmit={this.handleSubmit}
+                    repoCreated={this.props.repoCreated}
+                    loading={this.props.loading}
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </>
     );
   }
 }

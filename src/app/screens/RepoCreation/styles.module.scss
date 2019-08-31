@@ -1,22 +1,23 @@
-.button {
-  border: solid 1px;
-  border-radius: 5px;
-  height: 40px;
+.page-header {
+  background-image: url('/assets/img/BG3.jpg');
+  background-position: top center;
+  height: 200px;
 }
 
-.input {
-  height: 30px;
-  border: solid 1px;
-  border-radius: 5px;
+.row {
+  margin: 20px auto;
 }
 
-.form-container {
-  min-height: 500px;
+.card {
+  margin: 150px auto;
 }
 
-.section-container {
-  width: 100%;
-  max-width: 280px;
+.card-body {
+  margin-top: 50px;
+}
+
+.footer {
+  padding-bottom: 50px;
 }
 
 .hidden {
