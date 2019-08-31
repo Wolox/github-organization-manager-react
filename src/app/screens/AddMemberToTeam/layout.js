@@ -31,7 +31,7 @@ function AddTeamToMember({ handleSubmit, memberAdded, data, handleOnChange }) {
               inputId="usernames"
               inputType="text"
               label={t('AddTeamToMember:teams')}
-              placeholder="Team Name"
+              placeholder="Usuarios de github"
             />
           </div>
           <div className={styles.select}>

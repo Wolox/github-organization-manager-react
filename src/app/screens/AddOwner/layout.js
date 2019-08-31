@@ -31,7 +31,7 @@ function AddOwner({ handleSubmit, ownerAdded, data }) {
               inputId="owners"
               inputType="text"
               label={t('AddOwner:owners')}
-              placeholder="Team Name"
+              placeholder="Usuarios de github"
             />
           </div>
           <div className={styles.select}>
