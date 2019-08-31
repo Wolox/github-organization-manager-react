@@ -1,6 +1,6 @@
 @import './colors';
 $transition-duration: 290ms;
-$transition-function: cubic-bezier(0.790, 0.010, 0.375, 0.995);
+$transition-function: cubic-bezier(0.79, 0.01, 0.375, 0.995);
 $container-shadow: 0 2px 4px 0 rgba($black, 0.15);
 $default-border-radius: 4px;
 $content-max-width: 1250px;
@@ -35,6 +35,7 @@ $small-search-bar-height: 45px;
 $modal-address-height: 450px;
 
 // JS Exports
+
 :export {
-  navbarHeight: $navbar-height;
-};
+  navbarheight: $navbar-height;
+}

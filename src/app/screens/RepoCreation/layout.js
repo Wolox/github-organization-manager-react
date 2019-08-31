@@ -6,10 +6,10 @@ import { Field, reduxForm } from 'redux-form';
 import InputLabelNew from '../../components/InputLabelNew';
 import CheckboxNew from '../../components/CheckboxNew';
 import SimpleSpinner from '../../components/SimpleSpinner';
+import { FIELDS } from '../Teams/constants';
 
 import { TECHNOLOGIES } from './constants';
 import styles from './styles.module.scss';
-import {FIELDS} from "../Teams/constants";
 
 function RepoCreation({ handleSubmit, repoCreated, loading }) {
   return (
@@ -60,21 +60,24 @@ function RepoCreation({ handleSubmit, repoCreated, loading }) {
           <div className={`row ${styles.row}`}>
             <div className="input-group">
               {Object.keys(TECHNOLOGIES).map(technology => (
-                <Field key={technology} name={technology} component={CheckboxNew} label={TECHNOLOGIES[technology]} />
+                <Field
+                  key={technology}
+                  name={technology}
+                  component={CheckboxNew}
+                  label={TECHNOLOGIES[technology]}
+                />
               ))}
             </div>
           </div>
         </div>
         <div className={`footer text-center ${styles.footer}`}>
-          {
-            !loading && !repoCreated &&
+          {!loading && !repoCreated && (
             <button type="submit" className="btn btn-primary btn-wd btn-lg">
               {t('RepoCreation:create')}
             </button>
-          }
+          )}
           {loading && <SimpleSpinner className={styles.spinner} />}
-          {
-            repoCreated &&
+          {repoCreated && (
             <div className="alert alert-success">
               <div className="container">
                 <div className="alert-icon">
@@ -83,7 +86,7 @@ function RepoCreation({ handleSubmit, repoCreated, loading }) {
                 ¡El/los repositorios se crearon con éxito!
               </div>
             </div>
-          }
+          )}
         </div>
         {repoCreated && <label> </label>}
       </form>

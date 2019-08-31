@@ -17,3 +17,20 @@ export const addMemberToOrg = async values => {
   }
   throw response;
 };
+
+export const addOwnerToRepo = async values => {
+  console.log('owner', values);
+  const response = await api.post(`/repositories/${values.repository}/codeowners/`);
+  if (response.ok) {
+    return response.data;
+  }
+  throw response;
+};
+
+export const getRepositories = async () => {
+  const response = await api.get('/repositories/');
+  if (response.ok) {
+    return response.data;
+  }
+  throw response;
+};
