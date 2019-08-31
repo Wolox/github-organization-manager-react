@@ -1,29 +1,39 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
-import Login from './layout';
+import { actionCreators as repositoryActions } from '';
 
-class LoginContainer extends Component {
-  handleLogin = () => {
-    // TODO implement function
-  };
+import RepoCreation from './layout';
 
-  handleEmailChange = () => {
-    // TODO implement function
-  };
-
-  handlePasswordChange = () => {
-    // TODO implement function
+class RepoCreationContainer extends Component {
+  handleSubmit = values => {
+    console.log('valuessssssssssss', values);
+    this.props.createRepo(values);
   };
 
   render() {
-    return (
-      <Login
-        onEmailChange={this.handleEmailChange}
-        onPasswordChange={this.handlePasswordChange}
-        onLogin={this.handleLogin}
-      />
-    );
+    return <RepoCreation onSubmit={this.handleSubmit} />;
   }
 }
 
-export default LoginContainer;
+RepoCreationContainer.PropTypes = {
+  createRepo: propTypes.funct,
+  isError: fdsf
+};
+
+const mapStateToProps = state => ({
+  // obtener loading, lo cambia el action de registration
+  isError: state.isError
+});
+
+const mapDispatchToProps = dispatch => ({
+  // acciones
+  // funciones que llaman acciones
+  createRepo: values => dispatch(repositoryActions.createRepo(values))
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(RepoCreationContainer);

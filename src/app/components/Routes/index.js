@@ -13,6 +13,7 @@ const Home = lazy(() => import('../../screens/Dashboard'));
 const Login = lazy(() => import('../../screens/Login'));
 const RepoCreation = lazy(() => import('../../screens/RepoCreation'));
 
+// TODO: poner REPO_CREATION privada. fijarme qué les pide a las rutas privadas
 function AppRoutes() {
   return (
     <ConnectedRouter history={history}>
@@ -21,7 +22,7 @@ function AppRoutes() {
           <Switch>
             <AuthenticatedRoute isPrivateRoute exact path={Routes.HOME} component={Home} />
             <AuthenticatedRoute isPublicRoute exact path={Routes.LOGIN} component={Login} />
-            <AuthenticatedRoute isPrivateRoute exact path={Routes.REPO_CREATION} component={RepoCreation} />
+            <AuthenticatedRoute isPublicRoute exact path={Routes.REPO_CREATION} component={RepoCreation} />
           </Switch>
         </Suspense>
       </div>
