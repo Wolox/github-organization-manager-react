@@ -20,6 +20,7 @@
 .env.development
 .env.test.local
 .env.production.local
+/src/auth_config.json
 
 #debug
 npm-debug.log*
