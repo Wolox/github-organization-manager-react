@@ -71,11 +71,9 @@ function RepoCreation({ handleSubmit, repoCreated, loading }) {
           </div>
         </div>
         <div className={`footer text-center ${styles.footer}`}>
-          {!loading && !repoCreated && (
-            <button type="submit" className="btn btn-primary btn-wd btn-lg">
-              {t('RepoCreation:create')}
-            </button>
-          )}
+          <button type="submit" className="btn btn-primary btn-wd btn-lg">
+            {t('RepoCreation:create')}
+          </button>
           {loading && <SimpleSpinner className={styles.spinner} />}
           {repoCreated && (
             <div className="alert alert-success">

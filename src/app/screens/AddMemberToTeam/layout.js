@@ -35,8 +35,13 @@ function AddTeamToMember({ handleSubmit, memberAdded, data, handleOnChange, load
               placeholder="Usuarios de github"
             />
           </div>
-          <div className={styles.select}>
-            <Field name="team" component="select" onChange={handleOnChange} inputClassName="form-control">
+          <div className="input-group">
+            <div className="input-group-prepend">
+              <span className="input-group-text">
+                <i className="material-icons">list</i>
+              </span>
+            </div>
+            <Field name="team" component="select" onChange={handleOnChange} className="form-control selectpicker">
               {data.map(opt => (
                 <option value={opt.value.id}>{opt.label}</option>
               ))}
@@ -44,11 +49,9 @@ function AddTeamToMember({ handleSubmit, memberAdded, data, handleOnChange, load
           </div>
         </div>
         <div className={`footer text-center ${styles.footer}`}>
-          {!memberAdded && (
-            <button type="submit" className="btn btn-primary btn-wd btn-lg">
-              {t('AddTeamToMember:add')}
-            </button>
-          )}
+          <button type="submit" className="btn btn-primary btn-wd btn-lg">
+            {t('AddTeamToMember:add')}
+          </button>
           {memberAdded && (
             <div className="alert alert-success">
               <div className="container">
