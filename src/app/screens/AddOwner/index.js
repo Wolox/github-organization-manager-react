@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import { actionCreators as repositoryActions } from '../../../redux/Repository/actions';
 
 import AddOwner from './layout';
-import styles from "./styles.module.scss";
+import styles from './styles.module.scss';
 
 class AddOwnerToRepoContainer extends Component {
   constructor(props) {
@@ -38,7 +38,7 @@ class AddOwnerToRepoContainer extends Component {
                   <AddOwner
                     onSubmit={this.handleSubmit}
                     ownerAdded={this.props.ownerAdded}
-                    data={this.state.data.map(repository => ({label: repository, value: repository}))}
+                    data={this.state.data.map(repository => ({ label: repository, value: repository }))}
                   />
                 </div>
               </div>

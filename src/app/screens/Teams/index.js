@@ -21,7 +21,12 @@ class TeamsContainer extends Component {
             <div className="container">
               <div className="row">
                 <div className="col-md-6 ml-auto mr-auto">
-                  <TeamCreation onSubmit={this.handleSubmit} isError={this.props.isError} />
+                  <TeamCreation
+                    onSubmit={this.handleSubmit}
+                    isError={this.props.isError}
+                    loading={this.props.loading}
+                    teamCreated={this.props.teamCreated}
+                  />
                 </div>
               </div>
             </div>
@@ -34,12 +39,22 @@ class TeamsContainer extends Component {
 
 TeamsContainer.propTypes = {
   createTeam: PropTypes.func,
-  isError: PropTypes.bool
+  isError: PropTypes.bool,
+  loading: PropTypes.bool,
+  teamCreated: PropTypes.bool
+};
+
+TeamsContainer.defaultProps = {
+  // isError: false,
+  loading: false,
+  teamCreated: false
 };
 
 const mapStateToProps = state => ({
   // obtener loading, lo cambia el action de registration
-  isError: state.isError
+  isError: state.team.isError,
+  loading: state.team.loading,
+  teamCreated: state.team.teamCreated
 });
 
 const mapDispatchToProps = dispatch => ({
