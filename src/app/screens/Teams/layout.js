@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { Field, reduxForm } from 'redux-form';
 
 import InputLabelNew from '~components/InputLabelNew';
+
 import SimpleSpinner from '../../components/SimpleSpinner';
 
 import styles from './styles.module.scss';
@@ -51,9 +52,9 @@ function TeamCreation({ handleSubmit, isError, loading, teamCreated }) {
                     <i className="material-icons">clear</i>
                   </span>
                 </button>
-                <b>Error Alert:</b> Damn man! You screwed up the server this time. You should find a good excuse
-                for your Boss...
-            </div>
+                <b>Error Alert:</b> Damn man! You screwed up the server this time. You should find a good
+                excuse for your Boss...
+              </div>
             </div>
           )}
           {loading && <SimpleSpinner className={styles.spinner} />}
@@ -64,7 +65,7 @@ function TeamCreation({ handleSubmit, isError, loading, teamCreated }) {
                   <i className="material-icons">check</i>
                 </div>
                 ¡El equipo se creó con éxito!
-            </div>
+              </div>
             </div>
           )}
         </div>

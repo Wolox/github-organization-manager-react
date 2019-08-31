@@ -2,7 +2,13 @@ import { stringArrayToObject } from '../../utils/array';
 import * as TeamService from '../../services/TeamServices';
 
 export const actions = stringArrayToObject(
-  ['TEAM_CREATION', 'TEAM_CREATION_SUCCESS', 'TEAM_CREATION_FAILURE'],
+  [
+    'TEAM_CREATION',
+    'TEAM_CREATION_SUCCESS',
+    'TEAM_CREATION_FAILURE',
+    'ADDING_MEMBERS',
+    'MEMBER_ADDED_SUCCESS'
+  ],
   '@@REPOSITORY'
 );
 
@@ -32,8 +38,9 @@ export const actionCreators = {
   },
   addMembersToTeam(values) {
     return async dispatch => {
+      dispatch({ type: actions.ADDING_MEMBERS });
       const response = await TeamService.addMembersToTeam(values);
-      // acciones en caso de exitoso o falla
+      dispatch({ type: actions.MEMBER_ADDED_SUCCESS });
     };
   },
   getTeams() {
