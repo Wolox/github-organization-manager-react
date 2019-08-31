@@ -31,24 +31,24 @@ function AddTeamToMember({ handleSubmit, memberAdded, data, handleOnChange }) {
               inputId="usernames"
               inputType="text"
               label={t('AddTeamToMember:teams')}
-              placeholder="Team Name"
+              placeholder="Usuarios de github"
             />
           </div>
           <div className={styles.select}>
-          <Field name="team" component="select" onChange={handleOnChange} inputClassName="form-control">
-          {data.map(opt => <option value={opt.value.id}>{opt.label}</option>)}
-          </Field>
+            <Field name="team" component="select" onChange={handleOnChange} inputClassName="form-control">
+              {data.map(opt => (
+                <option value={opt.value.id}>{opt.label}</option>
+              ))}
+            </Field>
           </div>
         </div>
         <div className={`footer text-center ${styles.footer}`}>
-          {
-            !memberAdded &&
+          {!memberAdded && (
             <button type="submit" className="btn btn-primary btn-wd btn-lg">
               {t('AddTeamToMember:add')}
             </button>
-          }
-          {
-            memberAdded &&
+          )}
+          {memberAdded && (
             <div className="alert alert-success">
               <div className="container">
                 <div className="alert-icon">
@@ -57,7 +57,7 @@ function AddTeamToMember({ handleSubmit, memberAdded, data, handleOnChange }) {
                 ¡Los miembros se agregaron!
               </div>
             </div>
-          }
+          )}
         </div>
       </form>
     </div>

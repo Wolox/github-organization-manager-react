@@ -4,9 +4,9 @@ import { t } from 'i18next';
 import { Field, reduxForm } from 'redux-form';
 import Select from 'react-select';
 
-import InputLabelNew from "~components/InputLabelNew";
+import InputLabelNew from '~components/InputLabelNew';
 
-import styles from "./styles.module.scss";
+import styles from './styles.module.scss';
 
 function AddOwner({ handleSubmit, ownerAdded, data }) {
   return (
@@ -31,24 +31,24 @@ function AddOwner({ handleSubmit, ownerAdded, data }) {
               inputId="owners"
               inputType="text"
               label={t('AddOwner:owners')}
-              placeholder="Team Name"
+              placeholder="Usuarios de github"
             />
           </div>
           <div className={styles.select}>
-        <Field name="repository" component="select" inputClassName="form-control">
-          {data.map(opt => <option value={opt.label}>{opt.label}</option>)}
-      </Field>
+            <Field name="repository" component="select" inputClassName="form-control">
+              {data.map(opt => (
+                <option value={opt.label}>{opt.label}</option>
+              ))}
+            </Field>
           </div>
         </div>
         <div className={`footer text-center ${styles.footer}`}>
-          {
-            !ownerAdded &&
+          {!ownerAdded && (
             <button type="submit" className="btn btn-primary btn-wd btn-lg">
               {t('AddOwner:add')}
             </button>
-          }
-          {
-            ownerAdded &&
+          )}
+          {ownerAdded && (
             <div className="alert alert-success">
               <div className="container">
                 <div className="alert-icon">
@@ -57,7 +57,7 @@ function AddOwner({ handleSubmit, ownerAdded, data }) {
                 ¡Los miembros se agregaron!
               </div>
             </div>
-          }
+          )}
         </div>
       </form>
     </div>

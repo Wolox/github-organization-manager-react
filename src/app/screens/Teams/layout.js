@@ -3,11 +3,12 @@ import PropTypes from 'prop-types';
 import { Field, reduxForm } from 'redux-form';
 
 import InputLabelNew from '~components/InputLabelNew';
+import SimpleSpinner from '../../components/SimpleSpinner';
 
 import styles from './styles.module.scss';
 import { FIELDS } from './constants';
 
-function TeamCreation({ handleSubmit, isError }) {
+function TeamCreation({ handleSubmit, isError, loading, teamCreated }) {
   return (
     <div className={`card ${styles.card}`}>
       <form className="container" onSubmit={handleSubmit}>
@@ -38,30 +39,44 @@ function TeamCreation({ handleSubmit, isError }) {
           <button type="submit" className="btn btn-primary btn-wd btn-lg">
             Create
           </button>
-        </div>
-        {isError && (
-          <div className="alert alert-danger">
-            <div className="container">
-              <div className="alert-icon">
-                <i className="material-icons">error_outline</i>
-              </div>
-              <button type="button" className="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">
-                  <i className="material-icons">clear</i>
-                </span>
-              </button>
-              <b>Error Alert:</b> Damn man! You screwed up the server this time. You should find a good excuse
-              for your Boss...
+
+          {isError && (
+            <div className="alert alert-danger">
+              <div className="container">
+                <div className="alert-icon">
+                  <i className="material-icons">error_outline</i>
+                </div>
+                <button type="button" className="close" data-dismiss="alert" aria-label="Close">
+                  <span aria-hidden="true">
+                    <i className="material-icons">clear</i>
+                  </span>
+                </button>
+                <b>Error Alert:</b> Damn man! You screwed up the server this time. You should find a good excuse
+                for your Boss...
             </div>
-          </div>
-        )}
+            </div>
+          )}
+          {loading && <SimpleSpinner className={styles.spinner} />}
+          {teamCreated && (
+            <div className="alert alert-success">
+              <div className="container">
+                <div className="alert-icon">
+                  <i className="material-icons">check</i>
+                </div>
+                ¡El equipo se creó con éxito!
+            </div>
+            </div>
+          )}
+        </div>
       </form>
     </div>
   );
 }
 
 TeamCreation.propTypes = {
-  handleSubmit: PropTypes.func.isRequired
+  handleSubmit: PropTypes.func.isRequired,
+  loading: PropTypes.bool.isRequired,
+  teamCreated: PropTypes.bool.isRequired
 };
 
 export default reduxForm({
