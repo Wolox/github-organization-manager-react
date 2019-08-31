@@ -7,6 +7,7 @@ import Menu from '~components/Menu';
 import { actionCreators as teamActions } from '../../../redux/Repository/actions';
 
 import AddMember from './layout';
+import styles from "./styles.module.scss";
 
 class AddMemberContainer extends Component {
   handleSubmit = values => {
@@ -17,9 +18,20 @@ class AddMemberContainer extends Component {
     return (
       <>
         <Menu />
-        <AddMember onSubmit={this.handleSubmit} />
+        <div className={`page-header ${styles.pageHeader}`} data-parallax="true" />
+        <div className="main main-raised">
+          <div className="profile-content">
+            <div className="container">
+              <div className="row">
+                <div className="col-md-6 ml-auto mr-auto">
+                  <AddMember onSubmit={this.handleSubmit} />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </>
-    )
+    );
   }
 }
 
