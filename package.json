@@ -18,6 +18,7 @@
     "react-router": "^4.3.1",
     "react-router-dom": "^4.3.1",
     "react-scripts": "3.1.1",
+    "react-select": "^3.0.4",
     "react-spinkit": "^3.0.0",
     "redux": "^4.0.4",
     "redux-beacon": "^2.1.0",

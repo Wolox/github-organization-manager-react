@@ -34,5 +34,6 @@ export const actionCreators = {
       const response = await TeamService.addMembersToTeam(values);
       // acciones en caso de exitoso o falla
     };
-  }
+  },
+  getTeams() { return TeamService.getTeams()}
 };

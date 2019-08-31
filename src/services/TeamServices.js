@@ -17,3 +17,11 @@ export const addMembersToTeam = async values => {
   }
   throw response;
 };
+
+export const getTeams = async () => {
+  const response = await api.get(`/teams/`);
+  if (response.ok) {
+    return response.data;
+  }
+  throw response;
+};
