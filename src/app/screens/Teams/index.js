@@ -12,7 +12,9 @@ class TeamsContainer extends Component {
   };
 
   render() {
-    return <TeamCreation onSubmit={this.handleSubmit} />;
+    return (
+      <TeamCreation onSubmit={this.handleSubmit} isError={this.props.isError} />
+    );
   }
 }
 

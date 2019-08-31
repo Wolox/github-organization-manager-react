@@ -1,7 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-function InputLabelNew({ inputClassName, name, placeholder, inputId, inputType, handleChange, disabled, input }) {
+function InputLabelNew({
+  inputClassName,
+  name,
+  placeholder,
+  inputId,
+  inputType,
+  handleChange,
+  disabled,
+  input
+}) {
   return (
     <input
       className={inputClassName}
@@ -17,6 +26,7 @@ function InputLabelNew({ inputClassName, name, placeholder, inputId, inputType, 
 }
 
 InputLabelNew.propTypes = {
+  input: PropTypes.objectOf(PropTypes.object).isRequired,
   inputId: PropTypes.string.isRequired,
   inputType: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,

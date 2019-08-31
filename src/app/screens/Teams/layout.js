@@ -53,7 +53,7 @@ function TeamCreation({ handleSubmit }) {
           </div>
         </div>
       </div>
-     </>
+    </>
   );
 }
 
