@@ -8,3 +8,12 @@ export const createRepository = async values => {
   }
   throw response;
 };
+
+export const addMemberToOrg = async values => {
+  console.log('bbbbbbbbb', values);
+  const response = await api.post(`/organization/${values.username}`);
+  if (response.ok) {
+    return response.data;
+  }
+  throw response;
+};

@@ -1,0 +1,17 @@
+@import './colors';
+
+.container {
+  display: flex;
+  justify-content: center;
+  margin-top: 50px;
+}
+
+.loading {
+  width: 55px;
+  height: 55px;
+}
+
+.loading-circle {
+  width: 65px;
+  height: 45px;
+}
