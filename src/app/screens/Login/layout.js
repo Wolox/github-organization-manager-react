@@ -4,19 +4,21 @@ import { t } from 'i18next';
 
 import InputLabelNew from '../../components/InputLabelNew';
 import Routes from '../../../constants/routes';
+import { useAuth0 } from '../../../react-auth0-spa';
 
 import { FIELDS } from './constants';
 import styles from './styles.module.scss';
 
-function Login({ onEmailChange, onPasswordChange, onLogin }) {
+function Login({ onLogin }) {
+  const { loginWithRedirect } = useAuth0();
   return (
     <div className="card card-login">
-      <form onSubmit={onLogin} className={`${styles.form}`}>
+      <form onSubmit={() => loginWithRedirect({})} className={`${styles.form}`}>
         <div className="card-header text-center">
           <h4 className="card-title">{t('Login:login')}</h4>
         </div>
-        <div className="card-body">
-          <div className="input-group">
+        {/* <div className="card-body">
+           <div className="input-group">
             <div className="input-group-prepend">
               <span className="input-group-text">
                 <i className="material-icons">mail</i>
@@ -50,13 +52,13 @@ function Login({ onEmailChange, onPasswordChange, onLogin }) {
               handleChange={onPasswordChange}
             />
           </div>
-        </div>
+        </div>*/}
         <div className={`footer text-center ${styles.footer}`}>
           <button type="submit" className="btn btn-primary btn-wd btn-lg">
             {t('Login:enter')}
           </button>
           <br />
-          <a href={Routes.RECOVER_PASSWORD}>{t('Login:forgotPassword')}</a>
+          {/* <a href={Routes.RECOVER_PASSWORD}>{t('Login:forgotPassword')}</a> */}
         </div>
       </form>
     </div>
@@ -64,9 +66,7 @@ function Login({ onEmailChange, onPasswordChange, onLogin }) {
 }
 
 Login.propTypes = {
-  onEmailChange: PropTypes.func.isRequired,
-  onLogin: PropTypes.func.isRequired,
-  onPasswordChange: PropTypes.func.isRequired
+  onLogin: PropTypes.func.isRequired
 };
 
 export default Login;
