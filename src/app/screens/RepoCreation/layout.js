@@ -30,16 +30,9 @@ function RepoCreation({ handleSubmit, repoCreated }) {
         <Field name="isPrivate" component={Checkbox} label="Private" />
       </div>
       <div>
-        <div>
-          <Field name="technology" component="select">
-            <option />
-            {Object.values(TECHNOLOGIES).map(technology => (
-              <option key={technology} value={technology}>
-                {technology}
-              </option>
-            ))}
-          </Field>
-        </div>
+        {Object.keys(TECHNOLOGIES).map(technology => (
+          <Field key={technology} name={technology} component={Checkbox} label={TECHNOLOGIES[technology]} />
+        ))}
       </div>
       <div className={`column center ${styles.sectionContainer}`}>
         <button type="submit" className={`full-width m-bottom-1 ${styles.button}`}>

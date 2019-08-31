@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import { actionCreators as repositoryActions } from '../../../redux/Repository/actions';
 
 import RepoCreation from './layout';
+import { TECHNOLOGIES } from './constants';
 
 class RepoCreationContainer extends Component {
   handleSubmit = values => {
@@ -35,7 +36,15 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   // funciones que llaman acciones
-  createRepo: values => dispatch(repositoryActions.createRepository(values))
+  createRepo: values => {
+    console.log('aaaaa', values);
+    const techs = [];
+    Object.keys(TECHNOLOGIES).forEach(tech => {
+      values[tech] && techs.push(tech);
+    });
+    values = { ...values, techs };
+    return dispatch(repositoryActions.createRepository(values));
+  }
 });
 
 export default connect(
