@@ -1,0 +1,38 @@
+@import 'src/scss/variables/colors';
+
+.spinner {
+  height: 30px;
+  position: relative;
+  width: 30px;
+
+  &::after,
+  &::before {
+    animation: spinner 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+    border: 4px solid;
+    border-color: $caribbean-green transparent transparent transparent;
+    border-radius: 50%;
+    content: '';
+    left: -4px;
+    min-height: 100%;
+    min-width: 100%;
+    position: absolute;
+    top: -4px;
+  }
+
+  &::after {
+    animation-delay: -0.3s;
+  }
+
+  &::before {
+    animation-delay: -0.15s;
+  }
+}
+
+@keyframes spinner {
+  to {
+    transform: rotate(0deg);
+  }
+  from {
+    transform: rotate(360deg);
+  }
+}
