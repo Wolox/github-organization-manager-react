@@ -57,8 +57,8 @@ class AddOwnerToRepoContainer extends Component {
 AddOwnerToRepoContainer.propTypes = {
   addOwnersToRepo: PropTypes.func.isRequired,
   // isError: PropTypes.bool,
-  ownerAdded: PropTypes.bool,
-  loading: PropTypes.bool
+  loading: PropTypes.bool,
+  ownerAdded: PropTypes.bool
 };
 
 AddOwnerToRepoContainer.defaultProps = {

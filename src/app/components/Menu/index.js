@@ -6,14 +6,23 @@ import React from 'react';
 
 function Menu() {
   return (
-    <nav className="navbar navbar-transparent navbar-color-on-scroll fixed-top navbar-expand-lg" color-on-scroll="100"
-         id="sectionsNav">
+    <nav
+      className="navbar navbar-transparent navbar-color-on-scroll fixed-top navbar-expand-lg"
+      color-on-scroll="100"
+      id="sectionsNav"
+    >
       <div className="container">
         <div className="navbar-translate">
           <a className="navbar-brand" href="/">
-            Wolox Repo Manager</a>
-          <button className="navbar-toggler" type="button" data-toggle="collapse" aria-expanded="false"
-                  aria-label="Toggle navigation">
+            Wolox Repo Manager
+          </a>
+          <button
+            className="navbar-toggler"
+            type="button"
+            data-toggle="collapse"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
             <span className="sr-only">Toggle navigation</span>
             <span className="navbar-toggler-icon" />
             <span className="navbar-toggler-icon" />
@@ -46,8 +55,7 @@ function Menu() {
                 <a href="/add_member" className="dropdown-item">
                   <i className="material-icons">person_add</i> Add member
                 </a>
-                <a href="/add_owner"
-                   className="dropdown-item">
+                <a href="/add_owner" className="dropdown-item">
                   <i className="material-icons">assignment_turned_in</i> Add owner
                 </a>
               </div>

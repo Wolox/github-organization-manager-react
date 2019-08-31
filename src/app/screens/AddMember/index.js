@@ -7,7 +7,7 @@ import Menu from '~components/Menu';
 import { actionCreators as teamActions } from '../../../redux/Repository/actions';
 
 import AddMember from './layout';
-import styles from "./styles.module.scss";
+import styles from './styles.module.scss';
 
 class AddMemberContainer extends Component {
   handleSubmit = values => {
@@ -24,7 +24,11 @@ class AddMemberContainer extends Component {
             <div className="container">
               <div className="row">
                 <div className="col-md-6 ml-auto mr-auto">
-                  <AddMember onSubmit={this.handleSubmit} />
+                  <AddMember
+                    onSubmit={this.handleSubmit}
+                    memberAdded={this.props.memberAdded}
+                    loading={this.props.loading}
+                  />
                 </div>
               </div>
             </div>
@@ -37,12 +41,21 @@ class AddMemberContainer extends Component {
 
 AddMemberContainer.propTypes = {
   addMember: PropTypes.func,
-  isError: PropTypes.bool
+  isError: PropTypes.bool,
+  loading: PropTypes.bool,
+  memberAdded: PropTypes.bool
+};
+
+AddMemberContainer.defaultProps = {
+  memberAdded: false,
+  loading: false
 };
 
 const mapStateToProps = state => ({
   // obtener loading, lo cambia el action de registration
-  isError: state.isError
+  // isError: state.isError
+  memberAdded: state.repository.memberAdded,
+  loading: state.repository.loading
 });
 
 const mapDispatchToProps = dispatch => ({

@@ -1,13 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Field, reduxForm } from 'redux-form';
-import {t} from "i18next";
+import { t } from 'i18next';
 
-import InputLabelNew from "~components/InputLabelNew";
+import InputLabelNew from '~components/InputLabelNew';
 
-import styles from "./styles.module.scss";
+import SimpleSpinner from '../../components/SimpleSpinner';
 
-function AddMember({ handleSubmit }) {
+import styles from './styles.module.scss';
+
+function AddMember({ handleSubmit, memberAdded, loading }) {
   return (
     <div className={`card ${styles.card}`}>
       <form className="container" onSubmit={handleSubmit}>
@@ -38,6 +40,17 @@ function AddMember({ handleSubmit }) {
           <button type="submit" className="btn btn-primary btn-wd btn-lg">
             Add member
           </button>
+          {memberAdded && (
+            <div className="alert alert-success">
+              <div className="container">
+                <div className="alert-icon">
+                  <i className="material-icons">check</i>
+                </div>
+                ¡El miembro se agregó!
+              </div>
+            </div>
+          )}
+          {loading && <SimpleSpinner className={styles.spinner} />}
         </div>
       </form>
     </div>
