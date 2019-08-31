@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
+import Menu from '~components/Menu';
+
 import { actionCreators as teamActions } from '../../../redux/Repository/actions';
 
 import AddMember from './layout';
@@ -12,7 +14,12 @@ class AddMemberContainer extends Component {
   };
 
   render() {
-    return <AddMember onSubmit={this.handleSubmit} />;
+    return (
+      <>
+        <Menu />
+        <AddMember onSubmit={this.handleSubmit} />
+      </>
+    )
   }
 }
 

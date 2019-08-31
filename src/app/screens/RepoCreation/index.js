@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
+import Menu from '~components/Menu';
+
 import { actionCreators as repositoryActions } from '../../../redux/Repository/actions';
 
 import RepoCreation from './layout';
@@ -16,6 +18,7 @@ class RepoCreationContainer extends Component {
   render() {
     return (
       <>
+        <Menu />
         <div className={`page-header ${styles.pageHeader}`} data-parallax="true" />
         <div className="main main-raised">
           <div className="profile-content">
