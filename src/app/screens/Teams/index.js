@@ -1,28 +1,38 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
-class ContainerTeams extends Component {
+import { actionCreators as teamActions } from '../../../redux/Team/actions';
+
+import TeamCreation from './layout';
+
+class TeamsContainer extends Component {
+  handleSubmit = values => {
+    this.props.createTeam(values);
+  };
+
   render() {
-    return (
-      <form className="container">
-        <div className="form-group">
-          <span className="h1">Create a new team</span>
-        </div>
-        <div className="form-group">
-          <label htmlFor="exampleInputEmail1">Team Name</label>
-          <input
-            type="text"
-            className="form-control"
-            id="inputNameProject"
-            required
-            placeholder="wolox-devs, wolox-reviewers"
-          />
-        </div>
-        <button type="submit" className="btn btn-primary">
-          Submit
-        </button>
-      </form>
-    );
+    return <TeamCreation onSubmit={this.handleSubmit} />;
   }
 }
 
-export default ContainerTeams;
+TeamsContainer.propTypes = {
+  createTeam: PropTypes.func,
+  isError: PropTypes.bool
+};
+
+const mapStateToProps = state => ({
+  // obtener loading, lo cambia el action de registration
+  isError: state.isError
+});
+
+const mapDispatchToProps = dispatch => ({
+  // acciones
+  // funciones que llaman acciones
+  createTeam: values => dispatch(teamActions.createTeam(values))
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(TeamsContainer);
