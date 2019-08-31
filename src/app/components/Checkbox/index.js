@@ -18,7 +18,7 @@ class CheckboxContainer extends Component {
   };
 
   render() {
-    const { className, inputClassName, labelClassName, label, name, disabled, required } = this.props;
+    const { className, inputClassName, labelClassName, label, name, disabled, required, input } = this.props;
     const { isChecked } = this.state;
 
     return (
@@ -27,9 +27,9 @@ class CheckboxContainer extends Component {
         inputClassName={inputClassName}
         labelClassName={labelClassName}
         label={label}
-        name={name}
-        isChecked={isChecked}
-        onToggle={this.handleToggle}
+        name={input.name || name}
+        isChecked={input.value || isChecked}
+        onToggle={input.onChange || this.handleToggle}
         disabled={disabled}
         required={required}
       />
@@ -45,6 +45,7 @@ CheckboxContainer.defaultProps = {
 };
 
 CheckboxContainer.propTypes = {
+  input: PropTypes.object.isRequired,
   className: PropTypes.string,
   disabled: PropTypes.bool,
   inputClassName: PropTypes.string,

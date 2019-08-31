@@ -12,7 +12,8 @@ function InputLabel({
   inputId,
   inputType,
   handleChange,
-  disabled
+  disabled,
+  input
 }) {
   return (
     <div className={`column start ${className}`}>
@@ -27,6 +28,7 @@ function InputLabel({
         type={inputType}
         onChange={handleChange}
         disabled={disabled}
+        {...input}
       />
     </div>
   );
