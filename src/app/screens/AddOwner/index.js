@@ -75,17 +75,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  // funciones que llaman acciones
-  addOwnersToRepo: values => {
-    console.log('aaaaa', values);
-    // const techs = [];
-    // Object.keys(TECHNOLOGIES).forEach(tech => {
-    //   values[tech] && techs.push(tech);
-    // });
-    /* eslint-disable no-param-reassign */
-    // values = { ...values, techs };
-    return dispatch(repositoryActions.addOwnerToRepository(values));
-  }
+  addOwnersToRepo: values => dispatch(repositoryActions.addOwnerToRepository(values))
 });
 
 export default connect(

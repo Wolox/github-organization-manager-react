@@ -7,9 +7,7 @@ import Suspense from '../Suspense';
 import Routes from '../../../constants/routes';
 
 import AuthenticatedRoute from './components/AuthenticatedRoute';
-import styles from './styles.scss';
 
-const Home = lazy(() => import('../../screens/Dashboard'));
 const Login = lazy(() => import('../../screens/Login'));
 const RepoCreation = lazy(() => import('../../screens/RepoCreation'));
 const Teams = lazy(() => import('../../screens/Teams'));
@@ -21,7 +19,7 @@ const AddOwnerToRepo = lazy(() => import('../../screens/AddOwner'));
 function AppRoutes() {
   return (
     <ConnectedRouter history={history}>
-      <div className={styles.container}>
+      <div>
         <Suspense>
           <Switch>
             <AuthenticatedRoute isPublicRoute exact path={Routes.HOME} component={Teams} />

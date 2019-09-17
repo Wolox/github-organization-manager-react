@@ -79,7 +79,6 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  // funciones que llaman acciones
   addMembersToTeam: values => {
     console.log('aaaaa', values);
     const techs = [];

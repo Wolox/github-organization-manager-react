@@ -14,15 +14,6 @@ export const actions = stringArrayToObject(
   '@@REPOSITORY'
 );
 
-// const privateActionCreators = {
-//   repoCreationFailure(err) {
-//     return {
-//       type: actions.REPO_CREATION_FAILURE,
-//       payload: { err }
-//     };
-//   }
-// };
-
 export const actionCreators = {
   createRepository(values) {
     return async dispatch => {

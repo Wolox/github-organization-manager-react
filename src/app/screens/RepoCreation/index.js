@@ -58,7 +58,6 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  // funciones que llaman acciones
   createRepo: values => {
     console.log('aaaaa', values);
     const techs = [];

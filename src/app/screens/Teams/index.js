@@ -61,8 +61,6 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  // acciones
-  // funciones que llaman acciones
   createTeam: values => dispatch(teamActions.createTeam(values))
 });
 

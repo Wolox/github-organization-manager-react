@@ -59,8 +59,6 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  // acciones
-  // funciones que llaman acciones
   addMember: values => dispatch(teamActions.addMemberToOrg(values))
 });
 
