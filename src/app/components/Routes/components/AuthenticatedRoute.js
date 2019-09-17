@@ -78,7 +78,7 @@ AuthenticatedRoute.propTypes = {
   currentUser: PropTypes.bool,
   isPrivateRoute: PropTypes.bool,
   isPublicRoute: PropTypes.bool,
-  location: PropTypes.string
+  location: PropTypes.objectOf(PropTypes.any)
 };
 
 export default withRouter(connect()(AuthenticatedRoute));
