@@ -24,10 +24,7 @@ class AddTeamToMemberContainer extends Component {
     });
   }
 
-  handleOnChange = value => console.log(value);
-
   handleSubmit = values => {
-    console.log(values);
     this.props.addMembersToTeam(values);
   };
 
@@ -45,7 +42,6 @@ class AddTeamToMemberContainer extends Component {
                     onSubmit={this.handleSubmit}
                     memberAdded={this.props.memberAdded}
                     data={this.state.data.map(team => ({ label: team.name, value: team }))}
-                    handleOnChange={this.handleOnChange}
                     loading={this.props.loading}
                   />
                 </div>
@@ -60,27 +56,23 @@ class AddTeamToMemberContainer extends Component {
 
 AddTeamToMemberContainer.propTypes = {
   addMembersToTeam: PropTypes.func.isRequired,
-  // isError: PropTypes.bool,
   loading: PropTypes.bool,
   memberAdded: PropTypes.bool
 };
 
 AddTeamToMemberContainer.defaultProps = {
-  // isError: false,
-  memberAdded: false,
-  loading: false
+  loading: false,
+  memberAdded: false
 };
 
 const mapStateToProps = state => ({
   // obtener loading, lo cambia el action de registration
-  // isError: state.team.isError,
   memberAdded: state.team.memberAdded,
   loading: state.team.loading
 });
 
 const mapDispatchToProps = dispatch => ({
   addMembersToTeam: values => {
-    console.log('aaaaa', values);
     const techs = [];
     Object.keys(TECHNOLOGIES).forEach(tech => {
       values[tech] && techs.push(tech);

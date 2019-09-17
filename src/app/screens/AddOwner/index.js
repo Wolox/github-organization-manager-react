@@ -24,7 +24,6 @@ class AddOwnerToRepoContainer extends Component {
   }
 
   handleSubmit = values => {
-    console.log(values);
     this.props.addOwnersToRepo(values);
   };
 
@@ -56,20 +55,17 @@ class AddOwnerToRepoContainer extends Component {
 
 AddOwnerToRepoContainer.propTypes = {
   addOwnersToRepo: PropTypes.func.isRequired,
-  // isError: PropTypes.bool,
   loading: PropTypes.bool,
   ownerAdded: PropTypes.bool
 };
 
 AddOwnerToRepoContainer.defaultProps = {
-  // isError: false,
-  ownerAdded: false,
-  loading: false
+  loading: false,
+  ownerAdded: false
 };
 
 const mapStateToProps = state => ({
   // obtener loading, lo cambia el action de registration
-  // isError: state.repository.isError,
   ownerAdded: state.repository.ownerAdded,
   loading: state.repository.loading
 });

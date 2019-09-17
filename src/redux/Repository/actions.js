@@ -19,25 +19,23 @@ export const actionCreators = {
     return async dispatch => {
       // hacer try catch
       dispatch({ type: actions.REPO_CREATION });
-      const response = await RepositoryService.createRepository(values);
+      await RepositoryService.createRepository(values);
       // acciones en caso de exitoso o falla
       dispatch({ type: actions.REPO_CREATION_SUCCESS });
-      console.log('ressssssssssssssss', response);
     };
   },
   addMemberToOrg(values) {
     return async dispatch => {
       // hacer try catch
       dispatch({ type: actions.ADDING_MEMBER });
-      const response = await RepositoryService.addMemberToOrg(values);
+      await RepositoryService.addMemberToOrg(values);
       dispatch({ type: actions.MEMBER_ADDED });
-      console.log('addMemberToOrg res', response);
     };
   },
   addOwnerToRepository(values) {
     return async dispatch => {
       dispatch({ type: actions.ADDING_CODE_OWNER });
-      const response = await RepositoryService.addOwnerToRepo(values);
+      await RepositoryService.addOwnerToRepo(values);
       dispatch({ type: actions.CODE_OWNER_ADDED_SUCCESS });
     };
   },

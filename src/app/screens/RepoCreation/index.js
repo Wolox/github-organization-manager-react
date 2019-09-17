@@ -47,8 +47,8 @@ RepoCreationContainer.propTypes = {
 };
 
 RepoCreationContainer.defaultProps = {
-  repoCreated: false,
-  loading: false
+  loading: false,
+  repoCreated: false
 };
 
 const mapStateToProps = state => ({
@@ -59,10 +59,11 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   createRepo: values => {
-    console.log('aaaaa', values);
     const techs = [];
     Object.keys(TECHNOLOGIES).forEach(tech => {
-      values[tech] && techs.push(tech);
+      if (values[tech]) {
+        techs.push(tech);
+      }
     });
     /* eslint-disable no-param-reassign */
     values = { ...values, techs };

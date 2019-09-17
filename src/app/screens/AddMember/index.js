@@ -41,19 +41,17 @@ class AddMemberContainer extends Component {
 
 AddMemberContainer.propTypes = {
   addMember: PropTypes.func,
-  isError: PropTypes.bool,
   loading: PropTypes.bool,
   memberAdded: PropTypes.bool
 };
 
 AddMemberContainer.defaultProps = {
-  memberAdded: false,
-  loading: false
+  loading: false,
+  memberAdded: false
 };
 
 const mapStateToProps = state => ({
   // obtener loading, lo cambia el action de registration
-  // isError: state.isError
   memberAdded: state.repository.memberAdded,
   loading: state.repository.loading
 });

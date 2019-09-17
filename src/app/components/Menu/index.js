@@ -1,5 +1,7 @@
+/* eslint-disable react/jsx-max-depth */
 /* eslint-disable react/forbid-prop-types */
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 function Menu() {
   return (
@@ -29,32 +31,32 @@ function Menu() {
         <div className="collapse navbar-collapse">
           <ul className="navbar-nav ml-auto">
             <li className="dropdown nav-item">
-              <a href="#" className="dropdown-toggle nav-link" data-toggle="dropdown">
+              <Link to="#" className="dropdown-toggle nav-link" data-toggle="dropdown">
                 <i className="material-icons">people</i> teams
-              </a>
+              </Link>
               <div className="dropdown-menu dropdown-with-icons">
-                <a href="/teams" className="dropdown-item">
+                <Link to="/teams" className="dropdown-item">
                   <i className="material-icons">people_outline</i> Create teams
-                </a>
-                <a href="/teams/add_member" className="dropdown-item">
+                </Link>
+                <Link to="/teams/add_member" className="dropdown-item">
                   <i className="material-icons">person_add</i> Add member to team
-                </a>
+                </Link>
               </div>
             </li>
             <li className="dropdown nav-item">
-              <a href="#" className="dropdown-toggle nav-link" data-toggle="dropdown">
+              <Link to="#" className="dropdown-toggle nav-link" data-toggle="dropdown">
                 <i className="material-icons">folder</i> repositories
-              </a>
+              </Link>
               <div className="dropdown-menu dropdown-with-icons">
-                <a href="/repositories" className="dropdown-item">
+                <Link to="/repositories" className="dropdown-item">
                   <i className="material-icons">create_new_folder</i> Create repo
-                </a>
-                <a href="/add_member" className="dropdown-item">
+                </Link>
+                <Link to="/add_member" className="dropdown-item">
                   <i className="material-icons">person_add</i> Add member
-                </a>
-                <a href="/add_owner" className="dropdown-item">
+                </Link>
+                <Link to="/add_owner" className="dropdown-item">
                   <i className="material-icons">assignment_turned_in</i> Add owner
-                </a>
+                </Link>
               </div>
             </li>
           </ul>
