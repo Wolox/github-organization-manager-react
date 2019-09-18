@@ -19,29 +19,27 @@ const AddOwnerToRepo = lazy(() => import('../../screens/AddOwner'));
 function AppRoutes() {
   return (
     <ConnectedRouter history={history}>
-      <div>
-        <Suspense>
-          <Switch>
-            <AuthenticatedRoute isPublicRoute exact path={Routes.HOME} component={Teams} />
-            <AuthenticatedRoute isPublicRoute exact path={Routes.LOGIN} component={Login} />
-            <AuthenticatedRoute isPublicRoute exact path={Routes.REPO_CREATION} component={RepoCreation} />
-            <AuthenticatedRoute isPublicRoute exact path={Routes.TEAMS} component={Teams} />
-            <AuthenticatedRoute
-              isPublicRoute
-              exact
-              path={Routes.ADD_MEMBER_TO_TEAM}
-              component={AddMemberToTeam}
-            />
-            <AuthenticatedRoute isPublicRoute exact path={Routes.ADD_MEMBER} component={AddMember} />
-            <AuthenticatedRoute
-              isPublicRoute
-              exact
-              path={Routes.ADD_OWNER_TO_REPO}
-              component={AddOwnerToRepo}
-            />
-          </Switch>
-        </Suspense>
-      </div>
+      <Suspense>
+        <Switch>
+          <AuthenticatedRoute isPublicRoute exact path={Routes.HOME} component={Teams} />
+          <AuthenticatedRoute isPublicRoute exact path={Routes.LOGIN} component={Login} />
+          <AuthenticatedRoute isPublicRoute exact path={Routes.REPO_CREATION} component={RepoCreation} />
+          <AuthenticatedRoute isPublicRoute exact path={Routes.TEAMS} component={Teams} />
+          <AuthenticatedRoute
+            isPublicRoute
+            exact
+            path={Routes.ADD_MEMBER_TO_TEAM}
+            component={AddMemberToTeam}
+          />
+          <AuthenticatedRoute isPublicRoute exact path={Routes.ADD_MEMBER} component={AddMember} />
+          <AuthenticatedRoute
+            isPublicRoute
+            exact
+            path={Routes.ADD_OWNER_TO_REPO}
+            component={AddOwnerToRepo}
+          />
+        </Switch>
+      </Suspense>
     </ConnectedRouter>
   );
 }
