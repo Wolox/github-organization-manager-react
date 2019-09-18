@@ -2,13 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { t } from 'i18next';
 import { Field, reduxForm } from 'redux-form';
-import Select from 'react-select';
-
-import InputLabelNew from '~components/InputLabelNew';
 
 import SimpleSpinner from '../../components/SimpleSpinner';
 
 import styles from './styles.module.scss';
+
+import InputLabelNew from '~components/InputLabelNew';
 
 function AddOwner({ handleSubmit, ownerAdded, data, loading }) {
   return (
@@ -44,7 +43,9 @@ function AddOwner({ handleSubmit, ownerAdded, data, loading }) {
             </div>
             <Field name="repository" component="select" className="form-control selectpicker">
               {data.map(opt => (
-                <option value={opt.label}>{opt.label}</option>
+                <option key={opt.label} value={opt.label}>
+                  {opt.label}
+                </option>
               ))}
             </Field>
           </div>
@@ -72,7 +73,9 @@ function AddOwner({ handleSubmit, ownerAdded, data, loading }) {
 
 AddOwner.propTypes = {
   handleSubmit: PropTypes.func.isRequired,
-  ownerAdded: PropTypes.bool.isRequired
+  ownerAdded: PropTypes.bool.isRequired,
+  data: PropTypes.arrayOf(PropTypes.any),
+  loading: PropTypes.bool
 };
 
 export default reduxForm({

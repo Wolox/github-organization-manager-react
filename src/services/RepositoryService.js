@@ -1,7 +1,6 @@
 import api from '../config/api';
 
 export const createRepository = async values => {
-  console.log('bbbbbbbbb', values);
   const response = await api.post('/repositories', values);
   if (response.ok) {
     return response.data;
@@ -10,7 +9,6 @@ export const createRepository = async values => {
 };
 
 export const addMemberToOrg = async values => {
-  console.log('bbbbbbbbb', values);
   const response = await api.post(`/organization/${values.username}`);
   if (response.ok) {
     return response.data;
@@ -19,7 +17,6 @@ export const addMemberToOrg = async values => {
 };
 
 export const addOwnerToRepo = async values => {
-  console.log('owner', values);
   const response = await api.post(`/repositories/${values.repository}/codeowners/`, {
     codeowners: values.owners.split(',')
   });

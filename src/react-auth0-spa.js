@@ -1,16 +1,14 @@
 import React, { useState, useEffect, useContext } from 'react';
 import createAuth0Client from '@auth0/auth0-spa-js';
+import PropTypes from 'prop-types';
 
 const DEFAULT_REDIRECT_CALLBACK = () =>
   window.history.replaceState({}, document.title, window.location.origin);
 
 export const Auth0Context = React.createContext();
 export const useAuth0 = () => useContext(Auth0Context);
-export const Auth0Provider = ({
-  children,
-  onRedirectCallback = DEFAULT_REDIRECT_CALLBACK,
-  ...initOptions
-}) => {
+
+function Auth0Provider({ children, onRedirectCallback = DEFAULT_REDIRECT_CALLBACK, ...initOptions }) {
   const [isAuthenticated, setIsAuthenticated] = useState();
   const [user, setUser] = useState();
   const [auth0Client, setAuth0] = useState();
@@ -27,13 +25,13 @@ export const Auth0Provider = ({
         onRedirectCallback(appState);
       }
 
-      const isAuthenticated = await auth0FromHook.isAuthenticated();
+      const isAuthenticatedResponse = await auth0FromHook.isAuthenticated();
 
-      setIsAuthenticated(isAuthenticated);
+      setIsAuthenticated(isAuthenticatedResponse);
 
       if (isAuthenticated) {
-        const user = await auth0FromHook.getUser();
-        setUser(user);
+        const userResponse = await auth0FromHook.getUser();
+        setUser(userResponse);
       }
 
       setLoading(false);
@@ -47,22 +45,23 @@ export const Auth0Provider = ({
     try {
       await auth0Client.loginWithPopup(params);
     } catch (error) {
+      // eslint-disable-next-line no-console
       console.error(error);
     } finally {
       setPopupOpen(false);
     }
-    const user = await auth0Client.getUser();
-    setUser(user);
+    const userResponse = await auth0Client.getUser();
+    setUser(userResponse);
     setIsAuthenticated(true);
   };
 
   const handleRedirectCallback = async () => {
     setLoading(true);
     await auth0Client.handleRedirectCallback();
-    const user = await auth0Client.getUser();
+    const userResponse = await auth0Client.getUser();
     setLoading(false);
     setIsAuthenticated(true);
-    setUser(user);
+    setUser(userResponse);
   };
   return (
     <Auth0Context.Provider
@@ -83,4 +82,10 @@ export const Auth0Provider = ({
       {children}
     </Auth0Context.Provider>
   );
+}
+
+Auth0Provider.propTypes = {
+  onRedirectCallback: PropTypes.func
 };
+
+export { Auth0Provider };

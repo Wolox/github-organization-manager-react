@@ -1,13 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Field, reduxForm } from 'redux-form';
-import { t } from 'i18next';
-
-import InputLabelNew from '~components/InputLabelNew';
 
 import SimpleSpinner from '../../components/SimpleSpinner';
 
 import styles from './styles.module.scss';
+
+import InputLabelNew from '~components/InputLabelNew';
 
 function AddMember({ handleSubmit, memberAdded, loading }) {
   return (
@@ -58,7 +57,9 @@ function AddMember({ handleSubmit, memberAdded, loading }) {
 }
 
 AddMember.propTypes = {
-  handleSubmit: PropTypes.func.isRequired
+  handleSubmit: PropTypes.func.isRequired,
+  loading: PropTypes.bool,
+  memberAdded: PropTypes.bool
 };
 
 export default reduxForm({

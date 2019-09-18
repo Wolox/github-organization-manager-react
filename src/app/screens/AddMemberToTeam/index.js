@@ -2,13 +2,13 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
-import Menu from '~components/Menu';
-
 import { actionCreators as teamActions } from '../../../redux/Team/actions';
 
+import styles from './styles.module.scss';
 import AddTeamToMember from './layout';
 import { TECHNOLOGIES } from './constants';
-import styles from './styles.module.scss';
+
+import Menu from '~components/Menu';
 
 class AddTeamToMemberContainer extends Component {
   constructor(props) {
@@ -75,7 +75,9 @@ const mapDispatchToProps = dispatch => ({
   addMembersToTeam: values => {
     const techs = [];
     Object.keys(TECHNOLOGIES).forEach(tech => {
-      values[tech] && techs.push(tech);
+      if (values[tech]) {
+        techs.push(tech);
+      }
     });
     /* eslint-disable no-param-reassign */
     values = { ...values, techs };
