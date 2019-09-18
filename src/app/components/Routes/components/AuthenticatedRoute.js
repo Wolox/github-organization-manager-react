@@ -7,7 +7,6 @@ import PropTypes from 'prop-types';
 import Routes from '../../../../constants/routes';
 
 const DEFAULT_PUBLIC_ROUTE = Routes.LOGIN;
-const DEFAULT_PRIVATE_ROUTE = Routes.HOME;
 
 function AuthenticatedRoute({
   /*
@@ -75,10 +74,11 @@ AuthenticatedRoute.defaultProps = {
 };
 
 AuthenticatedRoute.propTypes = {
-  ...Route.propTypes, // eslint-disable-line react/forbid-foreign-prop-types
+  component: PropTypes.elementType,
   currentUser: PropTypes.bool,
   isPrivateRoute: PropTypes.bool,
-  isPublicRoute: PropTypes.bool
+  isPublicRoute: PropTypes.bool,
+  location: PropTypes.objectOf(PropTypes.any)
 };
 
 export default withRouter(connect()(AuthenticatedRoute));

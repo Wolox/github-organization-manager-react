@@ -26,13 +26,13 @@ function InputLabelNew({
 }
 
 InputLabelNew.propTypes = {
-  input: PropTypes.objectOf(PropTypes.object).isRequired,
+  input: PropTypes.objectOf(PropTypes.any).isRequired,
   inputId: PropTypes.string.isRequired,
   inputType: PropTypes.string.isRequired,
-  name: PropTypes.string.isRequired,
   disabled: PropTypes.bool,
   handleChange: PropTypes.func,
   inputClassName: PropTypes.string,
+  name: PropTypes.string,
   placeholder: PropTypes.string
 };
 
