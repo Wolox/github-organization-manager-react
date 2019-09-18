@@ -1,5 +1,3 @@
-/* stylelint-disable */
-
 $transparent: transparent;
 $white: #FFF;
 $black: #000;
@@ -7,8 +5,10 @@ $azure: #35599F;
 $valencia: #D34836;
 
 // White
+/* stylelint-disable */
 $wild-sand: #F5F5F5;
 $alabaster: #FAFAFA;
+/* stylelint-enable */
 
 // Green
 $light-green: #C9E5D9;
@@ -18,15 +18,16 @@ $salem: #128D59;
 
 // Gray
 $disabled-gray: #B1B1B1;
-$mercury: #E7E7E7;
 $alto: #D6D6D6;
 $emperor: #555454;
 $dove-gray: #6F6F6F;
 $boulder: #7D7D7D;
 $dusty-gray: #9B9B9B;
+/* stylelint-disable */
+$mercury: #E7E7E7;
 $silver: #CCC;
 $silver-light: #DDD;
-
+/* stylelint-enable */
 
 // Red
 $red: #FF0003;

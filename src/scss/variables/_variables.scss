@@ -1,7 +1,5 @@
-/* stylelint-disable */
-
-@import './colors';
 $transition-duration: 290ms;
+/* stylelint-disable-next-line */
 $transition-function: cubic-bezier(0.79, 0.01, 0.375, 0.995);
 $container-shadow: 0 2px 4px 0 rgba($black, 0.15);
 $default-border-radius: 4px;
@@ -26,6 +24,7 @@ $card-side-margin: 20px;
 $code-input-count: 6;
 $code-input-margin-right: 10px;
 $code-input-width: 35px;
+/* stylelint-disable-next-line */
 $code-verification-width: ($code-input-count * $code-input-width) + (($code-input-count - 1) * $code-input-margin-right);
 $send-code-button-width: 370px;
 
@@ -35,9 +34,3 @@ $small-search-bar-height: 45px;
 
 // Contact Form
 $modal-address-height: 450px;
-
-// JS Exports
-
-:export {
-  navbarheight: $navbar-height;
-}
