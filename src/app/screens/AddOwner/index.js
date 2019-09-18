@@ -2,12 +2,12 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
-import Menu from '~components/Menu';
-
 import { actionCreators as repositoryActions } from '../../../redux/Repository/actions';
 
-import AddOwner from './layout';
 import styles from './styles.module.scss';
+import AddOwner from './layout';
+
+import Menu from '~components/Menu';
 
 class AddOwnerToRepoContainer extends Component {
   constructor(props) {
@@ -24,7 +24,6 @@ class AddOwnerToRepoContainer extends Component {
   }
 
   handleSubmit = values => {
-    console.log(values);
     this.props.addOwnersToRepo(values);
   };
 
@@ -56,36 +55,23 @@ class AddOwnerToRepoContainer extends Component {
 
 AddOwnerToRepoContainer.propTypes = {
   addOwnersToRepo: PropTypes.func.isRequired,
-  // isError: PropTypes.bool,
   loading: PropTypes.bool,
   ownerAdded: PropTypes.bool
 };
 
 AddOwnerToRepoContainer.defaultProps = {
-  // isError: false,
-  ownerAdded: false,
-  loading: false
+  loading: false,
+  ownerAdded: false
 };
 
 const mapStateToProps = state => ({
   // obtener loading, lo cambia el action de registration
-  // isError: state.repository.isError,
   ownerAdded: state.repository.ownerAdded,
   loading: state.repository.loading
 });
 
 const mapDispatchToProps = dispatch => ({
-  // funciones que llaman acciones
-  addOwnersToRepo: values => {
-    console.log('aaaaa', values);
-    // const techs = [];
-    // Object.keys(TECHNOLOGIES).forEach(tech => {
-    //   values[tech] && techs.push(tech);
-    // });
-    /* eslint-disable no-param-reassign */
-    // values = { ...values, techs };
-    return dispatch(repositoryActions.addOwnerToRepository(values));
-  }
+  addOwnersToRepo: values => dispatch(repositoryActions.addOwnerToRepository(values))
 });
 
 export default connect(

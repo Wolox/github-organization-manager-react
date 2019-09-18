@@ -2,12 +2,12 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
-import Menu from '~components/Menu';
-
 import { actionCreators as teamActions } from '../../../redux/Repository/actions';
 
-import AddMember from './layout';
 import styles from './styles.module.scss';
+import AddMember from './layout';
+
+import Menu from '~components/Menu';
 
 class AddMemberContainer extends Component {
   handleSubmit = values => {
@@ -41,26 +41,22 @@ class AddMemberContainer extends Component {
 
 AddMemberContainer.propTypes = {
   addMember: PropTypes.func,
-  isError: PropTypes.bool,
   loading: PropTypes.bool,
   memberAdded: PropTypes.bool
 };
 
 AddMemberContainer.defaultProps = {
-  memberAdded: false,
-  loading: false
+  loading: false,
+  memberAdded: false
 };
 
 const mapStateToProps = state => ({
   // obtener loading, lo cambia el action de registration
-  // isError: state.isError
   memberAdded: state.repository.memberAdded,
   loading: state.repository.loading
 });
 
 const mapDispatchToProps = dispatch => ({
-  // acciones
-  // funciones que llaman acciones
   addMember: values => dispatch(teamActions.addMemberToOrg(values))
 });
 

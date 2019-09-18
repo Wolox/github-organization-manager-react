@@ -2,12 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Field, reduxForm } from 'redux-form';
 
-import InputLabelNew from '~components/InputLabelNew';
-
 import SimpleSpinner from '../../components/SimpleSpinner';
 
 import styles from './styles.module.scss';
 import { FIELDS } from './constants';
+
+import InputLabelNew from '~components/InputLabelNew';
 
 function TeamCreation({ handleSubmit, isError, loading, teamCreated }) {
   return (
@@ -77,7 +77,8 @@ function TeamCreation({ handleSubmit, isError, loading, teamCreated }) {
 TeamCreation.propTypes = {
   handleSubmit: PropTypes.func.isRequired,
   loading: PropTypes.bool.isRequired,
-  teamCreated: PropTypes.bool.isRequired
+  teamCreated: PropTypes.bool.isRequired,
+  isError: PropTypes.bool
 };
 
 export default reduxForm({

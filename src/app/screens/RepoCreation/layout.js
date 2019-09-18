@@ -6,7 +6,6 @@ import { Field, reduxForm } from 'redux-form';
 import InputLabelNew from '../../components/InputLabelNew';
 import CheckboxNew from '../../components/CheckboxNew';
 import SimpleSpinner from '../../components/SimpleSpinner';
-import { FIELDS } from '../Teams/constants';
 
 import { TECHNOLOGIES } from './constants';
 import styles from './styles.module.scss';
@@ -24,35 +23,31 @@ function RepoCreation({ handleSubmit, repoCreated, loading }) {
               <p>{t('RepoCreation:createNewRepositoryAdvise')}</p>
             </div>
           </div>
-          <div className={`row ${styles.row}`}>
-            <div className="input-group">
-              <div className="input-group-prepend">
-                <span className="input-group-text">
-                  <i className="material-icons">create_new_folder</i>
-                </span>
-              </div>
-              <Field
-                inputClassName="form-control"
-                className="form-control"
-                name="repositoryName"
-                component={InputLabelNew}
-                dataFor="repositoryName"
-                inputId="repositoryName"
-                inputType="text"
-                label={t('RepoCreation:projectName')}
-                placeholder={t('RepoCreation:projectName')}
-              />
+          <div className={`row ${styles.row} input-group`}>
+            <div className="input-group-prepend">
+              <span className="input-group-text">
+                <i className="material-icons">create_new_folder</i>
+              </span>
             </div>
+            <Field
+              inputClassName="form-control"
+              className="form-control"
+              name="repositoryName"
+              component={InputLabelNew}
+              dataFor="repositoryName"
+              inputId="repositoryName"
+              inputType="text"
+              label={t('RepoCreation:projectName')}
+              placeholder={t('RepoCreation:projectName')}
+            />
           </div>
-          <div className={`row ${styles.row}`}>
-            <div className="input-group">
-              <div className="input-group-prepend">
-                <span className="input-group-text">
-                  <i className="material-icons">lock</i>
-                </span>
-              </div>
-              <Field name="isPrivate" component={CheckboxNew} label={t('RepoCreation:private')} />
+          <div className={`row ${styles.row} input-group`}>
+            <div className="input-group-prepend">
+              <span className="input-group-text">
+                <i className="material-icons">lock</i>
+              </span>
             </div>
+            <Field name="isPrivate" component={CheckboxNew} label={t('RepoCreation:private')} />
           </div>
           <div className={`row ${styles.row}`}>
             <h4>Tecnologías</h4>

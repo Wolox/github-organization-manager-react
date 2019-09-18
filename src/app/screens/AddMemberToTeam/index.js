@@ -2,13 +2,13 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
-import Menu from '~components/Menu';
-
 import { actionCreators as teamActions } from '../../../redux/Team/actions';
 
+import styles from './styles.module.scss';
 import AddTeamToMember from './layout';
 import { TECHNOLOGIES } from './constants';
-import styles from './styles.module.scss';
+
+import Menu from '~components/Menu';
 
 class AddTeamToMemberContainer extends Component {
   constructor(props) {
@@ -24,10 +24,7 @@ class AddTeamToMemberContainer extends Component {
     });
   }
 
-  handleOnChange = value => console.log(value);
-
   handleSubmit = values => {
-    console.log(values);
     this.props.addMembersToTeam(values);
   };
 
@@ -45,7 +42,6 @@ class AddTeamToMemberContainer extends Component {
                     onSubmit={this.handleSubmit}
                     memberAdded={this.props.memberAdded}
                     data={this.state.data.map(team => ({ label: team.name, value: team }))}
-                    handleOnChange={this.handleOnChange}
                     loading={this.props.loading}
                   />
                 </div>
@@ -60,31 +56,28 @@ class AddTeamToMemberContainer extends Component {
 
 AddTeamToMemberContainer.propTypes = {
   addMembersToTeam: PropTypes.func.isRequired,
-  // isError: PropTypes.bool,
   loading: PropTypes.bool,
   memberAdded: PropTypes.bool
 };
 
 AddTeamToMemberContainer.defaultProps = {
-  // isError: false,
-  memberAdded: false,
-  loading: false
+  loading: false,
+  memberAdded: false
 };
 
 const mapStateToProps = state => ({
   // obtener loading, lo cambia el action de registration
-  // isError: state.team.isError,
   memberAdded: state.team.memberAdded,
   loading: state.team.loading
 });
 
 const mapDispatchToProps = dispatch => ({
-  // funciones que llaman acciones
   addMembersToTeam: values => {
-    console.log('aaaaa', values);
     const techs = [];
     Object.keys(TECHNOLOGIES).forEach(tech => {
-      values[tech] && techs.push(tech);
+      if (values[tech]) {
+        techs.push(tech);
+      }
     });
     /* eslint-disable no-param-reassign */
     values = { ...values, techs };

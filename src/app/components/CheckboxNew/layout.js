@@ -4,18 +4,7 @@ import PropTypes from 'prop-types';
 
 import styles from './styles.module.scss';
 
-function CheckboxNew({
-  className,
-  inputClassName,
-  labelClassName,
-  label,
-  name,
-  isChecked,
-  onToggle,
-  disabled,
-  required,
-  input
-}) {
+function CheckboxNew({ labelClassName, label, name, isChecked, onToggle, disabled, required, input }) {
   return (
     <div className={`form-check ${styles.check}`}>
       <label className={labelClassName} htmlFor={label}>
@@ -47,10 +36,10 @@ CheckboxNew.defaultProps = {
 };
 
 CheckboxNew.propTypes = {
-  input: PropTypes.object.isRequired,
   onToggle: PropTypes.func.isRequired,
   className: PropTypes.string,
   disabled: PropTypes.bool,
+  input: PropTypes.object,
   inputClassName: PropTypes.string,
   isChecked: PropTypes.bool,
   label: PropTypes.string,

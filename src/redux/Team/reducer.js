@@ -31,7 +31,6 @@ export function reducer(state = Immutable(defaultState), action) {
       });
     }
     case actions.ADDING_MEMBERS: {
-      console.log('aaaaaaaaaaaaaaaaaaaaaaaaaaaaa');
       return state.merge({
         loading: true
       });

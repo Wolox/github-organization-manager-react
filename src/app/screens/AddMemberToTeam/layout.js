@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { t } from 'i18next';
 import { Field, reduxForm } from 'redux-form';
-import Select from 'react-select';
 
 import InputLabelNew from '../../components/InputLabelNew';
 import SimpleSpinner from '../../components/SimpleSpinner';
@@ -41,9 +40,16 @@ function AddTeamToMember({ handleSubmit, memberAdded, data, handleOnChange, load
                 <i className="material-icons">list</i>
               </span>
             </div>
-            <Field name="team" component="select" onChange={handleOnChange} className="form-control selectpicker">
+            <Field
+              name="team"
+              component="select"
+              onChange={handleOnChange}
+              className="form-control selectpicker"
+            >
               {data.map(opt => (
-                <option value={opt.value.id}>{opt.label}</option>
+                <option key={opt.value.id} value={opt.value.id}>
+                  {opt.label}
+                </option>
               ))}
             </Field>
           </div>
@@ -72,7 +78,9 @@ function AddTeamToMember({ handleSubmit, memberAdded, data, handleOnChange, load
 AddTeamToMember.propTypes = {
   handleSubmit: PropTypes.func.isRequired,
   loading: PropTypes.bool.isRequired,
-  memberAdded: PropTypes.bool.isRequired
+  memberAdded: PropTypes.bool.isRequired,
+  data: PropTypes.arrayOf(PropTypes.any),
+  handleOnChange: PropTypes.func
 };
 
 export default reduxForm({

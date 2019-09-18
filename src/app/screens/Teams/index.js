@@ -2,12 +2,12 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
-import Menu from '~components/Menu';
-
 import { actionCreators as teamActions } from '../../../redux/Team/actions';
 
-import TeamCreation from './layout';
 import styles from './styles.module.scss';
+import TeamCreation from './layout';
+
+import Menu from '~components/Menu';
 
 class TeamsContainer extends Component {
   handleSubmit = values => {
@@ -61,8 +61,6 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  // acciones
-  // funciones que llaman acciones
   createTeam: values => dispatch(teamActions.createTeam(values))
 });
 

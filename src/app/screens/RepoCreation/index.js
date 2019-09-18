@@ -2,13 +2,13 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
-import Menu from '~components/Menu';
-
 import { actionCreators as repositoryActions } from '../../../redux/Repository/actions';
 
-import RepoCreation from './layout';
 import { TECHNOLOGIES } from './constants';
 import styles from './styles.module.scss';
+import RepoCreation from './layout';
+
+import Menu from '~components/Menu';
 
 class RepoCreationContainer extends Component {
   handleSubmit = values => {
@@ -47,8 +47,8 @@ RepoCreationContainer.propTypes = {
 };
 
 RepoCreationContainer.defaultProps = {
-  repoCreated: false,
-  loading: false
+  loading: false,
+  repoCreated: false
 };
 
 const mapStateToProps = state => ({
@@ -58,12 +58,12 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  // funciones que llaman acciones
   createRepo: values => {
-    console.log('aaaaa', values);
     const techs = [];
     Object.keys(TECHNOLOGIES).forEach(tech => {
-      values[tech] && techs.push(tech);
+      if (values[tech]) {
+        techs.push(tech);
+      }
     });
     /* eslint-disable no-param-reassign */
     values = { ...values, techs };

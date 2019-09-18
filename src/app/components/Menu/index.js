@@ -1,8 +1,8 @@
-/* eslint-disable react/forbid-prop-types */
+/* eslint-disable react/jsx-max-depth, react/forbid-prop-types  */
 import React from 'react';
-// import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
-// import styles from './styles.module.scss';
+import routes from '../../../constants/routes';
 
 function Menu() {
   return (
@@ -32,32 +32,32 @@ function Menu() {
         <div className="collapse navbar-collapse">
           <ul className="navbar-nav ml-auto">
             <li className="dropdown nav-item">
-              <a href="#" className="dropdown-toggle nav-link" data-toggle="dropdown">
+              <Link to="#" className="dropdown-toggle nav-link" data-toggle="dropdown">
                 <i className="material-icons">people</i> teams
-              </a>
+              </Link>
               <div className="dropdown-menu dropdown-with-icons">
-                <a href="/teams" className="dropdown-item">
+                <Link to={routes.TEAMS} className="dropdown-item">
                   <i className="material-icons">people_outline</i> Create teams
-                </a>
-                <a href="/teams/add_member" className="dropdown-item">
+                </Link>
+                <Link to={routes.ADD_MEMBER_TO_TEAM} className="dropdown-item">
                   <i className="material-icons">person_add</i> Add member to team
-                </a>
+                </Link>
               </div>
             </li>
             <li className="dropdown nav-item">
-              <a href="#" className="dropdown-toggle nav-link" data-toggle="dropdown">
+              <Link to="#" className="dropdown-toggle nav-link" data-toggle="dropdown">
                 <i className="material-icons">folder</i> repositories
-              </a>
+              </Link>
               <div className="dropdown-menu dropdown-with-icons">
-                <a href="/repositories" className="dropdown-item">
+                <Link to={routes.REPO_CREATION} className="dropdown-item">
                   <i className="material-icons">create_new_folder</i> Create repo
-                </a>
-                <a href="/add_member" className="dropdown-item">
+                </Link>
+                <Link to={routes.ADD_MEMBER} className="dropdown-item">
                   <i className="material-icons">person_add</i> Add member
-                </a>
-                <a href="/add_owner" className="dropdown-item">
+                </Link>
+                <Link to={routes.ADD_OWNER_TO_REPO} className="dropdown-item">
                   <i className="material-icons">assignment_turned_in</i> Add owner
-                </a>
+                </Link>
               </div>
             </li>
           </ul>
@@ -66,24 +66,5 @@ function Menu() {
     </nav>
   );
 }
-
-// CheckboxNew.defaultProps = {
-//   className: '',
-//   inputClassName: '',
-//   labelClassName: ''
-// };
-
-// CheckboxNew.propTypes = {
-//   input: PropTypes.object.isRequired,
-//   onToggle: PropTypes.func.isRequired,
-//   className: PropTypes.string,
-//   disabled: PropTypes.bool,
-//   inputClassName: PropTypes.string,
-//   isChecked: PropTypes.bool,
-//   label: PropTypes.string,
-//   labelClassName: PropTypes.string,
-//   name: PropTypes.string,
-//   required: PropTypes.bool
-// };
 
 export default Menu;
