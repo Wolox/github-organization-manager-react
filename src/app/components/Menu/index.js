@@ -1,7 +1,8 @@
-/* eslint-disable react/jsx-max-depth */
-/* eslint-disable react/forbid-prop-types */
+/* eslint-disable react/jsx-max-depth, react/forbid-prop-types  */
 import React from 'react';
 import { Link } from 'react-router-dom';
+
+import routes from '../../../constants/routes';
 
 function Menu() {
   return (
@@ -35,10 +36,10 @@ function Menu() {
                 <i className="material-icons">people</i> teams
               </Link>
               <div className="dropdown-menu dropdown-with-icons">
-                <Link to="/teams" className="dropdown-item">
+                <Link to={routes.TEAMS} className="dropdown-item">
                   <i className="material-icons">people_outline</i> Create teams
                 </Link>
-                <Link to="/teams/add_member" className="dropdown-item">
+                <Link to={routes.ADD_MEMBER_TO_TEAM} className="dropdown-item">
                   <i className="material-icons">person_add</i> Add member to team
                 </Link>
               </div>
@@ -48,13 +49,13 @@ function Menu() {
                 <i className="material-icons">folder</i> repositories
               </Link>
               <div className="dropdown-menu dropdown-with-icons">
-                <Link to="/repositories" className="dropdown-item">
+                <Link to={routes.REPO_CREATION} className="dropdown-item">
                   <i className="material-icons">create_new_folder</i> Create repo
                 </Link>
-                <Link to="/add_member" className="dropdown-item">
+                <Link to={routes.ADD_MEMBER} className="dropdown-item">
                   <i className="material-icons">person_add</i> Add member
                 </Link>
-                <Link to="/add_owner" className="dropdown-item">
+                <Link to={routes.ADD_OWNER_TO_REPO} className="dropdown-item">
                   <i className="material-icons">assignment_turned_in</i> Add owner
                 </Link>
               </div>
