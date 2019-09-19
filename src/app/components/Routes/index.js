@@ -8,6 +8,7 @@ import Routes from '../../../constants/routes';
 
 import AuthenticatedRoute from './components/AuthenticatedRoute';
 
+const Home = lazy(() => import('../../screens/Dashboard'));
 const Login = lazy(() => import('../../screens/Login'));
 const RepoCreation = lazy(() => import('../../screens/RepoCreation'));
 const Teams = lazy(() => import('../../screens/Teams'));
@@ -21,7 +22,7 @@ function AppRoutes() {
     <ConnectedRouter history={history}>
       <Suspense>
         <Switch>
-          <AuthenticatedRoute isPublicRoute exact path={Routes.HOME} component={Teams} />
+          <AuthenticatedRoute isPublicRoute exact path={Routes.HOME} component={Home} />
           <AuthenticatedRoute isPublicRoute exact path={Routes.LOGIN} component={Login} />
           <AuthenticatedRoute isPublicRoute exact path={Routes.REPO_CREATION} component={RepoCreation} />
           <AuthenticatedRoute isPublicRoute exact path={Routes.TEAMS} component={Teams} />
