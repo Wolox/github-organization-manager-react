@@ -5,18 +5,16 @@ import { Field, reduxForm } from 'redux-form';
 
 import SimpleSpinner from '../../components/SimpleSpinner';
 
-import styles from './styles.module.scss';
-
 import InputLabelNew from '~components/InputLabelNew';
 
 function AddOwner({ handleSubmit, ownerAdded, data, loading }) {
   return (
-    <div className={`card ${styles.card}`}>
+    <div className="card">
       <form className="container" onSubmit={handleSubmit}>
         <div className="card-header text-center">
           <h4 className="card-title">Add owner</h4>
         </div>
-        <div className={`card-body ${styles.cardBody}`}>
+        <div className="card-body">
           <div className="input-group">
             <div className="input-group-prepend">
               <span className="input-group-text">
@@ -50,7 +48,7 @@ function AddOwner({ handleSubmit, ownerAdded, data, loading }) {
             </Field>
           </div>
         </div>
-        <div className={`footer text-center ${styles.footer}`}>
+        <div className="footer text-center">
           <button type="submit" className="btn btn-primary btn-wd btn-lg">
             {t('AddOwner:add')}
           </button>
@@ -64,7 +62,7 @@ function AddOwner({ handleSubmit, ownerAdded, data, loading }) {
               </div>
             </div>
           )}
-          {loading && <SimpleSpinner className={styles.spinner} />}
+          {loading && <SimpleSpinner />}
         </div>
       </form>
     </div>

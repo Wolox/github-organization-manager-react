@@ -12,12 +12,12 @@ import styles from './styles.module.scss';
 
 function RepoCreation({ handleSubmit, repoCreated, loading }) {
   return (
-    <div className={`card ${styles.card}`}>
+    <div className="card">
       <form className="container" onSubmit={handleSubmit}>
         <div className="card-header text-center">
           <h4 className="card-title">{t('RepoCreation:createNewRepository')}</h4>
         </div>
-        <div className={`card-body ${styles.cardBody}`}>
+        <div className="card-body">
           <div className="input-group">
             <div className="input-group-prepend">
               <p>{t('RepoCreation:createNewRepositoryAdvise')}</p>
@@ -65,7 +65,7 @@ function RepoCreation({ handleSubmit, repoCreated, loading }) {
             </div>
           </div>
         </div>
-        <div className={`footer text-center ${styles.footer}`}>
+        <div className="footer text-center">
           <button type="submit" className="btn btn-primary btn-wd btn-lg">
             {t('RepoCreation:create')}
           </button>
@@ -81,7 +81,6 @@ function RepoCreation({ handleSubmit, repoCreated, loading }) {
             </div>
           )}
         </div>
-        {repoCreated && <label> </label>}
       </form>
     </div>
   );

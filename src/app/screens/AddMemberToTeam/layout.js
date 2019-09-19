@@ -6,16 +6,14 @@ import { Field, reduxForm } from 'redux-form';
 import InputLabelNew from '../../components/InputLabelNew';
 import SimpleSpinner from '../../components/SimpleSpinner';
 
-import styles from './styles.module.scss';
-
 function AddTeamToMember({ handleSubmit, memberAdded, data, handleOnChange, loading }) {
   return (
-    <div className={`card ${styles.card}`}>
+    <div className="card">
       <form className="container" onSubmit={handleSubmit}>
         <div className="card-header text-center">
           <h4 className="card-title">Add a member to team</h4>
         </div>
-        <div className={`card-body ${styles.cardBody}`}>
+        <div className="card-body">
           <div className="input-group">
             <div className="input-group-prepend">
               <span className="input-group-text">
@@ -54,7 +52,7 @@ function AddTeamToMember({ handleSubmit, memberAdded, data, handleOnChange, load
             </Field>
           </div>
         </div>
-        <div className={`footer text-center ${styles.footer}`}>
+        <div className="footer text-center">
           <button type="submit" className="btn btn-primary btn-wd btn-lg">
             {t('AddTeamToMember:add')}
           </button>
@@ -68,7 +66,7 @@ function AddTeamToMember({ handleSubmit, memberAdded, data, handleOnChange, load
               </div>
             </div>
           )}
-          {loading && <SimpleSpinner className={styles.spinner} />}
+          {loading && <SimpleSpinner />}
         </div>
       </form>
     </div>
