@@ -4,11 +4,10 @@ import PropTypes from 'prop-types';
 
 import { actionCreators as teamActions } from '../../../redux/Team/actions';
 
-import styles from './styles.module.scss';
 import AddTeamToMember from './layout';
 import { TECHNOLOGIES } from './constants';
 
-import Menu from '~components/Menu';
+import Header from '~components/Header';
 
 class AddTeamToMemberContainer extends Component {
   constructor(props) {
@@ -31,8 +30,7 @@ class AddTeamToMemberContainer extends Component {
   render() {
     return (
       <>
-        <Menu />
-        <div className={`page-header ${styles.pageHeader}`} data-parallax="true" />
+        <Header />
         <div className="main main-raised">
           <div className="profile-content">
             <div className="container">

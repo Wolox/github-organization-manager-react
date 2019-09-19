@@ -4,10 +4,9 @@ import PropTypes from 'prop-types';
 
 import { actionCreators as teamActions } from '../../../redux/Repository/actions';
 
-import styles from './styles.module.scss';
 import AddMember from './layout';
 
-import Menu from '~components/Menu';
+import Header from '~components/Header';
 
 class AddMemberContainer extends Component {
   handleSubmit = values => {
@@ -17,19 +16,16 @@ class AddMemberContainer extends Component {
   render() {
     return (
       <>
-        <Menu />
-        <div className={`page-header ${styles.pageHeader}`} data-parallax="true" />
+        <Header />
         <div className="main main-raised">
-          <div className="profile-content">
-            <div className="container">
-              <div className="row">
-                <div className="col-md-6 ml-auto mr-auto">
-                  <AddMember
-                    onSubmit={this.handleSubmit}
-                    memberAdded={this.props.memberAdded}
-                    loading={this.props.loading}
-                  />
-                </div>
+          <div className="container">
+            <div className="row">
+              <div className="col-md-6 ml-auto mr-auto">
+                <AddMember
+                  onSubmit={this.handleSubmit}
+                  memberAdded={this.props.memberAdded}
+                  loading={this.props.loading}
+                />
               </div>
             </div>
           </div>

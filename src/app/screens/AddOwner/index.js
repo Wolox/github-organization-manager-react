@@ -4,10 +4,9 @@ import PropTypes from 'prop-types';
 
 import { actionCreators as repositoryActions } from '../../../redux/Repository/actions';
 
-import styles from './styles.module.scss';
 import AddOwner from './layout';
 
-import Menu from '~components/Menu';
+import Header from '~components/Header';
 
 class AddOwnerToRepoContainer extends Component {
   constructor(props) {
@@ -30,8 +29,7 @@ class AddOwnerToRepoContainer extends Component {
   render() {
     return (
       <>
-        <Menu />
-        <div className={`page-header ${styles.pageHeader}`} data-parallax="true" />
+        <Header />
         <div className="main main-raised">
           <div className="profile-content">
             <div className="container">
