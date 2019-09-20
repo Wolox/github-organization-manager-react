@@ -13,9 +13,9 @@ function Menu() {
     >
       <div className="container">
         <div className="navbar-translate">
-          <a className="navbar-brand" href="/">
+          <Link className="navbar-brand" to={routes.HOME}>
             Wolox Repo Manager
-          </a>
+          </Link>
           <button
             className="navbar-toggler"
             type="button"
