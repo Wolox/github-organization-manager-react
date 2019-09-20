@@ -1,10 +1,10 @@
 import React from 'react';
 
+import Card from '../../components/Card';
+
 import styles from './styles.module.scss';
 
 import ROUTES from 'constants/routes';
-
-import Card from '~components/Card';
 
 function Home() {
   const teamsCards = [
