@@ -47,15 +47,15 @@ function Home() {
         Wolox Repo Manager
       </div>
       <div className={styles.section}>
-        <h2 className={styles.title}>Teams</h2>
-        <div className={styles.bodyCard}>
-          {teamsCards.map(route => (
-            <div className={styles.card} key={route.path}>
-              <i className={`material-icons ${styles.iconCard}`}>{route.icon}</i>
+        <h2 className={styles.sectionTitle}>Teams</h2>
+        <div className={styles.cardBody}>
+          {teamsCards.map(card => (
+            <div className={styles.card} key={card.path}>
+              <i className={`material-icons ${styles.cardIcon}`}>{card.icon}</i>
               <div>
-                <div className={styles.info}>{route.info}</div>
-                <Link to={route.path} className={`btn btn-primary ${styles.btn}`}>
-                  {route.descriptionAction}
+                <div className={styles.cardInfo}>{card.info}</div>
+                <Link to={card.path} className={`btn btn-primary ${styles.cardBtn}`}>
+                  {card.descriptionAction}
                 </Link>
               </div>
             </div>
@@ -63,15 +63,15 @@ function Home() {
         </div>
       </div>
       <div className={styles.section}>
-        <h2 className={styles.title}>Repositories</h2>
-        <div className={styles.bodyCard}>
-          {repositoriesCards.map(route => (
-            <div className={styles.card} key={route.path}>
-              <i className={`material-icons ${styles.iconCard}`}>{route.icon}</i>
+        <h2 className={styles.sectionTitle}>Repositories</h2>
+        <div className={styles.cardBody}>
+          {repositoriesCards.map(card => (
+            <div className={styles.card} key={card.path}>
+              <i className={`material-icons ${styles.cardIcon}`}>{card.icon}</i>
               <div>
-                <div className={styles.info}>{route.info}</div>
-                <Link to={route.path} className={`btn btn-primary ${styles.btn}`}>
-                  {route.descriptionAction}
+                <div className={styles.cardInfo}>{card.info}</div>
+                <Link to={card.path} className={`btn btn-primary ${styles.cardBtn}`}>
+                  {card.descriptionAction}
                 </Link>
               </div>
             </div>
