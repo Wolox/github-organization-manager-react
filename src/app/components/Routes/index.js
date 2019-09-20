@@ -8,7 +8,7 @@ import Routes from '../../../constants/routes';
 
 import AuthenticatedRoute from './components/AuthenticatedRoute';
 
-const Home = lazy(() => import('../../screens/Dashboard'));
+const Home = lazy(() => import('../../screens/Home'));
 const Login = lazy(() => import('../../screens/Login'));
 const RepoCreation = lazy(() => import('../../screens/RepoCreation'));
 const Teams = lazy(() => import('../../screens/Teams'));
