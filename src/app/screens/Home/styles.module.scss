@@ -23,46 +23,15 @@
   padding: 0 50px;
 }
 
-.card {
-  background: $white;
-  border: 1px solid rgba($mercury, 0.5);
-  border-radius: 5px;
-  display: grid;
-  grid-gap: 15px;
-  grid-template-columns: 1fr 2fr;
-  margin: 10px;
-  padding: 10px;
-}
-
-.card-body {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, 400px);
-}
-
-.card-icon {
-  align-items: center;
-  background: $alabaster;
-  border-radius: 5px;
-  color: $dove-gray;
-  display: flex;
-  font-size: 50px;
-  justify-content: center;
-}
-
-.card-info {
-  font-size: 14px;
-  margin: 20px 0;
-  padding: 0 5px;
-}
-
-.card-btn {
-  margin: 0;
-}
-
 .section-title {
   font-size: 20px;
   font-weight: 900;
   margin: 10px 0;
   padding: 10px;
   text-transform: uppercase;
+}
+
+.section-body {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 400px);
 }

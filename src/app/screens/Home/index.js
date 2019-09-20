@@ -1,9 +1,10 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 
 import styles from './styles.module.scss';
 
 import ROUTES from 'constants/routes';
+
+import Card from '~components/Card';
 
 function Home() {
   const teamsCards = [
@@ -48,33 +49,17 @@ function Home() {
       </div>
       <div className={styles.section}>
         <h2 className={styles.sectionTitle}>Teams</h2>
-        <div className={styles.cardBody}>
+        <div className={styles.sectionBody}>
           {teamsCards.map(card => (
-            <div className={styles.card} key={card.path}>
-              <i className={`material-icons ${styles.cardIcon}`}>{card.icon}</i>
-              <div>
-                <div className={styles.cardInfo}>{card.info}</div>
-                <Link to={card.path} className={`btn btn-primary ${styles.cardBtn}`}>
-                  {card.descriptionAction}
-                </Link>
-              </div>
-            </div>
+            <Card key={card.path} data={card} />
           ))}
         </div>
       </div>
       <div className={styles.section}>
         <h2 className={styles.sectionTitle}>Repositories</h2>
-        <div className={styles.cardBody}>
+        <div className={styles.sectionBody}>
           {repositoriesCards.map(card => (
-            <div className={styles.card} key={card.path}>
-              <i className={`material-icons ${styles.cardIcon}`}>{card.icon}</i>
-              <div>
-                <div className={styles.cardInfo}>{card.info}</div>
-                <Link to={card.path} className={`btn btn-primary ${styles.cardBtn}`}>
-                  {card.descriptionAction}
-                </Link>
-              </div>
-            </div>
+            <Card key={card.path} data={card} />
           ))}
         </div>
       </div>
