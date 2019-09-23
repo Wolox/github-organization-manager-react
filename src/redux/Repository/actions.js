@@ -1,7 +1,8 @@
-import * as RepositoryService from '../../services/RepositoryService';
-import { stringArrayToObject } from '../../utils/array';
+import { createTypes, completeTypes } from 'redux-recompose';
 
-export const actions = stringArrayToObject(
+import * as RepositoryService from '../../services/RepositoryService';
+
+/* export const actions = stringArrayToObject(
   [
     'REPO_CREATION',
     'REPO_CREATION_SUCCESS',
@@ -12,9 +13,21 @@ export const actions = stringArrayToObject(
     'ADDING_MEMBER'
   ],
   '@@REPOSITORY'
-);
+); */
 
-export const actionCreators = {
+const types = completeTypes([
+  'REPO_CREATION',
+  'REPO_CREATION_SUCCESS',
+  'MEMBER_ADDED',
+  'REPO_CREATION_FAILURE, OWNER_ADDED',
+  'ADDING_CODE_OWNER',
+  'CODE_OWNER_ADDED_SUCCESS',
+  'ADDING_MEMBER',
+  'REQUEST_REPOS'
+]);
+export const actions = createTypes(types, '@@REPOSITORY');
+/*
+const actionCreators = {
   createRepository(values) {
     return async dispatch => {
       // hacer try catch
@@ -42,4 +55,18 @@ export const actionCreators = {
   getRepositories() {
     return RepositoryService.getRepositories();
   }
-};
+}; */
+
+const createRepository = values => ({
+  type: actions.REPO_CREATION,
+  service: RepositoryService.createRepository,
+  payload: values
+});
+
+const getRepositories = () => ({
+  type: actions.REQUEST_REPOS,
+  target: 'data',
+  service: RepositoryService.getRepositories
+});
+
+export default { createRepository, getRepositories };
