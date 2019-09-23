@@ -2,24 +2,15 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
-import { actionCreators as repositoryActions } from '../../../redux/Repository/actions';
+import repositoryActions from '../../../redux/Repository/actions';
 
 import AddOwner from './layout';
 
 import Header from '~components/Header';
 
 class AddOwnerToRepoContainer extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      data: []
-    };
-  }
-
   componentDidMount() {
-    repositoryActions.getRepositories().then(response => {
-      this.setState({ data: response });
-    });
+    this.props.getRepositories();
   }
 
   handleSubmit = values => {
@@ -27,6 +18,8 @@ class AddOwnerToRepoContainer extends Component {
   };
 
   render() {
+    const { data } = this.props;
+    const repos = data.map(repository => ({ label: repository, value: repository }));
     return (
       <>
         <Header />
@@ -38,7 +31,7 @@ class AddOwnerToRepoContainer extends Component {
                   <AddOwner
                     onSubmit={this.handleSubmit}
                     ownerAdded={this.props.ownerAdded}
-                    data={this.state.data.map(repository => ({ label: repository, value: repository }))}
+                    data={repos}
                     loading={this.props.loading}
                   />
                 </div>
@@ -53,11 +46,14 @@ class AddOwnerToRepoContainer extends Component {
 
 AddOwnerToRepoContainer.propTypes = {
   addOwnersToRepo: PropTypes.func.isRequired,
+  data: PropTypes.arrayOf(PropTypes.string),
+  getRepositories: PropTypes.func,
   loading: PropTypes.bool,
   ownerAdded: PropTypes.bool
 };
 
 AddOwnerToRepoContainer.defaultProps = {
+  data: [],
   loading: false,
   ownerAdded: false
 };
@@ -65,10 +61,14 @@ AddOwnerToRepoContainer.defaultProps = {
 const mapStateToProps = state => ({
   // obtener loading, lo cambia el action de registration
   ownerAdded: state.repository.ownerAdded,
-  loading: state.repository.loading
+  loading: state.repository.loading,
+  data: state.repository.data
 });
 
 const mapDispatchToProps = dispatch => ({
+  getRepositories: () => {
+    dispatch(repositoryActions.getRepositories());
+  },
   addOwnersToRepo: values => dispatch(repositoryActions.addOwnerToRepository(values))
 });
 
