@@ -1,18 +1,27 @@
-import Immutable from 'seamless-immutable';
+import { createReducer, completeReducer, completeState } from 'redux-recompose';
 
 import { actions } from './actions';
 
 /* ------------- Repository reducer ------------- */
-const defaultState = {
-  loading: false,
-  initialLoading: true
-};
+const defaultState = completeState(
+  {
+    data: [],
+    repoCreation: undefined,
+    repoCreated: false
+  },
+  ['repoCreated']
+);
 
-/* eslint-disable complexity */
-// eslint-disable-next-line new-cap
-export function reducer(state = Immutable(defaultState), action) {
-  switch (action.type) {
-    case actions.REPO_CREATION: {
+const reducerDescription = {
+  primaryActions: [actions.REPO_CREATION, actions.REQUEST_REPOS],
+  override: {
+    [actions.REPO_CREATED]: (state, action) => ({
+      ...state,
+      repoCreated: action.payload
+    })
+  }
+
+  /*     case actions.REPO_CREATION: {
       return state.merge({
         loading: true
       });
@@ -48,6 +57,7 @@ export function reducer(state = Immutable(defaultState), action) {
     default: {
       return state;
     }
-  }
-}
-/* eslint-enable complexity */
+  } */
+};
+
+export default createReducer(defaultState, completeReducer(reducerDescription));

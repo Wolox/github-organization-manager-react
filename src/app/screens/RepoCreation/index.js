@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
-import { actionCreators as repositoryActions } from '../../../redux/Repository/actions';
+import repositoryActions from '../../../redux/Repository/actions';
 
 import { TECHNOLOGIES } from './constants';
 import RepoCreation from './layout';
@@ -14,7 +14,12 @@ class RepoCreationContainer extends Component {
     this.props.createRepo(values);
   };
 
+  componentWillUnmount() {
+    this.props.resetStateRepoCreated();
+  }
+
   render() {
+    const { repoCreated, repoCreatedLoading } = this.props;
     return (
       <>
         <Header />
@@ -22,11 +27,11 @@ class RepoCreationContainer extends Component {
           <div className="profile-content">
             <div className="container">
               <div className="row">
-                <div className="col-md-6 ml-auto mr-auto">
+                <div className="col-lg-6 col-md-10 ml-auto mr-auto">
                   <RepoCreation
                     onSubmit={this.handleSubmit}
-                    repoCreated={this.props.repoCreated}
-                    loading={this.props.loading}
+                    repoCreated={repoCreated}
+                    loading={repoCreatedLoading}
                   />
                 </div>
               </div>
@@ -40,19 +45,19 @@ class RepoCreationContainer extends Component {
 
 RepoCreationContainer.propTypes = {
   createRepo: PropTypes.func.isRequired,
-  loading: PropTypes.bool,
-  repoCreated: PropTypes.bool
+  repoCreated: PropTypes.bool,
+  repoCreatedLoading: PropTypes.bool,
+  resetStateRepoCreated: PropTypes.func
 };
 
 RepoCreationContainer.defaultProps = {
-  loading: false,
-  repoCreated: false
+  repoCreated: false,
+  repoCreatedLoading: false
 };
 
 const mapStateToProps = state => ({
-  // obtener loading, lo cambia el action de registration
   repoCreated: state.repository.repoCreated,
-  loading: state.repository.loading
+  repoCreatedLoading: state.repository.repoCreationLoading
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -63,10 +68,9 @@ const mapDispatchToProps = dispatch => ({
         techs.push(tech);
       }
     });
-    /* eslint-disable no-param-reassign */
-    values = { ...values, techs };
-    return dispatch(repositoryActions.createRepository(values));
-  }
+    dispatch(repositoryActions.createRepository({ ...values, techs }));
+  },
+  resetStateRepoCreated: () => dispatch(repositoryActions.repoCreated(false))
 });
 
 export default connect(
