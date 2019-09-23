@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
-import { actionCreators as teamActions } from '../../../redux/Repository/actions';
+import repositoryActions from '../../../redux/Repository/actions';
 
 import AddMember from './layout';
 
@@ -12,6 +12,10 @@ class AddMemberContainer extends Component {
   handleSubmit = values => {
     this.props.addMember(values);
   };
+
+  componentWillUnmount() {
+    this.props.resetStateMemberAdded();
+  }
 
   render() {
     return (
@@ -38,7 +42,8 @@ class AddMemberContainer extends Component {
 AddMemberContainer.propTypes = {
   addMember: PropTypes.func,
   loading: PropTypes.bool,
-  memberAdded: PropTypes.bool
+  memberAdded: PropTypes.bool,
+  resetStateMemberAdded: PropTypes.func
 };
 
 AddMemberContainer.defaultProps = {
@@ -47,13 +52,13 @@ AddMemberContainer.defaultProps = {
 };
 
 const mapStateToProps = state => ({
-  // obtener loading, lo cambia el action de registration
   memberAdded: state.repository.memberAdded,
-  loading: state.repository.loading
+  loading: state.repository.addMemberLoading
 });
 
 const mapDispatchToProps = dispatch => ({
-  addMember: values => dispatch(teamActions.addMemberToOrg(values))
+  addMember: values => dispatch(repositoryActions.addMemberToOrg(values)),
+  resetStateMemberAdded: () => dispatch(repositoryActions.memberAdded(false))
 });
 
 export default connect(

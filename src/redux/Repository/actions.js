@@ -19,14 +19,13 @@ import * as RepositoryService from '../../services/RepositoryService';
 const types = completeTypes(
   [
     'REPO_CREATION',
-    'MEMBER_ADDED',
+    'ADD_MEMBER',
     'REPO_CREATION_FAILURE, OWNER_ADDED',
     'ADDING_CODE_OWNER',
     'CODE_OWNER_ADDED_SUCCESS',
-    'ADDING_MEMBER',
     'REQUEST_REPOS'
   ],
-  ['REPO_CREATED']
+  ['REPO_CREATED', 'MEMBER_ADDED']
 );
 export const actions = createTypes(types, '@@REPOSITORY');
 /*
@@ -66,6 +65,12 @@ const repoCreated = value => ({
   payload: value
 });
 
+const memberAdded = value => ({
+  type: actions.MEMBER_ADDED,
+  target: 'memberAdded',
+  payload: value
+});
+
 const createRepository = values => ({
   type: actions.REPO_CREATION,
   target: 'repoCreation',
@@ -82,10 +87,26 @@ const createRepository = values => ({
   ]
 });
 
+const addMemberToOrg = values => ({
+  type: actions.ADD_MEMBER,
+  target: 'addMember',
+  service: RepositoryService.addMemberToOrg,
+  payload: values,
+  injections: [
+    withPostSuccess(dispatch => {
+      dispatch(memberAdded(true));
+    }),
+    withPostFailure(dispatch => {
+      dispatch(memberAdded(false));
+      throw new SubmissionError({ _error: 'Error...' });
+    })
+  ]
+});
+
 const getRepositories = () => ({
   type: actions.REQUEST_REPOS,
   target: 'data',
   service: RepositoryService.getRepositories
 });
 
-export default { createRepository, getRepositories, repoCreated };
+export default { createRepository, getRepositories, repoCreated, addMemberToOrg, memberAdded };

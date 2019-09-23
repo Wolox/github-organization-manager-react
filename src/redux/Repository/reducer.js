@@ -7,17 +7,23 @@ const defaultState = completeState(
   {
     data: [],
     repoCreation: undefined,
-    repoCreated: false
+    repoCreated: false,
+    addMember: undefined,
+    memberAdded: false
   },
-  ['repoCreated']
+  ['repoCreated', 'memberAdded']
 );
 
 const reducerDescription = {
-  primaryActions: [actions.REPO_CREATION, actions.REQUEST_REPOS],
+  primaryActions: [actions.REPO_CREATION, actions.REQUEST_REPOS, actions.ADD_MEMBER],
   override: {
     [actions.REPO_CREATED]: (state, action) => ({
       ...state,
       repoCreated: action.payload
+    }),
+    [actions.MEMBER_ADDED]: (state, action) => ({
+      ...state,
+      memberAdded: action.payload
     })
   }
 
