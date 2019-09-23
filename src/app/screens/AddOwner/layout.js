@@ -40,6 +40,7 @@ function AddOwner({ handleSubmit, ownerAdded, data, loading }) {
               </span>
             </div>
             <Field name="repository" component="select" className="form-control selectpicker">
+              <option />
               {data.map(opt => (
                 <option key={opt.label} value={opt.label}>
                   {opt.label}

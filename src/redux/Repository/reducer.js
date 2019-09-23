@@ -6,16 +6,18 @@ import { actions } from './actions';
 const defaultState = completeState(
   {
     data: [],
-    repoCreation: undefined,
+    repoCreation: null,
     repoCreated: false,
-    addMember: undefined,
-    memberAdded: false
+    addMember: null,
+    memberAdded: false,
+    addCodeOwner: null,
+    codeOwnerAdded: false
   },
-  ['repoCreated', 'memberAdded']
+  ['repoCreated', 'memberAdded', 'codeOwnerAdded']
 );
 
 const reducerDescription = {
-  primaryActions: [actions.REPO_CREATION, actions.REQUEST_REPOS, actions.ADD_MEMBER],
+  primaryActions: [actions.REPO_CREATION, actions.REQUEST_REPOS, actions.ADD_MEMBER, actions.ADD_CODE_OWNER],
   override: {
     [actions.REPO_CREATED]: (state, action) => ({
       ...state,
@@ -24,46 +26,12 @@ const reducerDescription = {
     [actions.MEMBER_ADDED]: (state, action) => ({
       ...state,
       memberAdded: action.payload
+    }),
+    [actions.CODE_OWNER_ADDED]: (state, action) => ({
+      ...state,
+      ownerAdded: action.payload
     })
   }
-
-  /*     case actions.REPO_CREATION: {
-      return state.merge({
-        loading: true
-      });
-    }
-    case actions.REPO_CREATION_SUCCESS: {
-      return state.merge({
-        repoCreated: true,
-        loading: false
-      });
-    }
-    case actions.MEMBER_ADDED: {
-      return state.merge({
-        memberAdded: true,
-        loading: false
-      });
-    }
-    case actions.ADDING_CODE_OWNER: {
-      return state.merge({
-        loading: true
-      });
-    }
-    case actions.CODE_OWNER_ADDED_SUCCESS: {
-      return state.merge({
-        ownerAdded: true,
-        loading: false
-      });
-    }
-    case actions.ADDING_MEMBER: {
-      return state.merge({
-        loading: true
-      });
-    }
-    default: {
-      return state;
-    }
-  } */
 };
 
 export default createReducer(defaultState, completeReducer(reducerDescription));

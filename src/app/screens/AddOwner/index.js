@@ -17,8 +17,12 @@ class AddOwnerToRepoContainer extends Component {
     this.props.addOwnersToRepo(values);
   };
 
+  componentWillUnmount() {
+    this.props.resetStateOwnerAdded();
+  }
+
   render() {
-    const { data } = this.props;
+    const { data, loading, ownerAdded } = this.props;
     const repos = data.map(repository => ({ label: repository, value: repository }));
     return (
       <>
@@ -30,9 +34,9 @@ class AddOwnerToRepoContainer extends Component {
                 <div className="col-md-6 ml-auto mr-auto">
                   <AddOwner
                     onSubmit={this.handleSubmit}
-                    ownerAdded={this.props.ownerAdded}
+                    ownerAdded={ownerAdded}
                     data={repos}
-                    loading={this.props.loading}
+                    loading={loading}
                   />
                 </div>
               </div>
@@ -49,7 +53,8 @@ AddOwnerToRepoContainer.propTypes = {
   data: PropTypes.arrayOf(PropTypes.string),
   getRepositories: PropTypes.func,
   loading: PropTypes.bool,
-  ownerAdded: PropTypes.bool
+  ownerAdded: PropTypes.bool,
+  resetStateOwnerAdded: PropTypes.func
 };
 
 AddOwnerToRepoContainer.defaultProps = {
@@ -59,9 +64,8 @@ AddOwnerToRepoContainer.defaultProps = {
 };
 
 const mapStateToProps = state => ({
-  // obtener loading, lo cambia el action de registration
   ownerAdded: state.repository.ownerAdded,
-  loading: state.repository.loading,
+  loading: state.repository.addCodeOwnerLoading,
   data: state.repository.data
 });
 
@@ -69,7 +73,8 @@ const mapDispatchToProps = dispatch => ({
   getRepositories: () => {
     dispatch(repositoryActions.getRepositories());
   },
-  addOwnersToRepo: values => dispatch(repositoryActions.addOwnerToRepository(values))
+  addOwnersToRepo: values => dispatch(repositoryActions.addOwnerToRepository(values)),
+  resetStateOwnerAdded: () => dispatch(repositoryActions.codeOwnerAdded(false))
 });
 
 export default connect(
