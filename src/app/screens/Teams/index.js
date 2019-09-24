@@ -15,6 +15,7 @@ class TeamsContainer extends Component {
   };
 
   render() {
+    const { isError, loading, teamCreated } = this.props;
     return (
       <>
         <Menu />
@@ -26,9 +27,9 @@ class TeamsContainer extends Component {
                 <div className="col-md-6 ml-auto mr-auto">
                   <TeamCreation
                     onSubmit={this.handleSubmit}
-                    isError={this.props.isError}
-                    loading={this.props.loading}
-                    teamCreated={this.props.teamCreated}
+                    isError={isError}
+                    loading={loading}
+                    teamCreated={teamCreated}
                   />
                 </div>
               </div>

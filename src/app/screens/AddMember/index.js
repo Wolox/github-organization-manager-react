@@ -18,6 +18,7 @@ class AddMemberContainer extends Component {
   }
 
   render() {
+    const { memberAdded, loading } = this.props;
     return (
       <>
         <Header />
@@ -25,11 +26,7 @@ class AddMemberContainer extends Component {
           <div className="container">
             <div className="row">
               <div className="col-md-6 ml-auto mr-auto">
-                <AddMember
-                  onSubmit={this.handleSubmit}
-                  memberAdded={this.props.memberAdded}
-                  loading={this.props.loading}
-                />
+                <AddMember onSubmit={this.handleSubmit} memberAdded={memberAdded} loading={loading} />
               </div>
             </div>
           </div>

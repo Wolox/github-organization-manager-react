@@ -28,6 +28,8 @@ class AddTeamToMemberContainer extends Component {
   };
 
   render() {
+    const { memberAdded, loading } = this.props;
+    const { data } = this.state;
     return (
       <>
         <Header />
@@ -38,9 +40,9 @@ class AddTeamToMemberContainer extends Component {
                 <div className="col-md-6 ml-auto mr-auto">
                   <AddTeamToMember
                     onSubmit={this.handleSubmit}
-                    memberAdded={this.props.memberAdded}
-                    data={this.state.data.map(team => ({ label: team.name, value: team }))}
-                    loading={this.props.loading}
+                    memberAdded={memberAdded}
+                    data={data.map(team => ({ label: team.name, value: team }))}
+                    loading={loading}
                   />
                 </div>
               </div>
