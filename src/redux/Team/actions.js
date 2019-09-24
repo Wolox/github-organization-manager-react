@@ -1,33 +1,67 @@
-import { stringArrayToObject } from '../../utils/array';
+import { createTypes, completeTypes, withPostSuccess, withPostFailure } from 'redux-recompose';
+import { SubmissionError } from 'redux-form';
+
 import * as TeamService from '../../services/TeamServices';
 
-export const actions = stringArrayToObject(
-  [
-    'TEAM_CREATION',
-    'TEAM_CREATION_SUCCESS',
-    'TEAM_CREATION_FAILURE',
-    'ADDING_MEMBERS',
-    'MEMBER_ADDED_SUCCESS'
-  ],
-  '@@REPOSITORY'
+const types = completeTypes(
+  ['TEAM_CREATION', 'MEMBER_ADDITION', 'REQUEST_TEAMS'],
+  ['TEAM_CREATED', 'MEMBER_ADDED']
 );
+export const actions = createTypes(types, '@@TEAM');
 
-export const actionCreators = {
-  createTeam(values) {
-    return async dispatch => {
-      dispatch({ type: actions.TEAM_CREATION });
-      await TeamService.createTeam(values);
-      dispatch({ type: actions.TEAM_CREATION_SUCCESS });
-    };
-  },
-  addMembersToTeam(values) {
-    return async dispatch => {
-      dispatch({ type: actions.ADDING_MEMBERS });
-      await TeamService.addMembersToTeam(values);
-      dispatch({ type: actions.MEMBER_ADDED_SUCCESS });
-    };
-  },
-  getTeams() {
-    return TeamService.getTeams();
-  }
+const memberAdded = value => ({
+  type: actions.MEMBER_ADDED,
+  target: 'memberAdded',
+  payload: value
+});
+
+const teamCreated = value => ({
+  type: actions.TEAM_CREATED,
+  target: 'teamCreated',
+  payload: value
+});
+
+const addMembersToTeam = values => ({
+  type: actions.MEMBER_ADDITION,
+  target: 'addMember',
+  service: TeamService.addMembersToTeam,
+  payload: values,
+  injections: [
+    withPostSuccess(dispatch => {
+      dispatch(memberAdded(true));
+    }),
+    withPostFailure(dispatch => {
+      dispatch(memberAdded(false));
+      throw new SubmissionError({ _error: 'Error...' });
+    })
+  ]
+});
+
+const createTeam = values => ({
+  type: actions.TEAM_CREATION,
+  target: 'creationTeam',
+  service: TeamService.createTeam,
+  payload: values,
+  injections: [
+    withPostSuccess(dispatch => {
+      dispatch(teamCreated(true));
+    }),
+    withPostFailure(dispatch => {
+      dispatch(teamCreated(false));
+      throw new SubmissionError({ _error: 'Error...' });
+    })
+  ]
+});
+
+const getTeams = () => ({
+  type: actions.REQUEST_TEAMS,
+  target: 'data',
+  service: TeamService.getTeams,
+  successSelector: response => response.data.teams
+});
+
+export default {
+  getTeams,
+  addMembersToTeam,
+  createTeam
 };
