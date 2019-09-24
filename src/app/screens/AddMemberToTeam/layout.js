@@ -56,7 +56,7 @@ function AddTeamToMember({ handleSubmit, memberAdded, data, handleOnChange, load
           <button type="submit" className="btn btn-primary btn-wd btn-lg">
             {t('AddTeamToMember:add')}
           </button>
-          {memberAdded && (
+          {memberAdded && !loading && (
             <div className="alert alert-success">
               <div className="container">
                 <div className="alert-icon">

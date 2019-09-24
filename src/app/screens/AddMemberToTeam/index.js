@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
-import { actionCreators as teamActions } from '../../../redux/Team/actions';
+import teamActions from '../../../redux/Team/actions';
 
 import AddTeamToMember from './layout';
 import { TECHNOLOGIES } from './constants';
@@ -10,17 +10,8 @@ import { TECHNOLOGIES } from './constants';
 import Header from '~components/Header';
 
 class AddTeamToMemberContainer extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      data: []
-    };
-  }
-
   componentDidMount() {
-    teamActions.getTeams().then(response => {
-      this.setState({ data: response.teams });
-    });
+    this.props.getTeams();
   }
 
   handleSubmit = values => {
@@ -28,8 +19,7 @@ class AddTeamToMemberContainer extends Component {
   };
 
   render() {
-    const { memberAdded, loading } = this.props;
-    const { data } = this.state;
+    const { memberAdded, loading, data } = this.props;
     return (
       <>
         <Header />
@@ -55,20 +45,23 @@ class AddTeamToMemberContainer extends Component {
 }
 
 AddTeamToMemberContainer.propTypes = {
-  addMembersToTeam: PropTypes.func.isRequired,
+  addMembersToTeam: PropTypes.func,
+  data: PropTypes.arrayOf(PropTypes.any),
+  getTeams: PropTypes.func,
   loading: PropTypes.bool,
   memberAdded: PropTypes.bool
 };
 
 AddTeamToMemberContainer.defaultProps = {
+  data: [],
   loading: false,
   memberAdded: false
 };
 
 const mapStateToProps = state => ({
-  // obtener loading, lo cambia el action de registration
   memberAdded: state.team.memberAdded,
-  loading: state.team.loading
+  loading: state.team.addMemberLoading,
+  data: state.team.data
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -79,10 +72,9 @@ const mapDispatchToProps = dispatch => ({
         techs.push(tech);
       }
     });
-    /* eslint-disable no-param-reassign */
-    values = { ...values, techs };
-    return dispatch(teamActions.addMembersToTeam(values));
-  }
+    return dispatch(teamActions.addMembersToTeam({ ...values, techs }));
+  },
+  getTeams: () => dispatch(teamActions.getTeams())
 });
 
 export default connect(
