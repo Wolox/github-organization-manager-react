@@ -63,5 +63,7 @@ const getTeams = () => ({
 export default {
   getTeams,
   addMembersToTeam,
-  createTeam
+  createTeam,
+  memberAdded,
+  teamCreated
 };

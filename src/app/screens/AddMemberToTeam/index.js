@@ -18,6 +18,10 @@ class AddTeamToMemberContainer extends Component {
     this.props.addMembersToTeam(values);
   };
 
+  componentWillUnmount() {
+    this.props.resetStateMemberAdded();
+  }
+
   render() {
     const { memberAdded, loading, data } = this.props;
     return (
@@ -49,7 +53,8 @@ AddTeamToMemberContainer.propTypes = {
   data: PropTypes.arrayOf(PropTypes.any),
   getTeams: PropTypes.func,
   loading: PropTypes.bool,
-  memberAdded: PropTypes.bool
+  memberAdded: PropTypes.bool,
+  resetStateMemberAdded: PropTypes.func
 };
 
 AddTeamToMemberContainer.defaultProps = {
@@ -74,7 +79,8 @@ const mapDispatchToProps = dispatch => ({
     });
     return dispatch(teamActions.addMembersToTeam({ ...values, techs }));
   },
-  getTeams: () => dispatch(teamActions.getTeams())
+  getTeams: () => dispatch(teamActions.getTeams()),
+  resetStateMemberAdded: () => dispatch(teamActions.memberAdded(false))
 });
 
 export default connect(

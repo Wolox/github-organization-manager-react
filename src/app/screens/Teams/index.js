@@ -14,6 +14,10 @@ class TeamsContainer extends Component {
     this.props.createTeam(values);
   };
 
+  componentWillUnmount() {
+    this.props.resetStateTeamCreated();
+  }
+
   render() {
     const { isError, loading, teamCreated } = this.props;
     return (
@@ -45,6 +49,7 @@ TeamsContainer.propTypes = {
   createTeam: PropTypes.func,
   isError: PropTypes.bool,
   loading: PropTypes.bool,
+  resetStateTeamCreated: PropTypes.func,
   teamCreated: PropTypes.bool
 };
 
@@ -60,7 +65,8 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  createTeam: values => dispatch(teamActions.createTeam(values))
+  createTeam: values => dispatch(teamActions.createTeam(values)),
+  resetStateTeamCreated: () => dispatch(teamActions.teamCreated(false))
 });
 
 export default connect(
