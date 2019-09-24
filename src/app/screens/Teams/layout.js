@@ -58,7 +58,7 @@ function TeamCreation({ handleSubmit, isError, loading, teamCreated }) {
             </div>
           )}
           {loading && <SimpleSpinner className={styles.spinner} />}
-          {teamCreated && (
+          {teamCreated && !loading && (
             <div className="alert alert-success">
               <div className="container">
                 <div className="alert-icon">

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
-import { actionCreators as teamActions } from '../../../redux/Team/actions';
+import teamActions from '../../../redux/Team/actions';
 
 import styles from './styles.module.scss';
 import TeamCreation from './layout';
@@ -49,15 +49,13 @@ TeamsContainer.propTypes = {
 };
 
 TeamsContainer.defaultProps = {
-  // isError: false,
   loading: false,
   teamCreated: false
 };
 
 const mapStateToProps = state => ({
-  // obtener loading, lo cambia el action de registration
-  isError: state.team.isError,
-  loading: state.team.loading,
+  isError: state.team.creationTeamError,
+  loading: state.team.creationTeamLoading,
   teamCreated: state.team.teamCreated
 });
 
