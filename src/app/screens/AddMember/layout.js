@@ -37,7 +37,7 @@ function AddMember({ handleSubmit, memberAdded, loading }) {
           <button type="submit" className="btn btn-primary btn-wd btn-lg">
             Add member
           </button>
-          {memberAdded && (
+          {memberAdded && !loading && (
             <div className="alert alert-success">
               <div className="container">
                 <div className="alert-icon">

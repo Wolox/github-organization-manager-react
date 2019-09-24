@@ -53,7 +53,7 @@ function AddOwner({ handleSubmit, ownerAdded, data, loading }) {
           <button type="submit" className="btn btn-primary btn-wd btn-lg">
             {t('AddOwner:add')}
           </button>
-          {ownerAdded && (
+          {ownerAdded && !loading && (
             <div className="alert alert-success">
               <div className="container">
                 <div className="alert-icon">

@@ -70,7 +70,7 @@ function RepoCreation({ handleSubmit, repoCreated, loading }) {
             {t('RepoCreation:create')}
           </button>
           {loading && <SimpleSpinner className={styles.spinner} />}
-          {repoCreated && (
+          {repoCreated && !loading && (
             <div className="alert alert-success">
               <div className="container">
                 <div className="alert-icon">
