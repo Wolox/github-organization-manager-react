@@ -11,7 +11,7 @@ import { fetchMiddleware } from 'redux-recompose';
  */
 import { reducer as auth } from './Auth/reducer';
 import repository from './Repository/reducer';
-import { reducer as team } from './Team/reducer';
+import team from './Team/reducer';
 
 export const history = createBrowserHistory();
 
