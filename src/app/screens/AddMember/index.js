@@ -25,7 +25,7 @@ class AddMemberContainer extends Component {
         <div className="main main-raised">
           <div className="container">
             <div className="row">
-              <div className="col-md-6 ml-auto mr-auto">
+              <div className="col-lg-6 col-md-10 ml-auto mr-auto">
                 <AddMember onSubmit={this.handleSubmit} memberAdded={memberAdded} loading={loading} />
               </div>
             </div>

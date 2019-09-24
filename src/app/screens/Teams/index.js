@@ -28,7 +28,7 @@ class TeamsContainer extends Component {
           <div className="profile-content">
             <div className="container">
               <div className="row">
-                <div className="col-md-6 ml-auto mr-auto">
+                <div className="col-lg-6 col-md-10 ml-auto mr-auto">
                   <TeamCreation
                     onSubmit={this.handleSubmit}
                     isError={isError}
