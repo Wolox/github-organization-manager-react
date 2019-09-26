@@ -32,7 +32,7 @@ function App() {
     }
   }, [user, isAuthenticated]);
 
-  return <Provider store={store}>{loading ? <SimpleSpinner /> : <Routes />}</Provider>;
+  return <Provider store={store}>{loading ? <SimpleSpinner center /> : <Routes />}</Provider>;
 }
 
 export default App;
