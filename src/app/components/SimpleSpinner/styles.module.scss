@@ -1,5 +1,12 @@
 @import 'src/scss/variables/colors';
 
+.container {
+  left: 50%;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
 .spinnero {
   height: 80px;
   width: 80px;
