@@ -4,7 +4,13 @@ import { Link } from 'react-router-dom';
 
 import routes from '../../../constants/routes';
 
+import styles from './styles.module.scss';
+
+import { useAuth0 } from 'react-auth0-spa';
+
 function Menu() {
+  const { logout } = useAuth0();
+
   return (
     <nav
       className="navbar navbar-transparent navbar-color-on-scroll fixed-top navbar-expand-lg"
@@ -61,6 +67,15 @@ function Menu() {
               </div>
             </li>
           </ul>
+          <span
+            className={`${styles.logout} nav-link`}
+            // eslint-disable-next-line react/jsx-no-bind
+            onClick={() => {
+              logout({ returnTo: window.location.origin });
+            }}
+          >
+            <i className={`material-icons ${styles.icon}`}>power_settings_new</i>Logout
+          </span>
         </div>
       </div>
     </nav>

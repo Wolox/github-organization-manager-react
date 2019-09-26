@@ -1,7 +1,4 @@
-import { createTypes, completeTypes, withPostSuccess } from 'redux-recompose';
-import { push } from 'connected-react-router';
-
-import ROUTES from 'constants/routes';
+import { createTypes, completeTypes } from 'redux-recompose';
 
 const types = completeTypes(['AUTH_INIT'], ['LOGOUT', 'AUTH_INIT']);
 export const actions = createTypes(types, '@@AUTH');
@@ -15,11 +12,7 @@ const authInit = authData => ({
 const logout = () => ({
   type: actions.LOGOUT,
   target: 'currentUser',
-  injections: [
-    withPostSuccess(dispatch => {
-      dispatch(push(push(ROUTES.LOGIN)));
-    })
-  ]
+  payload: { data: null }
 });
 
 export { authInit, logout };

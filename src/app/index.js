@@ -30,7 +30,7 @@ function App() {
       getToken();
       store.dispatch(authInit(user));
     }
-  }, [user, isAuthenticated]);
+  }, [user, isAuthenticated, loading]);
 
   return <Provider store={store}>{loading ? <SimpleSpinner center /> : <Routes />}</Provider>;
 }
