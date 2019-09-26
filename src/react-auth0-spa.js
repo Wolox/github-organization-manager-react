@@ -29,7 +29,7 @@ function Auth0Provider({ children, onRedirectCallback = DEFAULT_REDIRECT_CALLBAC
 
       setIsAuthenticated(isAuthenticatedResponse);
 
-      if (isAuthenticated) {
+      if (isAuthenticated || isAuthenticatedResponse) {
         const userResponse = await auth0FromHook.getUser();
         setUser(userResponse);
       }
