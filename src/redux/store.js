@@ -9,7 +9,7 @@ import { fetchMiddleware } from 'redux-recompose';
  * TODO Add this if you need it
  * import AnalyticsMiddleware from '../services/AnalyticsService';
  */
-import { reducer as auth } from './Auth/reducer';
+import auth from './Auth/reducer';
 import repository from './Repository/reducer';
 import team from './Team/reducer';
 
