@@ -1,8 +1,8 @@
 import { push } from 'connected-react-router';
 
-import * as AuthService from '../../services/AuthServices';
-import Routes from '../../constants/routes';
-import { stringArrayToObject } from '../../utils/array';
+import { stringArrayToObject } from '~utils/array';
+import Routes from '~constants/routes';
+import * as AuthService from '~services/AuthServices';
 
 /* ------------- Auth actions ------------- */
 export const actions = stringArrayToObject(

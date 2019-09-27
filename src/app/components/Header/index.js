@@ -1,8 +1,8 @@
 import React from 'react';
 
-import styles from './styles.module.scss';
-
 import Menu from '~components/Menu';
+
+import styles from './styles.module.scss';
 
 function Header() {
   return (

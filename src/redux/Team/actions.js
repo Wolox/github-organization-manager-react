@@ -1,7 +1,7 @@
 import { createTypes, completeTypes, withPostSuccess, withPostFailure } from 'redux-recompose';
 import { SubmissionError } from 'redux-form';
 
-import * as TeamService from '../../services/TeamServices';
+import * as TeamService from '~services/TeamServices';
 
 const types = completeTypes(
   ['TEAM_CREATION', 'MEMBER_ADDITION', 'REQUEST_TEAMS'],

@@ -2,12 +2,11 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
-import teamActions from '../../../redux/Team/actions';
+import teamActions from '~redux/Team/actions';
+import Header from '~components/Header';
 
 import AddTeamToMember from './layout';
 import { TECHNOLOGIES } from './constants';
-
-import Header from '~components/Header';
 
 class AddTeamToMemberContainer extends Component {
   componentDidMount() {

@@ -2,12 +2,11 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
-import teamActions from '../../../redux/Team/actions';
+import teamActions from '~redux/Team/actions';
+import Menu from '~components/Menu';
 
 import styles from './styles.module.scss';
 import TeamCreation from './layout';
-
-import Menu from '~components/Menu';
 
 class TeamsContainer extends Component {
   handleSubmit = values => {

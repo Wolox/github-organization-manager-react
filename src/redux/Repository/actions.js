@@ -1,7 +1,7 @@
 import { createTypes, completeTypes, withPostSuccess, withPostFailure } from 'redux-recompose';
 import { SubmissionError } from 'redux-form';
 
-import * as RepositoryService from '../../services/RepositoryService';
+import * as RepositoryService from '~services/RepositoryService';
 
 const types = completeTypes(
   ['REPO_CREATION', 'ADD_MEMBER', 'ADD_CODE_OWNER', 'REQUEST_REPOS'],
