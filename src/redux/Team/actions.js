@@ -1,5 +1,4 @@
 import { stringArrayToObject } from '~utils/array';
-
 import * as TeamService from '~services/TeamServices';
 
 export const actions = stringArrayToObject(

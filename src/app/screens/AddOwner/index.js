@@ -2,11 +2,10 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
-import AddOwner from './layout';
-
 import Header from '~components/Header';
-
 import { actionCreators as repositoryActions } from '~redux/Repository/actions';
+
+import AddOwner from './layout';
 
 class AddOwnerToRepoContainer extends Component {
   constructor(props) {

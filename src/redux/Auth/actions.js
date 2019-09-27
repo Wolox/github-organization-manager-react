@@ -1,9 +1,7 @@
 import { push } from 'connected-react-router';
 
 import { stringArrayToObject } from '~utils/array';
-
 import Routes from '~constants/routes';
-
 import * as AuthService from '~services/AuthServices';
 
 /* ------------- Auth actions ------------- */

@@ -2,12 +2,11 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
+import { actionCreators as repositoryActions } from '~redux/Repository/actions';
+import Header from '~components/Header';
+
 import { TECHNOLOGIES } from './constants';
 import RepoCreation from './layout';
-
-import { actionCreators as repositoryActions } from '~redux/Repository/actions';
-
-import Header from '~components/Header';
 
 class RepoCreationContainer extends Component {
   handleSubmit = values => {

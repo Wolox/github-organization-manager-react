@@ -1,9 +1,9 @@
 import React from 'react';
 
+import ROUTES from '~constants/routes';
+
 import Card from './components/Card';
 import styles from './styles.module.scss';
-
-import ROUTES from '~constants/routes';
 
 const teamsCards = [
   {

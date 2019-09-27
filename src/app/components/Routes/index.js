@@ -2,13 +2,12 @@ import React, { lazy } from 'react';
 import { ConnectedRouter } from 'connected-react-router';
 import { Switch } from 'react-router-dom';
 
+import Routes from '~constants/routes';
+import { history } from '~redux/store';
+
 import Suspense from '../Suspense';
 
 import AuthenticatedRoute from './components/AuthenticatedRoute';
-
-import Routes from '~constants/routes';
-
-import { history } from '~redux/store';
 
 const Home = lazy(() => import('~screens/Home'));
 const Login = lazy(() => import('~screens/Login'));

@@ -2,11 +2,10 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
-import AddMember from './layout';
-
 import Header from '~components/Header';
-
 import { actionCreators as teamActions } from '~redux/Repository/actions';
+
+import AddMember from './layout';
 
 class AddMemberContainer extends Component {
   handleSubmit = values => {

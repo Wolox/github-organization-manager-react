@@ -2,14 +2,16 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { AppContainer } from 'react-hot-loader';
 
-import { Auth0Provider } from './react-auth0-spa';
-import App from './app';
-import config from './auth_config.json';
+import history from '~utils/history';
+
 import './scss/application.scss';
-import { register } from './serviceWorker';
 
 import '~config/i18n';
-import history from '~utils/history';
+
+import { register } from './serviceWorker';
+import App from './app';
+import config from './auth_config.json';
+import { Auth0Provider } from './react-auth0-spa';
 
 const onRedirectCallback = appState => {
   history.push(appState && appState.targetUrl ? appState.targetUrl : window.location.pathname);
