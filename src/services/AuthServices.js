@@ -1,14 +1,13 @@
-import api from '../config/api';
-/* import { actionCreators as authActions } from '../redux/Auth/actions'; */
+import api from '~config/api';
 
-import * as LocalStorageService from './LocalStorageService';
+import { setSessionToken, getSessionToken, removeSessionToken } from './LocalStorageService';
 
 export const setCurrentUser = token => {
   api.setHeader('Authorization', `Bearer ${token}`);
-  LocalStorageService.setSessionToken(token);
+  setSessionToken(token);
 };
 export const getCurrentUser = () => {
-  const token = LocalStorageService.getSessionToken();
+  const token = getSessionToken();
 
   if (token) {
     api.setHeader('Authorization', `Bearer ${token}`);
@@ -17,4 +16,4 @@ export const getCurrentUser = () => {
 
   return false;
 };
-export const removeCurrentUser = () => LocalStorageService.removeSessionToken();
+export const removeCurrentUser = () => removeSessionToken();

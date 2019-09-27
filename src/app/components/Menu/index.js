@@ -2,11 +2,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import routes from '../../../constants/routes';
+import routes from '~constants/routes';
+import { useAuth0 } from 'react-auth0-spa';
 
 import styles from './styles.module.scss';
-
-import { useAuth0 } from 'react-auth0-spa';
 
 function Menu() {
   const { logout } = useAuth0();

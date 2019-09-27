@@ -4,7 +4,7 @@ import { withRouter } from 'react-router';
 import { connect } from 'react-redux';
 import { Route, Redirect } from 'react-router-dom';
 
-import ROUTES from 'constants/routes';
+import ROUTES from '~constants/routes';
 
 function AuthenticatedRoute({ isPrivate = false, isAuthenticated, component: Comp, ...props }) {
   if (!isAuthenticated && isPrivate) {

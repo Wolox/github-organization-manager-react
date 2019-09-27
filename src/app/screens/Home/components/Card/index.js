@@ -8,12 +8,10 @@ function Card({ data }) {
   return (
     <div className={styles.card}>
       <i className={`material-icons ${styles.cardIcon}`}>{data.icon}</i>
-      <div>
-        <div className={styles.cardInfo}>{data.info}</div>
-        <Link to={data.path} className={`btn btn-primary ${styles.cardBtn}`}>
-          {data.descriptionAction}
-        </Link>
-      </div>
+      <span className={styles.cardInfo}>{data.info}</span>
+      <Link to={data.path} className={`btn btn-primary ${styles.cardBtn}`}>
+        {data.descriptionAction}
+      </Link>
     </div>
   );
 }

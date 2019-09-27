@@ -2,9 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Field, reduxForm } from 'redux-form';
 
-import SimpleSpinner from '../../components/SimpleSpinner';
-
 import InputLabelNew from '~components/InputLabelNew';
+import SimpleSpinner from '~components/SimpleSpinner';
 
 function AddMember({ handleSubmit, memberAdded, loading }) {
   return (
