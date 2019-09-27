@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
-import { actionCreators as teamActions } from '../../../redux/Team/actions';
-
 import AddTeamToMember from './layout';
 import { TECHNOLOGIES } from './constants';
+
+import { actionCreators as teamActions } from '~redux/Team/actions';
 
 import Header from '~components/Header';
 

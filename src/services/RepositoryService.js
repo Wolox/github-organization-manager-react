@@ -1,4 +1,4 @@
-import api from '../config/api';
+import api from '~config/api';
 
 export const createRepository = async values => {
   const response = await api.post('/repositories', values);

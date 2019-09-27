@@ -1,4 +1,4 @@
-import api from '../config/api';
+import api from '~config/api';
 
 export const createTeam = async values => {
   const response = await api.post('/teams', values);

@@ -1,7 +1,8 @@
-import api from '../config/api';
-import { actionCreators as authActions } from '../redux/Auth/actions';
-
 import * as LocalStorageService from './LocalStorageService';
+
+import api from '~config/api';
+
+import { actionCreators as authActions } from '~redux/Auth/actions';
 
 export const setCurrentUser = currentUser => {
   api.setHeader('Authorization', currentUser.sessionToken);

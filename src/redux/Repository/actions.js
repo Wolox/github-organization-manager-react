@@ -1,5 +1,6 @@
-import * as RepositoryService from '../../services/RepositoryService';
-import { stringArrayToObject } from '../../utils/array';
+import { stringArrayToObject } from '~utils/array';
+
+import * as RepositoryService from '~services/RepositoryService';
 
 export const actions = stringArrayToObject(
   [
