@@ -1,6 +1,7 @@
 import React from 'react';
 
 import ROUTES from '~constants/routes';
+import Logout from '~components/Logout';
 
 import Card from './components/Card';
 import styles from './styles.module.scss';
@@ -43,9 +44,10 @@ const repositoriesCards = [
 function Home() {
   return (
     <div className={styles.container}>
-      <span className={`page-header ${styles.pageHeader}`} data-parallax="true">
-        Wolox Repo Manager
-      </span>
+      <div className={`page-header ${styles.pageHeader}`} data-parallax="true">
+        <span className={styles.title}>Wolox Repo Manager</span>
+        <Logout className={styles.logout} />
+      </div>
       <div className={styles.section}>
         <h2 className={styles.sectionTitle}>Teams</h2>
         <div className={styles.sectionBody}>
