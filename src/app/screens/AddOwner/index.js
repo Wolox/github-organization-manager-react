@@ -69,9 +69,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  getRepositories: () => {
-    dispatch(repositoryActions.getRepositories());
-  },
+  getRepositories: () => dispatch(repositoryActions.getRepositories()),
   addOwnersToRepo: values => dispatch(repositoryActions.addOwnerToRepository(values)),
   resetStateOwnerAdded: () => dispatch(repositoryActions.codeOwnerAdded(false))
 });
