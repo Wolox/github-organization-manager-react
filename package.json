@@ -65,7 +65,7 @@
     "aws-deploy-script-fe": "0.0.4",
     "chalk": "^2.4.2",
     "env-cmd": "^9.0.3",
-    "eslint": "^6.4.0",
+    "eslint": "6.4.0",
     "eslint-config-wolox": "^3.0.2",
     "eslint-config-wolox-react": "^2.0.0",
     "eslint-import-resolver-babel-module": "^5.1.0",
