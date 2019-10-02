@@ -17,11 +17,9 @@ function TeamCreation({ handleSubmit, isError, loading, teamCreated }) {
         </div>
         <div className={`card-body ${styles.cardBody}`}>
           <div className="input-group">
-            <div className="input-group-prepend">
-              <span className="input-group-text">
-                <i className="material-icons">people</i>
-              </span>
-            </div>
+            <span className="input-group-text">
+              <i className="material-icons">people</i>
+            </span>
             <Field
               inputClassName="form-control"
               className="form-control"
@@ -59,12 +57,10 @@ function TeamCreation({ handleSubmit, isError, loading, teamCreated }) {
           {loading && <SimpleSpinner className={styles.spinner} />}
           {teamCreated && !loading && (
             <div className="alert alert-success">
-              <div className="container">
-                <div className="alert-icon">
-                  <i className="material-icons">check</i>
-                </div>
-                ¡El equipo se creó con éxito!
+              <div className="alert-icon">
+                <i className="material-icons">check</i>
               </div>
+              ¡El equipo se creó con éxito!
             </div>
           )}
         </div>

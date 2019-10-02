@@ -14,11 +14,9 @@ function AddMember({ handleSubmit, memberAdded, loading }) {
         </div>
         <div className="row card-body">
           <div className="input-group">
-            <div className="input-group-prepend">
-              <span className="input-group-text">
-                <i className="material-icons">person_add</i>
-              </span>
-            </div>
+            <span className="input-group-text">
+              <i className="material-icons">person_add</i>
+            </span>
             <Field
               inputClassName="form-control"
               className="form-control"
@@ -38,12 +36,10 @@ function AddMember({ handleSubmit, memberAdded, loading }) {
           </button>
           {memberAdded && !loading && (
             <div className="alert alert-success">
-              <div className="container">
-                <div className="alert-icon">
-                  <i className="material-icons">check</i>
-                </div>
-                ¡El miembro se agregó!
+              <div className="alert-icon">
+                <i className="material-icons">check</i>
               </div>
+              ¡El miembro se agregó!
             </div>
           )}
           {loading && <SimpleSpinner />}

@@ -18,17 +18,11 @@ function RepoCreation({ handleSubmit, repoCreated, loading }) {
           <h4 className="card-title">{t('RepoCreation:createNewRepository')}</h4>
         </div>
         <div className="card-body">
-          <div className="input-group">
-            <div className="input-group-prepend">
-              <p>{t('RepoCreation:createNewRepositoryAdvise')}</p>
-            </div>
-          </div>
+          <p>{t('RepoCreation:createNewRepositoryAdvise')}</p>
           <div className={`row ${styles.row} input-group`}>
-            <div className="input-group-prepend">
-              <span className="input-group-text">
-                <i className="material-icons">create_new_folder</i>
-              </span>
-            </div>
+            <span className="input-group-text">
+              <i className="material-icons">create_new_folder</i>
+            </span>
             <Field
               inputClassName="form-control"
               className="form-control"
@@ -42,11 +36,9 @@ function RepoCreation({ handleSubmit, repoCreated, loading }) {
             />
           </div>
           <div className={`row ${styles.row} input-group`}>
-            <div className="input-group-prepend">
-              <span className="input-group-text">
-                <i className="material-icons">lock</i>
-              </span>
-            </div>
+            <span className="input-group-text">
+              <i className="material-icons">lock</i>
+            </span>
             <Field name="isPrivate" component={CheckboxNew} label={t('RepoCreation:private')} />
           </div>
           <div className={`row ${styles.row}`}>
@@ -72,12 +64,10 @@ function RepoCreation({ handleSubmit, repoCreated, loading }) {
           {loading && <SimpleSpinner className={styles.spinner} />}
           {repoCreated && !loading && (
             <div className="alert alert-success">
-              <div className="container">
-                <div className="alert-icon">
-                  <i className="material-icons">check</i>
-                </div>
-                ¡El/los repositorios se crearon con éxito!
+              <div className="alert-icon">
+                <i className="material-icons">check</i>
               </div>
+              ¡El/los repositorios se crearon con éxito!
             </div>
           )}
         </div>

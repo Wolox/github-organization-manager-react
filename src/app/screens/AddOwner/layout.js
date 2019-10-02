@@ -15,11 +15,9 @@ function AddOwner({ handleSubmit, ownerAdded, data, loading }) {
         </div>
         <div className="card-body">
           <div className="input-group">
-            <div className="input-group-prepend">
-              <span className="input-group-text">
-                <i className="material-icons">people</i>
-              </span>
-            </div>
+            <span className="input-group-text">
+              <i className="material-icons">people</i>
+            </span>
             <Field
               inputClassName="form-control"
               className="form-control"
@@ -33,11 +31,9 @@ function AddOwner({ handleSubmit, ownerAdded, data, loading }) {
             />
           </div>
           <div className="input-group">
-            <div className="input-group-prepend">
-              <span className="input-group-text">
-                <i className="material-icons">list</i>
-              </span>
-            </div>
+            <span className="input-group-text">
+              <i className="material-icons">list</i>
+            </span>
             <Field name="repository" component="select" className="form-control selectpicker">
               <option />
               {data.map(opt => (
@@ -54,12 +50,10 @@ function AddOwner({ handleSubmit, ownerAdded, data, loading }) {
           </button>
           {ownerAdded && !loading && (
             <div className="alert alert-success">
-              <div className="container">
-                <div className="alert-icon">
-                  <i className="material-icons">check</i>
-                </div>
-                ¡Los code owner se agregaron!
+              <div className="alert-icon">
+                <i className="material-icons">check</i>
               </div>
+              ¡Los code owner se agregaron!
             </div>
           )}
           {loading && <SimpleSpinner />}

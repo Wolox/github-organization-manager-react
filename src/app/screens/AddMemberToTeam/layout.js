@@ -15,11 +15,9 @@ function AddTeamToMember({ handleSubmit, memberAdded, data, handleOnChange, load
         </div>
         <div className="card-body">
           <div className="input-group">
-            <div className="input-group-prepend">
-              <span className="input-group-text">
-                <i className="material-icons">people</i>
-              </span>
-            </div>
+            <span className="input-group-text">
+              <i className="material-icons">people</i>
+            </span>
             <Field
               inputClassName="form-control"
               className="form-control"
@@ -33,11 +31,9 @@ function AddTeamToMember({ handleSubmit, memberAdded, data, handleOnChange, load
             />
           </div>
           <div className="input-group">
-            <div className="input-group-prepend">
-              <span className="input-group-text">
-                <i className="material-icons">list</i>
-              </span>
-            </div>
+            <span className="input-group-text">
+              <i className="material-icons">list</i>
+            </span>
             <Field
               name="team"
               component="select"
@@ -58,12 +54,10 @@ function AddTeamToMember({ handleSubmit, memberAdded, data, handleOnChange, load
           </button>
           {memberAdded && !loading && (
             <div className="alert alert-success">
-              <div className="container">
-                <div className="alert-icon">
-                  <i className="material-icons">check</i>
-                </div>
-                ¡Los miembros se agregaron!
+              <div className="alert-icon">
+                <i className="material-icons">check</i>
               </div>
+              ¡Los miembros se agregaron!
             </div>
           )}
           {loading && <SimpleSpinner />}
