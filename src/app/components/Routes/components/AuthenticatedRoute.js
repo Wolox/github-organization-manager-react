@@ -6,12 +6,9 @@ import { Route, Redirect } from 'react-router-dom';
 
 import ROUTES from '~constants/routes';
 
-function AuthenticatedRoute({ isPrivate = false, isAuthenticated, component: Comp, ...props }) {
-  if (!isAuthenticated && isPrivate) {
+function AuthenticatedRoute({ isAuthenticated, component: Comp, ...props }) {
+  if (!isAuthenticated) {
     return <Redirect to={ROUTES.LOGIN} />;
-  }
-  if (isAuthenticated && !isPrivate) {
-    return <Redirect to={ROUTES.HOME} />;
   }
 
   return (
@@ -26,7 +23,6 @@ function AuthenticatedRoute({ isPrivate = false, isAuthenticated, component: Com
 AuthenticatedRoute.propTypes = {
   component: PropTypes.elementType,
   isAuthenticated: PropTypes.bool,
-  isPrivate: PropTypes.bool,
   location: PropTypes.objectOf(PropTypes.any)
 };
 
