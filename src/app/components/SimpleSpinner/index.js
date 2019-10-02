@@ -6,7 +6,7 @@ import spinner from './spinner.svg';
 
 function SimpleSpinner({ center }) {
   return (
-    <div className={center && styles.container}>
+    <div className={center ? styles.container : ''}>
       <img src={spinner} alt="" className={styles.spinnero} />
     </div>
   );
