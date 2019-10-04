@@ -44,6 +44,7 @@ function AddTeamToMember({ handleSubmit, memberAdded, data, handleOnChange, load
               onChange={handleOnChange}
               className="form-control selectpicker"
             >
+              <option value="" />
               {data.map(opt => (
                 <option key={opt.value.id} value={opt.value.id}>
                   {opt.label}
