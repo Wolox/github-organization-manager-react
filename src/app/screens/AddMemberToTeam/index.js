@@ -6,7 +6,6 @@ import teamActions from '~redux/Team/actions';
 import Header from '~components/Header';
 
 import AddTeamToMember from './layout';
-import { TECHNOLOGIES } from './constants';
 
 class AddTeamToMemberContainer extends Component {
   componentDidMount() {
@@ -67,15 +66,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  addMembersToTeam: values => {
-    const techs = [];
-    Object.keys(TECHNOLOGIES).forEach(tech => {
-      if (values[tech]) {
-        techs.push(tech);
-      }
-    });
-    return dispatch(teamActions.addMembersToTeam({ ...values, techs }));
-  },
+  addMembersToTeam: values => dispatch(teamActions.addMembersToTeam(values)),
   getTeams: () => dispatch(teamActions.getTeams()),
   resetStateMemberAdded: () => dispatch(teamActions.memberAdded(false))
 });
