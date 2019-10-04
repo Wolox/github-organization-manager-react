@@ -10,7 +10,7 @@ export const addMembersToTeam = values => {
   });
 }; */
 
-export const getTeams = () => api.get('/teams/');
+export const getTeams = () => api.get('/teams');
 
 export const createTeam = values =>
   create({
