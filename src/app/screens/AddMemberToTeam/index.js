@@ -31,18 +31,14 @@ class AddTeamToMemberContainer extends Component {
       <>
         <Header />
         <div className="main main-raised">
-          <div className="profile-content">
-            <div className="container">
-              <div className="row">
-                <div className="col-md-6 ml-auto mr-auto">
-                  <AddTeamToMember
-                    onSubmit={this.handleSubmit}
-                    memberAdded={this.props.memberAdded}
-                    data={this.state.data.map(team => ({ label: team.name, value: team }))}
-                    loading={this.props.loading}
-                  />
-                </div>
-              </div>
+          <div className="row">
+            <div className="col-10 col-md-6 col-xl-4 m-auto">
+              <AddTeamToMember
+                onSubmit={this.handleSubmit}
+                memberAdded={this.props.memberAdded}
+                data={this.state.data.map(team => ({ label: team.name, value: team }))}
+                loading={this.props.loading}
+              />
             </div>
           </div>
         </div>

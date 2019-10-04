@@ -19,18 +19,14 @@ class TeamsContainer extends Component {
         <Menu />
         <div className={`page-header ${styles.pageHeader}`} data-parallax="true" />
         <div className="main main-raised">
-          <div className="profile-content">
-            <div className="container">
-              <div className="row">
-                <div className="col-md-6 ml-auto mr-auto">
-                  <TeamCreation
-                    onSubmit={this.handleSubmit}
-                    isError={this.props.isError}
-                    loading={this.props.loading}
-                    teamCreated={this.props.teamCreated}
-                  />
-                </div>
-              </div>
+          <div className="row">
+            <div className="col-md-6 ml-auto mr-auto">
+              <TeamCreation
+                onSubmit={this.handleSubmit}
+                isError={this.props.isError}
+                loading={this.props.loading}
+                teamCreated={this.props.teamCreated}
+              />
             </div>
           </div>
         </div>

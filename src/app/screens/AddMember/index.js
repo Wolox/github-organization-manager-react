@@ -17,15 +17,13 @@ class AddMemberContainer extends Component {
       <>
         <Header />
         <div className="main main-raised">
-          <div className="container">
-            <div className="row">
-              <div className="col-md-6 ml-auto mr-auto">
-                <AddMember
-                  onSubmit={this.handleSubmit}
-                  memberAdded={this.props.memberAdded}
-                  loading={this.props.loading}
-                />
-              </div>
+          <div className="row">
+            <div className="col-10 col-md-6 col-xl-4 m-auto">
+              <AddMember
+                onSubmit={this.handleSubmit}
+                memberAdded={this.props.memberAdded}
+                loading={this.props.loading}
+              />
             </div>
           </div>
         </div>

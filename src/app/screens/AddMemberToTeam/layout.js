@@ -9,7 +9,7 @@ import SimpleSpinner from '~components/SimpleSpinner';
 function AddTeamToMember({ handleSubmit, memberAdded, data, handleOnChange, loading }) {
   return (
     <div className="card">
-      <form className="container" onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit}>
         <div className="card-header text-center">
           <h4 className="card-title">Add a member to team</h4>
         </div>

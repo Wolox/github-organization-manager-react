@@ -11,7 +11,7 @@ import { FIELDS } from './constants';
 function TeamCreation({ handleSubmit, isError, loading, teamCreated }) {
   return (
     <div className={`card ${styles.card}`}>
-      <form className="container" onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit}>
         <div className="card-header text-center">
           <h4 className="card-title">Create a new team</h4>
         </div>
