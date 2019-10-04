@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 import { t } from 'i18next';
 import { Field, reduxForm } from 'redux-form';
 
-import InputLabelNew from '../../components/InputLabelNew';
-import CheckboxNew from '../../components/CheckboxNew';
-import SimpleSpinner from '../../components/SimpleSpinner';
+import InputLabelNew from '~components/InputLabelNew';
+import CheckboxNew from '~components/CheckboxNew';
+import SimpleSpinner from '~components/SimpleSpinner';
 
 import { TECHNOLOGIES } from './constants';
 import styles from './styles.module.scss';

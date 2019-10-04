@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { t } from 'i18next';
 
-import { useAuth0 } from '../../../react-auth0-spa';
+import { useAuth0 } from 'react-auth0-spa';
 
 import styles from './styles.module.scss';
 

@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 import { t } from 'i18next';
 import { Field, reduxForm } from 'redux-form';
 
-import InputLabelNew from '../../components/InputLabelNew';
-import SimpleSpinner from '../../components/SimpleSpinner';
+import InputLabelNew from '~components/InputLabelNew';
+import SimpleSpinner from '~components/SimpleSpinner';
 
 function AddTeamToMember({ handleSubmit, memberAdded, data, handleOnChange, loading }) {
   return (

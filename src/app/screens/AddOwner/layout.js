@@ -4,8 +4,7 @@ import { t } from 'i18next';
 import { Field, reduxForm } from 'redux-form';
 
 import InputLabelNew from '~components/InputLabelNew';
-
-import SimpleSpinner from '../../components/SimpleSpinner';
+import SimpleSpinner from '~components/SimpleSpinner';
 
 function AddOwner({ handleSubmit, ownerAdded, data, loading }) {
   return (

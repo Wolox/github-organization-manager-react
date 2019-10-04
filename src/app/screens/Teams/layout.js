@@ -3,8 +3,7 @@ import PropTypes from 'prop-types';
 import { Field, reduxForm } from 'redux-form';
 
 import InputLabelNew from '~components/InputLabelNew';
-
-import SimpleSpinner from '../../components/SimpleSpinner';
+import SimpleSpinner from '~components/SimpleSpinner';
 
 import styles from './styles.module.scss';
 import { FIELDS } from './constants';
