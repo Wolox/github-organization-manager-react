@@ -3,8 +3,7 @@ import PropTypes from 'prop-types';
 import { Field, reduxForm } from 'redux-form';
 
 import InputLabelNew from '~components/InputLabelNew';
-
-import SimpleSpinner from '../../components/SimpleSpinner';
+import SimpleSpinner from '~components/SimpleSpinner';
 
 import styles from './styles.module.scss';
 import { FIELDS } from './constants';
@@ -12,7 +11,7 @@ import { FIELDS } from './constants';
 function TeamCreation({ handleSubmit, isError, loading, teamCreated }) {
   return (
     <div className={`card ${styles.card}`}>
-      <form className="container" onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit}>
         <div className="card-header text-center">
           <h4 className="card-title">Create a new team</h4>
         </div>

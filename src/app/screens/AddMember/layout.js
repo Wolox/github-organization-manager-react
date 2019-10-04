@@ -3,13 +3,12 @@ import PropTypes from 'prop-types';
 import { Field, reduxForm } from 'redux-form';
 
 import InputLabelNew from '~components/InputLabelNew';
-
-import SimpleSpinner from '../../components/SimpleSpinner';
+import SimpleSpinner from '~components/SimpleSpinner';
 
 function AddMember({ handleSubmit, memberAdded, loading }) {
   return (
     <div className="card">
-      <form className="container" onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit}>
         <div className="card-header text-center">
           <h4 className="card-title">Add user to Wolox Organization</h4>
         </div>

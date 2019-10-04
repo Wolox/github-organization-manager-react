@@ -4,13 +4,12 @@ import { t } from 'i18next';
 import { Field, reduxForm } from 'redux-form';
 
 import InputLabelNew from '~components/InputLabelNew';
-
-import SimpleSpinner from '../../components/SimpleSpinner';
+import SimpleSpinner from '~components/SimpleSpinner';
 
 function AddOwner({ handleSubmit, ownerAdded, data, loading }) {
   return (
     <div className="card">
-      <form className="container" onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit}>
         <div className="card-header text-center">
           <h4 className="card-title">Add owner</h4>
         </div>

@@ -24,18 +24,14 @@ class TeamsContainer extends Component {
         <Menu />
         <div className={`page-header ${styles.pageHeader}`} data-parallax="true" />
         <div className="main main-raised">
-          <div className="profile-content">
-            <div className="container">
-              <div className="row">
-                <div className="col-lg-6 col-md-10 ml-auto mr-auto">
-                  <TeamCreation
-                    onSubmit={this.handleSubmit}
-                    isError={isError}
-                    loading={loading}
-                    teamCreated={teamCreated}
-                  />
-                </div>
-              </div>
+          <div className="row">
+            <div className="col-md-6 ml-auto mr-auto">
+              <TeamCreation
+                onSubmit={this.handleSubmit}
+                isError={isError}
+                loading={loading}
+                teamCreated={teamCreated}
+              />
             </div>
           </div>
         </div>

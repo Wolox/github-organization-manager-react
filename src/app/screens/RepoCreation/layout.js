@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 import { t } from 'i18next';
 import { Field, reduxForm } from 'redux-form';
 
-import InputLabelNew from '../../components/InputLabelNew';
-import CheckboxNew from '../../components/CheckboxNew';
-import SimpleSpinner from '../../components/SimpleSpinner';
+import InputLabelNew from '~components/InputLabelNew';
+import CheckboxNew from '~components/CheckboxNew';
+import SimpleSpinner from '~components/SimpleSpinner';
 
 import { TECHNOLOGIES } from './constants';
 import styles from './styles.module.scss';
@@ -13,7 +13,7 @@ import styles from './styles.module.scss';
 function RepoCreation({ handleSubmit, repoCreated, loading }) {
   return (
     <div className="card">
-      <form className="container" onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit}>
         <div className="card-header text-center">
           <h4 className="card-title">{t('RepoCreation:createNewRepository')}</h4>
         </div>

@@ -23,22 +23,20 @@ class AddTeamToMemberContainer extends Component {
 
   render() {
     const { memberAdded, loading, data } = this.props;
+    const repos = data.map(team => ({ label: team.name, value: team }));
+
     return (
       <>
         <Header />
         <div className="main main-raised">
-          <div className="profile-content">
-            <div className="container">
-              <div className="row">
-                <div className="col-lg-6 col-md-10 ml-auto mr-auto">
-                  <AddTeamToMember
-                    onSubmit={this.handleSubmit}
-                    memberAdded={memberAdded}
-                    data={data.map(team => ({ label: team.name, value: team }))}
-                    loading={loading}
-                  />
-                </div>
-              </div>
+          <div className="row">
+            <div className="col-10 col-md-6 col-xl-4 m-auto">
+              <AddTeamToMember
+                onSubmit={this.handleSubmit}
+                memberAdded={memberAdded}
+                data={repos}
+                loading={loading}
+              />
             </div>
           </div>
         </div>
