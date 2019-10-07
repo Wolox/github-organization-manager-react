@@ -3,13 +3,13 @@ import PropTypes from 'prop-types';
 import { t } from 'i18next';
 import { Field, reduxForm } from 'redux-form';
 
-import InputLabelNew from '../../components/InputLabelNew';
-import SimpleSpinner from '../../components/SimpleSpinner';
+import InputLabelNew from '~components/InputLabelNew';
+import SimpleSpinner from '~components/SimpleSpinner';
 
 function AddTeamToMember({ handleSubmit, memberAdded, data, handleOnChange, loading }) {
   return (
     <div className="card">
-      <form className="container" onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit}>
         <div className="card-header text-center">
           <h4 className="card-title">Add a member to team</h4>
         </div>
@@ -40,6 +40,7 @@ function AddTeamToMember({ handleSubmit, memberAdded, data, handleOnChange, load
               onChange={handleOnChange}
               className="form-control selectpicker"
             >
+              <option value="" />
               {data.map(opt => (
                 <option key={opt.value.id} value={opt.value.id}>
                   {opt.label}

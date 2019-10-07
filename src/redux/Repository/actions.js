@@ -38,7 +38,7 @@ const createRepository = values => ({
     }),
     withPostFailure(dispatch => {
       dispatch(repoCreated(false));
-      throw new SubmissionError({ _error: 'Error...' });
+      throw new SubmissionError({ _error: 'Hubo un error en la creación del repositorio' });
     })
   ]
 });
@@ -54,7 +54,7 @@ const addMemberToOrg = values => ({
     }),
     withPostFailure(dispatch => {
       dispatch(memberAdded(false));
-      throw new SubmissionError({ _error: 'Error...' });
+      throw new SubmissionError({ _error: 'Hubo un error al agregar el miembro al repositorio' });
     })
   ]
 });
@@ -70,7 +70,7 @@ const addOwnerToRepository = values => ({
     }),
     withPostFailure(dispatch => {
       dispatch(codeOwnerAdded(false));
-      throw new SubmissionError({ _error: 'Error...' });
+      throw new SubmissionError({ _error: 'Hubo un error al agregar un Code Owner' });
     })
   ]
 });

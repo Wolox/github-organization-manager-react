@@ -9,7 +9,7 @@ import SimpleSpinner from '~components/SimpleSpinner';
 function AddOwner({ handleSubmit, ownerAdded, data, loading }) {
   return (
     <div className="card">
-      <form className="container" onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit}>
         <div className="card-header text-center">
           <h4 className="card-title">Add owner</h4>
         </div>
@@ -35,7 +35,7 @@ function AddOwner({ handleSubmit, ownerAdded, data, loading }) {
               <i className="material-icons">list</i>
             </span>
             <Field name="repository" component="select" className="form-control selectpicker">
-              <option />
+              <option value="" />
               {data.map(opt => (
                 <option key={opt.label} value={opt.label}>
                   {opt.label}

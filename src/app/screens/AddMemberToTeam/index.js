@@ -6,7 +6,6 @@ import teamActions from '~redux/Team/actions';
 import Header from '~components/Header';
 
 import AddTeamToMember from './layout';
-import { TECHNOLOGIES } from './constants';
 
 class AddTeamToMemberContainer extends Component {
   componentDidMount() {
@@ -23,22 +22,20 @@ class AddTeamToMemberContainer extends Component {
 
   render() {
     const { memberAdded, loading, data } = this.props;
+    const repos = data.map(team => ({ label: team.name, value: team }));
+
     return (
       <>
         <Header />
         <div className="main main-raised">
-          <div className="profile-content">
-            <div className="container">
-              <div className="row">
-                <div className="col-lg-6 col-md-10 ml-auto mr-auto">
-                  <AddTeamToMember
-                    onSubmit={this.handleSubmit}
-                    memberAdded={memberAdded}
-                    data={data.map(team => ({ label: team.name, value: team }))}
-                    loading={loading}
-                  />
-                </div>
-              </div>
+          <div className="row">
+            <div className="col-10 col-md-6 col-xl-4 m-auto">
+              <AddTeamToMember
+                onSubmit={this.handleSubmit}
+                memberAdded={memberAdded}
+                data={repos}
+                loading={loading}
+              />
             </div>
           </div>
         </div>
@@ -69,15 +66,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  addMembersToTeam: values => {
-    const techs = [];
-    Object.keys(TECHNOLOGIES).forEach(tech => {
-      if (values[tech]) {
-        techs.push(tech);
-      }
-    });
-    return dispatch(teamActions.addMembersToTeam({ ...values, techs }));
-  },
+  addMembersToTeam: values => dispatch(teamActions.addMembersToTeam(values)),
   getTeams: () => dispatch(teamActions.getTeams()),
   resetStateMemberAdded: () => dispatch(teamActions.memberAdded(false))
 });

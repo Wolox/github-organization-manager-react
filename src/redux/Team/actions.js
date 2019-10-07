@@ -32,7 +32,7 @@ const addMembersToTeam = values => ({
     }),
     withPostFailure(dispatch => {
       dispatch(memberAdded(false));
-      throw new SubmissionError({ _error: 'Error...' });
+      throw new SubmissionError({ _error: 'Hubo un error al agregar el miembro.' });
     })
   ]
 });
@@ -48,7 +48,7 @@ const createTeam = values => ({
     }),
     withPostFailure(dispatch => {
       dispatch(teamCreated(false));
-      throw new SubmissionError({ _error: 'Error...' });
+      throw new SubmissionError({ _error: 'Hubo un error en la creación del team' });
     })
   ]
 });

@@ -23,17 +23,13 @@ class RepoCreationContainer extends Component {
       <>
         <Header />
         <div className="main main-raised">
-          <div className="profile-content">
-            <div className="container">
-              <div className="row">
-                <div className="col-lg-6 col-md-10 ml-auto mr-auto">
-                  <RepoCreation
-                    onSubmit={this.handleSubmit}
-                    repoCreated={repoCreated}
-                    loading={repoCreatedLoading}
-                  />
-                </div>
-              </div>
+          <div className="row">
+            <div className="col-10 col-md-6 col-xl-4 m-auto">
+              <RepoCreation
+                onSubmit={this.handleSubmit}
+                repoCreated={repoCreated}
+                loading={repoCreatedLoading}
+              />
             </div>
           </div>
         </div>
