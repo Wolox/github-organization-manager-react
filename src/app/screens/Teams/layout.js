@@ -4,6 +4,7 @@ import { Field, reduxForm } from 'redux-form';
 
 import InputLabelNew from '~components/InputLabelNew';
 import SimpleSpinner from '~components/SimpleSpinner';
+import AlertInfo from '~components/AlertInfo';
 
 import styles from './styles.module.scss';
 import { FIELDS } from './constants';
@@ -55,14 +56,7 @@ function TeamCreation({ handleSubmit, isError, loading, teamCreated }) {
             </div>
           )}
           {loading && <SimpleSpinner className={styles.spinner} />}
-          {teamCreated && !loading && (
-            <div className="alert alert-success">
-              <div className="alert-icon">
-                <i className="material-icons">check</i>
-              </div>
-              ¡El equipo se creó con éxito!
-            </div>
-          )}
+          {teamCreated && !loading && <AlertInfo />}
         </div>
       </form>
     </div>

@@ -6,6 +6,7 @@ import { Field, reduxForm } from 'redux-form';
 import InputLabelNew from '~components/InputLabelNew';
 import CheckboxNew from '~components/CheckboxNew';
 import SimpleSpinner from '~components/SimpleSpinner';
+import AlertInfo from '~components/AlertInfo';
 
 import { TECHNOLOGIES } from './constants';
 import styles from './styles.module.scss';
@@ -62,14 +63,7 @@ function RepoCreation({ handleSubmit, repoCreated, loading }) {
             {t('RepoCreation:create')}
           </button>
           {loading && <SimpleSpinner className={styles.spinner} />}
-          {repoCreated && !loading && (
-            <div className="alert alert-success">
-              <div className="alert-icon">
-                <i className="material-icons">check</i>
-              </div>
-              ¡El/los repositorios se crearon con éxito!
-            </div>
-          )}
+          {repoCreated && !loading && <AlertInfo />}
         </div>
       </form>
     </div>

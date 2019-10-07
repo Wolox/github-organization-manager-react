@@ -4,6 +4,7 @@ import { Field, reduxForm } from 'redux-form';
 
 import InputLabelNew from '~components/InputLabelNew';
 import SimpleSpinner from '~components/SimpleSpinner';
+import AlertInfo from '~components/AlertInfo';
 
 function AddMember({ handleSubmit, memberAdded, loading }) {
   return (
@@ -34,14 +35,7 @@ function AddMember({ handleSubmit, memberAdded, loading }) {
           <button type="submit" className="btn btn-primary btn-wd btn-lg">
             Add member
           </button>
-          {memberAdded && !loading && (
-            <div className="alert alert-success">
-              <div className="alert-icon">
-                <i className="material-icons">check</i>
-              </div>
-              ¡El miembro se agregó!
-            </div>
-          )}
+          {memberAdded && !loading && <AlertInfo />}
           {loading && <SimpleSpinner />}
         </div>
       </form>

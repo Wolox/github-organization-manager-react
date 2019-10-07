@@ -5,6 +5,7 @@ import { Field, reduxForm } from 'redux-form';
 
 import InputLabelNew from '~components/InputLabelNew';
 import SimpleSpinner from '~components/SimpleSpinner';
+import AlertInfo from 'app/components/AlertInfo';
 
 function AddOwner({ handleSubmit, ownerAdded, data, loading }) {
   return (
@@ -48,14 +49,7 @@ function AddOwner({ handleSubmit, ownerAdded, data, loading }) {
           <button type="submit" className="btn btn-primary btn-wd btn-lg">
             {t('AddOwner:add')}
           </button>
-          {ownerAdded && !loading && (
-            <div className="alert alert-success">
-              <div className="alert-icon">
-                <i className="material-icons">check</i>
-              </div>
-              ¡Los code owner se agregaron!
-            </div>
-          )}
+          {ownerAdded && !loading && <AlertInfo />}
           {loading && <SimpleSpinner />}
         </div>
       </form>
