@@ -56,7 +56,7 @@ function TeamCreation({ handleSubmit, isError, loading, teamCreated }) {
             </div>
           )}
           {loading && <SimpleSpinner className={styles.spinner} />}
-          {teamCreated && !loading && <AlertInfo />}
+          {teamCreated && !loading && <AlertInfo message="¡El equipo se creó con éxito!" />}
         </div>
       </form>
     </div>

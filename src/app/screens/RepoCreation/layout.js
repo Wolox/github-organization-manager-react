@@ -63,7 +63,7 @@ function RepoCreation({ handleSubmit, repoCreated, loading }) {
             {t('RepoCreation:create')}
           </button>
           {loading && <SimpleSpinner className={styles.spinner} />}
-          {repoCreated && !loading && <AlertInfo />}
+          {repoCreated && !loading && <AlertInfo message="¡El/los repositorios se crearon con éxito!" />}
         </div>
       </form>
     </div>

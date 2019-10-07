@@ -21,7 +21,7 @@ AlertInfo.propTypes = {
 
 AlertInfo.defaultProps = {
   icon: 'check',
-  message: '¡Los miembros se agregaron!'
+  message: '¡El registro se ha guardado con exito!'
 };
 
 export default AlertInfo;

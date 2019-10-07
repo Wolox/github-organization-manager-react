@@ -54,7 +54,7 @@ function AddTeamToMember({ handleSubmit, memberAdded, data, handleOnChange, load
           <button type="submit" className="btn btn-primary btn-wd btn-lg">
             {t('AddTeamToMember:add')}
           </button>
-          {memberAdded && !loading && <AlertInfo />}
+          {memberAdded && !loading && <AlertInfo message="¡Los miembros se agregaron!" />}
           {loading && <SimpleSpinner />}
         </div>
       </form>

@@ -35,7 +35,7 @@ function AddMember({ handleSubmit, memberAdded, loading }) {
           <button type="submit" className="btn btn-primary btn-wd btn-lg">
             Add member
           </button>
-          {memberAdded && !loading && <AlertInfo />}
+          {memberAdded && !loading && <AlertInfo message="¡El miembro se agregó!" />}
           {loading && <SimpleSpinner />}
         </div>
       </form>
