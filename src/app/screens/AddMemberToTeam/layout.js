@@ -16,9 +16,7 @@ function AddTeamToMember({ handleSubmit, memberAdded, data, handleOnChange, load
         </div>
         <div className="card-body">
           <div className="input-group">
-            <span className="input-group-text">
-              <i className="material-icons">people</i>
-            </span>
+            <i className="center-icon material-icons">people</i>
             <Field
               inputClassName="form-control"
               className="form-control"
@@ -32,9 +30,7 @@ function AddTeamToMember({ handleSubmit, memberAdded, data, handleOnChange, load
             />
           </div>
           <div className="input-group">
-            <span className="input-group-text">
-              <i className="material-icons">list</i>
-            </span>
+            <i className="center-icon material-icons">list</i>
             <Field
               name="team"
               component="select"

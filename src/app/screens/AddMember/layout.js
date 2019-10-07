@@ -15,9 +15,7 @@ function AddMember({ handleSubmit, memberAdded, loading }) {
         </div>
         <div className="row card-body">
           <div className="input-group">
-            <span className="input-group-text">
-              <i className="material-icons">person_add</i>
-            </span>
+            <i className="center-icon material-icons">person_add</i>
             <Field
               inputClassName="form-control"
               className="form-control"

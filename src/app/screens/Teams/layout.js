@@ -18,9 +18,7 @@ function TeamCreation({ handleSubmit, isError, loading, teamCreated }) {
         </div>
         <div className={`card-body ${styles.cardBody}`}>
           <div className="input-group">
-            <span className="input-group-text">
-              <i className="material-icons">people</i>
-            </span>
+            <i className="center-icon material-icons">people</i>
             <Field
               inputClassName="form-control"
               className="form-control"
@@ -42,13 +40,9 @@ function TeamCreation({ handleSubmit, isError, loading, teamCreated }) {
           {isError && (
             <div className="alert alert-danger">
               <div className="container">
-                <div className="alert-icon">
-                  <i className="material-icons">error_outline</i>
-                </div>
+                <i className="center-icon material-icons">error_outline</i>
                 <button type="button" className="close" data-dismiss="alert" aria-label="Close">
-                  <span aria-hidden="true">
-                    <i className="material-icons">clear</i>
-                  </span>
+                  <i className="center-icon material-icons">clear</i>
                 </button>
                 <b>Error Alert:</b> Damn man! You screwed up the server this time. You should find a good
                 excuse for your Boss...

@@ -6,9 +6,7 @@ import styles from './styles.module.scss';
 function AlertInfo({ icon, message }) {
   return (
     <div className={`${styles.alert} alert alert-success`}>
-      <div className="alert-icon">
-        <i className="material-icons">{icon}</i>
-      </div>
+      <i className="center-icon material-icons">{icon}</i>
       {message}
     </div>
   );

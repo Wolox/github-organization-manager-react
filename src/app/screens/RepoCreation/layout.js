@@ -21,9 +21,7 @@ function RepoCreation({ handleSubmit, repoCreated, loading }) {
         <div className="card-body">
           <p>{t('RepoCreation:createNewRepositoryAdvise')}</p>
           <div className={`row ${styles.row} input-group`}>
-            <span className="input-group-text">
-              <i className="material-icons">create_new_folder</i>
-            </span>
+            <i className="center-icon material-icons">create_new_folder</i>
             <Field
               inputClassName="form-control"
               className="form-control"
@@ -37,9 +35,7 @@ function RepoCreation({ handleSubmit, repoCreated, loading }) {
             />
           </div>
           <div className={`row ${styles.row} input-group`}>
-            <span className="input-group-text">
-              <i className="material-icons">lock</i>
-            </span>
+            <i className="center-icon material-icons">lock</i>
             <Field name="isPrivate" component={CheckboxNew} label={t('RepoCreation:private')} />
           </div>
           <div className={`row ${styles.row}`}>
