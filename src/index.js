@@ -3,11 +3,9 @@ import ReactDOM from 'react-dom';
 import { AppContainer } from 'react-hot-loader';
 
 import history from '~utils/history';
-
-import './scss/application.scss';
-
 import '~config/i18n';
 
+import './scss/application.scss';
 import { register } from './serviceWorker';
 import App from './app';
 import config from './auth_config.json';

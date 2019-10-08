@@ -28,15 +28,13 @@ class AddTeamToMemberContainer extends Component {
       <>
         <Header />
         <div className="main main-raised">
-          <div className="row">
-            <div className="col-10 col-md-6 col-xl-4 m-auto">
-              <AddTeamToMember
-                onSubmit={this.handleSubmit}
-                memberAdded={memberAdded}
-                data={repos}
-                loading={loading}
-              />
-            </div>
+          <div className="row col-10 col-md-6 col-xl-4 m-auto">
+            <AddTeamToMember
+              onSubmit={this.handleSubmit}
+              memberAdded={memberAdded}
+              data={repos}
+              loading={loading}
+            />
           </div>
         </div>
       </>

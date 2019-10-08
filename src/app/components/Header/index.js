@@ -6,10 +6,9 @@ import styles from './styles.module.scss';
 
 function Header() {
   return (
-    <>
+    <div className={`page-header ${styles.pageHeader}`} data-parallax="true">
       <Menu />
-      <div className={`page-header ${styles.pageHeader}`} data-parallax="true" />
-    </>
+    </div>
   );
 }
 

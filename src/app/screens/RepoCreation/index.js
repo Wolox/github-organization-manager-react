@@ -23,14 +23,12 @@ class RepoCreationContainer extends Component {
       <>
         <Header />
         <div className="main main-raised">
-          <div className="row">
-            <div className="col-10 col-md-6 col-xl-4 m-auto">
-              <RepoCreation
-                onSubmit={this.handleSubmit}
-                repoCreated={repoCreated}
-                loading={repoCreatedLoading}
-              />
-            </div>
+          <div className="row col-10 col-md-6 col-xl-4 m-auto">
+            <RepoCreation
+              onSubmit={this.handleSubmit}
+              repoCreated={repoCreated}
+              loading={repoCreatedLoading}
+            />
           </div>
         </div>
       </>

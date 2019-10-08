@@ -3,9 +3,8 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
 import teamActions from '~redux/Team/actions';
-import Menu from '~components/Menu';
+import Header from '~components/Header';
 
-import styles from './styles.module.scss';
 import TeamCreation from './layout';
 
 class TeamsContainer extends Component {
@@ -21,18 +20,15 @@ class TeamsContainer extends Component {
     const { isError, loading, teamCreated } = this.props;
     return (
       <>
-        <Menu />
-        <div className={`page-header ${styles.pageHeader}`} data-parallax="true" />
+        <Header />
         <div className="main main-raised">
-          <div className="row">
-            <div className="col-md-6 ml-auto mr-auto">
-              <TeamCreation
-                onSubmit={this.handleSubmit}
-                isError={isError}
-                loading={loading}
-                teamCreated={teamCreated}
-              />
-            </div>
+          <div className="row col-10 col-md-6 col-xl-4 m-auto">
+            <TeamCreation
+              onSubmit={this.handleSubmit}
+              isError={isError}
+              loading={loading}
+              teamCreated={teamCreated}
+            />
           </div>
         </div>
       </>

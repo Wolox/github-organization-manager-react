@@ -8,36 +8,34 @@ import AlertInfo from '~components/AlertInfo';
 
 function AddMember({ handleSubmit, memberAdded, loading }) {
   return (
-    <div className="card">
-      <form onSubmit={handleSubmit}>
-        <div className="card-header text-center">
-          <h4 className="card-title">Add user to Wolox Organization</h4>
+    <form className="card" onSubmit={handleSubmit}>
+      <div className="card-header text-center">
+        <h4 className="card-title">Add user to Wolox Organization</h4>
+      </div>
+      <div className="row card-body">
+        <div className="input-group">
+          <i className="center-icon material-icons">person_add</i>
+          <Field
+            inputClassName="form-control"
+            className="form-control"
+            name="username"
+            component={InputLabelNew}
+            dataFor="username"
+            inputId="username"
+            inputType="text"
+            label="GitHub User"
+            placeholder="GitHub User"
+          />
         </div>
-        <div className="row card-body">
-          <div className="input-group">
-            <i className="center-icon material-icons">person_add</i>
-            <Field
-              inputClassName="form-control"
-              className="form-control"
-              name="username"
-              component={InputLabelNew}
-              dataFor="username"
-              inputId="username"
-              inputType="text"
-              label="GitHub User"
-              placeholder="GitHub User"
-            />
-          </div>
-        </div>
-        <div className="footer text-center">
-          <button type="submit" className="btn btn-primary btn-wd btn-lg">
-            Add member
-          </button>
-          {memberAdded && !loading && <AlertInfo message="¡El miembro se agregó!" />}
-          {loading && <SimpleSpinner />}
-        </div>
-      </form>
-    </div>
+      </div>
+      <div className="footer text-center">
+        <button type="submit" className="btn btn-primary btn-wd btn-lg">
+          Add member
+        </button>
+        {memberAdded && !loading && <AlertInfo message="¡El miembro se agregó!" />}
+        {loading && <SimpleSpinner />}
+      </div>
+    </form>
   );
 }
 

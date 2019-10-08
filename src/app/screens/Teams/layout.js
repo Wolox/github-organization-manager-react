@@ -6,54 +6,51 @@ import InputLabelNew from '~components/InputLabelNew';
 import SimpleSpinner from '~components/SimpleSpinner';
 import AlertInfo from '~components/AlertInfo';
 
-import styles from './styles.module.scss';
 import { FIELDS } from './constants';
 
 function TeamCreation({ handleSubmit, isError, loading, teamCreated }) {
   return (
-    <div className={`card ${styles.card}`}>
-      <form onSubmit={handleSubmit}>
-        <div className="card-header text-center">
-          <h4 className="card-title">Create a new team</h4>
+    <form className="card" onSubmit={handleSubmit}>
+      <div className="card-header text-center">
+        <h4 className="card-title">Create a new team</h4>
+      </div>
+      <div className="card-body">
+        <div className="input-group">
+          <i className="center-icon material-icons">people</i>
+          <Field
+            inputClassName="form-control"
+            className="form-control"
+            name={FIELDS.name}
+            component={InputLabelNew}
+            dataFor={FIELDS.name}
+            inputId={FIELDS.name}
+            inputType="text"
+            label="Team name"
+            placeholder="Team Name"
+          />
         </div>
-        <div className={`card-body ${styles.cardBody}`}>
-          <div className="input-group">
-            <i className="center-icon material-icons">people</i>
-            <Field
-              inputClassName="form-control"
-              className="form-control"
-              name={FIELDS.name}
-              component={InputLabelNew}
-              dataFor={FIELDS.name}
-              inputId={FIELDS.name}
-              inputType="text"
-              label="Team name"
-              placeholder="Team Name"
-            />
-          </div>
-        </div>
-        <div className={`footer text-center ${styles.footer}`}>
-          <button type="submit" className="btn btn-primary btn-wd btn-lg">
-            Create
-          </button>
+      </div>
+      <div className="footer text-center">
+        <button type="submit" className="btn btn-primary btn-wd btn-lg">
+          Create
+        </button>
 
-          {isError && (
-            <div className="alert alert-danger">
-              <div className="container">
-                <i className="center-icon material-icons">error_outline</i>
-                <button type="button" className="close" data-dismiss="alert" aria-label="Close">
-                  <i className="center-icon material-icons">clear</i>
-                </button>
-                <b>Error Alert:</b> Damn man! You screwed up the server this time. You should find a good
-                excuse for your Boss...
-              </div>
+        {isError && (
+          <div className="alert alert-danger">
+            <div className="container">
+              <i className="center-icon material-icons">error_outline</i>
+              <button type="button" className="close" data-dismiss="alert" aria-label="Close">
+                <i className="center-icon material-icons">clear</i>
+              </button>
+              <b>Error Alert:</b> Damn man! You screwed up the server this time. You should find a good excuse
+              for your Boss...
             </div>
-          )}
-          {loading && <SimpleSpinner className={styles.spinner} />}
-          {teamCreated && !loading && <AlertInfo message="¡El equipo se creó con éxito!" />}
-        </div>
-      </form>
-    </div>
+          </div>
+        )}
+        {loading && <SimpleSpinner />}
+        {teamCreated && !loading && <AlertInfo message="¡El equipo se creó con éxito!" />}
+      </div>
+    </form>
   );
 }
 
