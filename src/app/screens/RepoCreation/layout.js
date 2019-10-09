@@ -11,7 +11,7 @@ import AlertInfo from '~components/AlertInfo';
 import { TECHNOLOGIES } from './constants';
 import styles from './styles.module.scss';
 
-function RepoCreation({ handleSubmit, repoCreated, loading }) {
+function RepoCreation({ handleSubmit, loading, error, submitSucceeded, submitFailed }) {
   return (
     <form className="card" onSubmit={handleSubmit}>
       <div className="card-header text-center">
@@ -58,7 +58,8 @@ function RepoCreation({ handleSubmit, repoCreated, loading }) {
           {t('RepoCreation:create')}
         </button>
         {loading && <SimpleSpinner />}
-        {repoCreated && !loading && <AlertInfo message="¡El/los repositorios se crearon con éxito!" />}
+        {!loading && submitSucceeded && <AlertInfo message="¡El/los repositorios se crearon con éxito!" />}
+        {!loading && submitFailed && <AlertInfo icon="error_outline" type="danger" message={error} />}
       </div>
     </form>
   );
@@ -67,7 +68,9 @@ function RepoCreation({ handleSubmit, repoCreated, loading }) {
 RepoCreation.propTypes = {
   handleSubmit: PropTypes.func.isRequired,
   loading: PropTypes.bool.isRequired,
-  repoCreated: PropTypes.bool.isRequired
+  error: PropTypes.string,
+  submitFailed: PropTypes.bool,
+  submitSucceeded: PropTypes.bool
 };
 
 export default reduxForm({

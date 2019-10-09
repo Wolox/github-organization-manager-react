@@ -1,31 +1,10 @@
-import { createTypes, completeTypes, withPostSuccess, withPostFailure } from 'redux-recompose';
+import { createTypes, completeTypes, withPostFailure } from 'redux-recompose';
 import { SubmissionError } from 'redux-form';
 
 import * as RepositoryService from '~services/RepositoryService';
 
-const types = completeTypes(
-  ['REPO_CREATION', 'ADD_MEMBER', 'ADD_CODE_OWNER', 'REQUEST_REPOS'],
-  ['REPO_CREATED', 'MEMBER_ADDED', 'CODE_OWNER_ADDED']
-);
+const types = completeTypes(['REPO_CREATION', 'ADD_MEMBER', 'ADD_CODE_OWNER', 'REQUEST_REPOS']);
 export const actions = createTypes(types, '@@REPOSITORY');
-
-const repoCreated = value => ({
-  type: actions.REPO_CREATED,
-  target: 'repoCreated',
-  payload: value
-});
-
-const memberAdded = value => ({
-  type: actions.MEMBER_ADDED,
-  target: 'memberAdded',
-  payload: value
-});
-
-const codeOwnerAdded = value => ({
-  type: actions.CODE_OWNER_ADDED,
-  target: 'codeOwnerAdded',
-  payload: value
-});
 
 const createRepository = values => ({
   type: actions.REPO_CREATION,
@@ -33,11 +12,7 @@ const createRepository = values => ({
   service: RepositoryService.createRepository,
   payload: values,
   injections: [
-    withPostSuccess(dispatch => {
-      dispatch(repoCreated(true));
-    }),
-    withPostFailure(dispatch => {
-      dispatch(repoCreated(false));
+    withPostFailure(() => {
       throw new SubmissionError({ _error: 'Hubo un error en la creación del repositorio' });
     })
   ]
@@ -49,11 +24,7 @@ const addMemberToOrg = values => ({
   service: RepositoryService.addMemberToOrg,
   payload: values,
   injections: [
-    withPostSuccess(dispatch => {
-      dispatch(memberAdded(true));
-    }),
-    withPostFailure(dispatch => {
-      dispatch(memberAdded(false));
+    withPostFailure(() => {
       throw new SubmissionError({ _error: 'Hubo un error al agregar el miembro al repositorio' });
     })
   ]
@@ -65,11 +36,7 @@ const addOwnerToRepository = values => ({
   service: RepositoryService.addOwnerToRepo,
   payload: values,
   injections: [
-    withPostSuccess(dispatch => {
-      dispatch(codeOwnerAdded(true));
-    }),
-    withPostFailure(dispatch => {
-      dispatch(codeOwnerAdded(false));
+    withPostFailure(() => {
       throw new SubmissionError({ _error: 'Hubo un error al agregar un Code Owner' });
     })
   ]
@@ -84,9 +51,6 @@ const getRepositories = () => ({
 export default {
   createRepository,
   getRepositories,
-  repoCreated,
   addMemberToOrg,
-  memberAdded,
-  addOwnerToRepository,
-  codeOwnerAdded
+  addOwnerToRepository
 };

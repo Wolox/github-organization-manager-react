@@ -6,7 +6,7 @@ import InputLabelNew from '~components/InputLabelNew';
 import SimpleSpinner from '~components/SimpleSpinner';
 import AlertInfo from '~components/AlertInfo';
 
-function AddMember({ handleSubmit, memberAdded, loading }) {
+function AddMember({ handleSubmit, error, loading, submitSucceeded, submitFailed }) {
   return (
     <form className="card" onSubmit={handleSubmit}>
       <div className="card-header text-center">
@@ -32,8 +32,9 @@ function AddMember({ handleSubmit, memberAdded, loading }) {
         <button type="submit" className="btn btn-primary btn-wd btn-lg">
           Add member
         </button>
-        {memberAdded && !loading && <AlertInfo message="¡El miembro se agregó!" />}
         {loading && <SimpleSpinner />}
+        {!loading && submitSucceeded && <AlertInfo message="¡El miembro se agregó!" />}
+        {!loading && submitFailed && <AlertInfo icon="error_outline" type="danger" message={error} />}
       </div>
     </form>
   );
@@ -41,8 +42,10 @@ function AddMember({ handleSubmit, memberAdded, loading }) {
 
 AddMember.propTypes = {
   handleSubmit: PropTypes.func.isRequired,
+  error: PropTypes.string,
   loading: PropTypes.bool,
-  memberAdded: PropTypes.bool
+  submitFailed: PropTypes.bool,
+  submitSucceeded: PropTypes.bool
 };
 
 export default reduxForm({

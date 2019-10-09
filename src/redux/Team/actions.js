@@ -1,25 +1,10 @@
-import { createTypes, completeTypes, withPostSuccess, withPostFailure } from 'redux-recompose';
+import { createTypes, completeTypes, withPostFailure } from 'redux-recompose';
 import { SubmissionError } from 'redux-form';
 
 import * as TeamService from '~services/TeamServices';
 
-const types = completeTypes(
-  ['TEAM_CREATION', 'MEMBER_ADDITION', 'REQUEST_TEAMS'],
-  ['TEAM_CREATED', 'MEMBER_ADDED']
-);
+const types = completeTypes(['TEAM_CREATION', 'MEMBER_ADDITION', 'REQUEST_TEAMS']);
 export const actions = createTypes(types, '@@TEAM');
-
-const memberAdded = value => ({
-  type: actions.MEMBER_ADDED,
-  target: 'memberAdded',
-  payload: value
-});
-
-const teamCreated = value => ({
-  type: actions.TEAM_CREATED,
-  target: 'teamCreated',
-  payload: value
-});
 
 const addMembersToTeam = values => ({
   type: actions.MEMBER_ADDITION,
@@ -27,11 +12,7 @@ const addMembersToTeam = values => ({
   service: TeamService.addMembersToTeam,
   payload: values,
   injections: [
-    withPostSuccess(dispatch => {
-      dispatch(memberAdded(true));
-    }),
-    withPostFailure(dispatch => {
-      dispatch(memberAdded(false));
+    withPostFailure(() => {
       throw new SubmissionError({ _error: 'Hubo un error al agregar el miembro.' });
     })
   ]
@@ -43,11 +24,7 @@ const createTeam = values => ({
   service: TeamService.createTeam,
   payload: values,
   injections: [
-    withPostSuccess(dispatch => {
-      dispatch(teamCreated(true));
-    }),
-    withPostFailure(dispatch => {
-      dispatch(teamCreated(false));
+    withPostFailure(() => {
       throw new SubmissionError({ _error: 'Hubo un error en la creación del team' });
     })
   ]
@@ -63,7 +40,5 @@ const getTeams = () => ({
 export default {
   getTeams,
   addMembersToTeam,
-  createTeam,
-  memberAdded,
-  teamCreated
+  createTeam
 };

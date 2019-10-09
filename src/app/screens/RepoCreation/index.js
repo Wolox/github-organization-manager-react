@@ -9,26 +9,16 @@ import { TECHNOLOGIES } from './constants';
 import RepoCreation from './layout';
 
 class RepoCreationContainer extends Component {
-  handleSubmit = values => {
-    this.props.createRepo(values);
-  };
-
-  componentWillUnmount() {
-    this.props.resetStateRepoCreated();
-  }
+  handleSubmit = values => this.props.createRepo(values);
 
   render() {
-    const { repoCreated, repoCreatedLoading } = this.props;
+    const { repoCreationLoading } = this.props;
     return (
       <>
         <Header />
         <div className="main main-raised">
           <div className="row col-10 col-md-6 col-xl-4 m-auto">
-            <RepoCreation
-              onSubmit={this.handleSubmit}
-              repoCreated={repoCreated}
-              loading={repoCreatedLoading}
-            />
+            <RepoCreation onSubmit={this.handleSubmit} loading={repoCreationLoading} />
           </div>
         </div>
       </>
@@ -38,32 +28,22 @@ class RepoCreationContainer extends Component {
 
 RepoCreationContainer.propTypes = {
   createRepo: PropTypes.func.isRequired,
-  repoCreated: PropTypes.bool,
-  repoCreatedLoading: PropTypes.bool,
-  resetStateRepoCreated: PropTypes.func
+  repoCreationLoading: PropTypes.bool
 };
 
 RepoCreationContainer.defaultProps = {
-  repoCreated: false,
-  repoCreatedLoading: false
+  repoCreationLoading: false
 };
 
 const mapStateToProps = state => ({
-  repoCreated: state.repository.repoCreated,
-  repoCreatedLoading: state.repository.repoCreationLoading
+  repoCreationLoading: state.repository.repoCreationLoading
 });
 
 const mapDispatchToProps = dispatch => ({
   createRepo: values => {
-    const techs = [];
-    Object.keys(TECHNOLOGIES).forEach(tech => {
-      if (values[tech]) {
-        techs.push(tech);
-      }
-    });
-    dispatch(repositoryActions.createRepository({ ...values, techs }));
-  },
-  resetStateRepoCreated: () => dispatch(repositoryActions.repoCreated(false))
+    const techs = Object.keys(TECHNOLOGIES).filter(tech => values[tech]);
+    return dispatch(repositoryActions.createRepository({ ...values, techs }));
+  }
 });
 
 export default connect(

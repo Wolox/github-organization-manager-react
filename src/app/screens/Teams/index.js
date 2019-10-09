@@ -8,27 +8,16 @@ import Header from '~components/Header';
 import TeamCreation from './layout';
 
 class TeamsContainer extends Component {
-  handleSubmit = values => {
-    this.props.createTeam(values);
-  };
-
-  componentWillUnmount() {
-    this.props.resetStateTeamCreated();
-  }
+  handleSubmit = values => this.props.createTeam(values);
 
   render() {
-    const { isError, loading, teamCreated } = this.props;
+    const { loading } = this.props;
     return (
       <>
         <Header />
         <div className="main main-raised">
           <div className="row col-10 col-md-6 col-xl-4 m-auto">
-            <TeamCreation
-              onSubmit={this.handleSubmit}
-              isError={isError}
-              loading={loading}
-              teamCreated={teamCreated}
-            />
+            <TeamCreation onSubmit={this.handleSubmit} loading={loading} />
           </div>
         </div>
       </>
@@ -38,26 +27,19 @@ class TeamsContainer extends Component {
 
 TeamsContainer.propTypes = {
   createTeam: PropTypes.func,
-  isError: PropTypes.bool,
-  loading: PropTypes.bool,
-  resetStateTeamCreated: PropTypes.func,
-  teamCreated: PropTypes.bool
+  loading: PropTypes.bool
 };
 
 TeamsContainer.defaultProps = {
-  loading: false,
-  teamCreated: false
+  loading: false
 };
 
 const mapStateToProps = state => ({
-  isError: state.team.creationTeamError,
-  loading: state.team.creationTeamLoading,
-  teamCreated: state.team.teamCreated
+  loading: state.team.creationTeamLoading
 });
 
 const mapDispatchToProps = dispatch => ({
-  createTeam: values => dispatch(teamActions.createTeam(values)),
-  resetStateTeamCreated: () => dispatch(teamActions.teamCreated(false))
+  createTeam: values => dispatch(teamActions.createTeam(values))
 });
 
 export default connect(

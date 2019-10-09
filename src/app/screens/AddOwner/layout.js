@@ -7,7 +7,7 @@ import InputLabelNew from '~components/InputLabelNew';
 import SimpleSpinner from '~components/SimpleSpinner';
 import AlertInfo from '~components/AlertInfo';
 
-function AddOwner({ handleSubmit, ownerAdded, data, loading }) {
+function AddOwner({ handleSubmit, data, error, loading, submitSucceeded, submitFailed }) {
   return (
     <form className="card" onSubmit={handleSubmit}>
       <div className="card-header text-center">
@@ -44,8 +44,9 @@ function AddOwner({ handleSubmit, ownerAdded, data, loading }) {
         <button type="submit" className="btn btn-primary btn-wd btn-lg">
           {t('AddOwner:add')}
         </button>
-        {ownerAdded && !loading && <AlertInfo message="¡Los code owner se agregaron!" />}
         {loading && <SimpleSpinner />}
+        {!loading && submitSucceeded && <AlertInfo message="¡Los code owner se agregaron!" />}
+        {!loading && submitFailed && <AlertInfo icon="error_outline" type="danger" message={error} />}
       </div>
     </form>
   );
@@ -53,9 +54,11 @@ function AddOwner({ handleSubmit, ownerAdded, data, loading }) {
 
 AddOwner.propTypes = {
   handleSubmit: PropTypes.func.isRequired,
-  ownerAdded: PropTypes.bool.isRequired,
   data: PropTypes.arrayOf(PropTypes.any),
-  loading: PropTypes.bool
+  error: PropTypes.string,
+  loading: PropTypes.bool,
+  submitFailed: PropTypes.bool,
+  submitSucceeded: PropTypes.bool
 };
 
 export default reduxForm({

@@ -7,7 +7,7 @@ import InputLabelNew from '~components/InputLabelNew';
 import SimpleSpinner from '~components/SimpleSpinner';
 import AlertInfo from '~components/AlertInfo';
 
-function AddTeamToMember({ handleSubmit, memberAdded, data, handleOnChange, loading }) {
+function AddTeamToMember({ handleSubmit, data, error, loading, submitSucceeded, submitFailed }) {
   return (
     <form className="card" onSubmit={handleSubmit}>
       <div className="card-header text-center">
@@ -30,12 +30,7 @@ function AddTeamToMember({ handleSubmit, memberAdded, data, handleOnChange, load
         </div>
         <div className="input-group">
           <i className="center-icon material-icons">list</i>
-          <Field
-            name="team"
-            component="select"
-            onChange={handleOnChange}
-            className="form-control selectpicker"
-          >
+          <Field name="team" component="select" className="form-control selectpicker">
             <option value="" />
             {data.map(opt => (
               <option key={opt.value.id} value={opt.value.id}>
@@ -49,8 +44,9 @@ function AddTeamToMember({ handleSubmit, memberAdded, data, handleOnChange, load
         <button type="submit" className="btn btn-primary btn-wd btn-lg">
           {t('AddTeamToMember:add')}
         </button>
-        {memberAdded && !loading && <AlertInfo message="¡Los miembros se agregaron!" />}
         {loading && <SimpleSpinner />}
+        {!loading && submitSucceeded && <AlertInfo message="¡Los miembros se agregaron!" />}
+        {!loading && submitFailed && <AlertInfo icon="error_outline" type="danger" message={error} />}
       </div>
     </form>
   );
@@ -59,9 +55,10 @@ function AddTeamToMember({ handleSubmit, memberAdded, data, handleOnChange, load
 AddTeamToMember.propTypes = {
   handleSubmit: PropTypes.func.isRequired,
   loading: PropTypes.bool.isRequired,
-  memberAdded: PropTypes.bool.isRequired,
   data: PropTypes.arrayOf(PropTypes.any),
-  handleOnChange: PropTypes.func
+  error: PropTypes.string,
+  submitFailed: PropTypes.bool,
+  submitSucceeded: PropTypes.bool
 };
 
 export default reduxForm({

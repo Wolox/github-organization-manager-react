@@ -8,22 +8,16 @@ import Header from '~components/Header';
 import AddMember from './layout';
 
 class AddMemberContainer extends Component {
-  handleSubmit = values => {
-    this.props.addMember(values);
-  };
-
-  componentWillUnmount() {
-    this.props.resetStateMemberAdded();
-  }
+  handleSubmit = values => this.props.addMember(values);
 
   render() {
-    const { memberAdded, loading } = this.props;
+    const { loading } = this.props;
     return (
       <>
         <Header />
         <div className="main main-raised">
           <div className="row col-10 col-md-6 col-xl-4 m-auto">
-            <AddMember onSubmit={this.handleSubmit} memberAdded={memberAdded} loading={loading} />
+            <AddMember onSubmit={this.handleSubmit} loading={loading} />
           </div>
         </div>
       </>
@@ -33,24 +27,19 @@ class AddMemberContainer extends Component {
 
 AddMemberContainer.propTypes = {
   addMember: PropTypes.func,
-  loading: PropTypes.bool,
-  memberAdded: PropTypes.bool,
-  resetStateMemberAdded: PropTypes.func
+  loading: PropTypes.bool
 };
 
 AddMemberContainer.defaultProps = {
-  loading: false,
-  memberAdded: false
+  loading: false
 };
 
 const mapStateToProps = state => ({
-  memberAdded: state.repository.memberAdded,
   loading: state.repository.addMemberLoading
 });
 
 const mapDispatchToProps = dispatch => ({
-  addMember: values => dispatch(repositoryActions.addMemberToOrg(values)),
-  resetStateMemberAdded: () => dispatch(repositoryActions.memberAdded(false))
+  addMember: values => dispatch(repositoryActions.addMemberToOrg(values))
 });
 
 export default connect(

@@ -12,16 +12,10 @@ class AddTeamToMemberContainer extends Component {
     this.props.getTeams();
   }
 
-  handleSubmit = values => {
-    this.props.addMembersToTeam(values);
-  };
-
-  componentWillUnmount() {
-    this.props.resetStateMemberAdded();
-  }
+  handleSubmit = values => this.props.addMembersToTeam(values);
 
   render() {
-    const { memberAdded, loading, data } = this.props;
+    const { loading, data } = this.props;
     const repos = data.map(team => ({ label: team.name, value: team }));
 
     return (
@@ -29,12 +23,7 @@ class AddTeamToMemberContainer extends Component {
         <Header />
         <div className="main main-raised">
           <div className="row col-10 col-md-6 col-xl-4 m-auto">
-            <AddTeamToMember
-              onSubmit={this.handleSubmit}
-              memberAdded={memberAdded}
-              data={repos}
-              loading={loading}
-            />
+            <AddTeamToMember onSubmit={this.handleSubmit} data={repos} loading={loading} />
           </div>
         </div>
       </>
@@ -46,27 +35,22 @@ AddTeamToMemberContainer.propTypes = {
   addMembersToTeam: PropTypes.func,
   data: PropTypes.arrayOf(PropTypes.any),
   getTeams: PropTypes.func,
-  loading: PropTypes.bool,
-  memberAdded: PropTypes.bool,
-  resetStateMemberAdded: PropTypes.func
+  loading: PropTypes.bool
 };
 
 AddTeamToMemberContainer.defaultProps = {
   data: [],
-  loading: false,
-  memberAdded: false
+  loading: false
 };
 
 const mapStateToProps = state => ({
-  memberAdded: state.team.memberAdded,
   loading: state.team.addMemberLoading,
   data: state.team.data
 });
 
 const mapDispatchToProps = dispatch => ({
   addMembersToTeam: values => dispatch(teamActions.addMembersToTeam(values)),
-  getTeams: () => dispatch(teamActions.getTeams()),
-  resetStateMemberAdded: () => dispatch(teamActions.memberAdded(false))
+  getTeams: () => dispatch(teamActions.getTeams())
 });
 
 export default connect(

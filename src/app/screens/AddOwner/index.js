@@ -12,23 +12,17 @@ class AddOwnerToRepoContainer extends Component {
     this.props.getRepositories();
   }
 
-  handleSubmit = values => {
-    this.props.addOwnersToRepo(values);
-  };
-
-  componentWillUnmount() {
-    this.props.resetStateOwnerAdded();
-  }
+  handleSubmit = values => this.props.addOwnersToRepo(values);
 
   render() {
-    const { data, loading, ownerAdded } = this.props;
+    const { data, loading } = this.props;
     const repos = data.map(repository => ({ label: repository, value: repository }));
     return (
       <>
         <Header />
         <div className="main main-raised">
           <div className="row col-10 col-md-6 col-xl-4 m-auto">
-            <AddOwner onSubmit={this.handleSubmit} ownerAdded={ownerAdded} data={repos} loading={loading} />
+            <AddOwner onSubmit={this.handleSubmit} data={repos} loading={loading} />
           </div>
         </div>
       </>
@@ -40,27 +34,22 @@ AddOwnerToRepoContainer.propTypes = {
   addOwnersToRepo: PropTypes.func.isRequired,
   data: PropTypes.arrayOf(PropTypes.string),
   getRepositories: PropTypes.func,
-  loading: PropTypes.bool,
-  ownerAdded: PropTypes.bool,
-  resetStateOwnerAdded: PropTypes.func
+  loading: PropTypes.bool
 };
 
 AddOwnerToRepoContainer.defaultProps = {
   data: [],
-  loading: false,
-  ownerAdded: false
+  loading: false
 };
 
 const mapStateToProps = state => ({
-  ownerAdded: state.repository.ownerAdded,
   loading: state.repository.addCodeOwnerLoading,
   data: state.repository.data
 });
 
 const mapDispatchToProps = dispatch => ({
   getRepositories: () => dispatch(repositoryActions.getRepositories()),
-  addOwnersToRepo: values => dispatch(repositoryActions.addOwnerToRepository(values)),
-  resetStateOwnerAdded: () => dispatch(repositoryActions.codeOwnerAdded(false))
+  addOwnersToRepo: values => dispatch(repositoryActions.addOwnerToRepository(values))
 });
 
 export default connect(
