@@ -2,8 +2,8 @@ import React from 'react';
 import { t } from 'i18next';
 import { Redirect } from 'react-router';
 
-import ROUTES from '~constants/routes';
 import { useAuth0 } from 'react-auth0-spa';
+import ROUTES from '~constants/routes';
 
 import styles from './styles.module.scss';
 
