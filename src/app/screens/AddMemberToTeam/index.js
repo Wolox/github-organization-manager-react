@@ -2,51 +2,28 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
-import { actionCreators as teamActions } from '../../../redux/Team/actions';
+import teamActions from '~redux/Team/actions';
+import Header from '~components/Header';
 
-import styles from './styles.module.scss';
 import AddTeamToMember from './layout';
-import { TECHNOLOGIES } from './constants';
-
-import Menu from '~components/Menu';
 
 class AddTeamToMemberContainer extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      data: []
-    };
-  }
-
   componentDidMount() {
-    teamActions.getTeams().then(response => {
-      this.setState({ data: response.teams });
-    });
+    this.props.getTeams();
   }
 
-  handleSubmit = values => {
-    this.props.addMembersToTeam(values);
-  };
+  handleSubmit = values => this.props.addMembersToTeam(values);
 
   render() {
+    const { loading, data } = this.props;
+    const repos = data.map(team => ({ label: team.name, value: team }));
+
     return (
       <>
-        <Menu />
-        <div className={`page-header ${styles.pageHeader}`} data-parallax="true" />
+        <Header />
         <div className="main main-raised">
-          <div className="profile-content">
-            <div className="container">
-              <div className="row">
-                <div className="col-md-6 ml-auto mr-auto">
-                  <AddTeamToMember
-                    onSubmit={this.handleSubmit}
-                    memberAdded={this.props.memberAdded}
-                    data={this.state.data.map(team => ({ label: team.name, value: team }))}
-                    loading={this.props.loading}
-                  />
-                </div>
-              </div>
-            </div>
+          <div className="row col-10 col-md-6 col-xl-4 m-auto">
+            <AddTeamToMember onSubmit={this.handleSubmit} data={repos} loading={loading} />
           </div>
         </div>
       </>
@@ -55,34 +32,25 @@ class AddTeamToMemberContainer extends Component {
 }
 
 AddTeamToMemberContainer.propTypes = {
-  addMembersToTeam: PropTypes.func.isRequired,
-  loading: PropTypes.bool,
-  memberAdded: PropTypes.bool
+  addMembersToTeam: PropTypes.func,
+  data: PropTypes.arrayOf(PropTypes.any),
+  getTeams: PropTypes.func,
+  loading: PropTypes.bool
 };
 
 AddTeamToMemberContainer.defaultProps = {
-  loading: false,
-  memberAdded: false
+  data: [],
+  loading: false
 };
 
 const mapStateToProps = state => ({
-  // obtener loading, lo cambia el action de registration
-  memberAdded: state.team.memberAdded,
-  loading: state.team.loading
+  loading: state.team.addMemberLoading,
+  data: state.team.data
 });
 
 const mapDispatchToProps = dispatch => ({
-  addMembersToTeam: values => {
-    const techs = [];
-    Object.keys(TECHNOLOGIES).forEach(tech => {
-      if (values[tech]) {
-        techs.push(tech);
-      }
-    });
-    /* eslint-disable no-param-reassign */
-    values = { ...values, techs };
-    return dispatch(teamActions.addMembersToTeam(values));
-  }
+  addMembersToTeam: values => dispatch(teamActions.addMembersToTeam(values)),
+  getTeams: () => dispatch(teamActions.getTeams())
 });
 
 export default connect(

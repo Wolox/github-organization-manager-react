@@ -2,83 +2,52 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Field, reduxForm } from 'redux-form';
 
-import SimpleSpinner from '../../components/SimpleSpinner';
+import InputLabelNew from '~components/InputLabelNew';
+import SimpleSpinner from '~components/SimpleSpinner';
+import AlertInfo from '~components/AlertInfo';
 
-import styles from './styles.module.scss';
 import { FIELDS } from './constants';
 
-import InputLabelNew from '~components/InputLabelNew';
-
-function TeamCreation({ handleSubmit, isError, loading, teamCreated }) {
+function TeamCreation({ handleSubmit, loading, error, submitSucceeded, submitFailed }) {
   return (
-    <div className={`card ${styles.card}`}>
-      <form className="container" onSubmit={handleSubmit}>
-        <div className="card-header text-center">
-          <h4 className="card-title">Create a new team</h4>
+    <form className="card" onSubmit={handleSubmit}>
+      <div className="card-header text-center">
+        <h4 className="card-title">Create a new team</h4>
+      </div>
+      <div className="card-body">
+        <div className="input-group">
+          <i className="center-icon material-icons">people</i>
+          <Field
+            inputClassName="form-control"
+            className="form-control"
+            name={FIELDS.name}
+            component={InputLabelNew}
+            dataFor={FIELDS.name}
+            inputId={FIELDS.name}
+            inputType="text"
+            label="Team name"
+            placeholder="Team Name"
+          />
         </div>
-        <div className={`card-body ${styles.cardBody}`}>
-          <div className="input-group">
-            <div className="input-group-prepend">
-              <span className="input-group-text">
-                <i className="material-icons">people</i>
-              </span>
-            </div>
-            <Field
-              inputClassName="form-control"
-              className="form-control"
-              name={FIELDS.name}
-              component={InputLabelNew}
-              dataFor={FIELDS.name}
-              inputId={FIELDS.name}
-              inputType="text"
-              label="Team name"
-              placeholder="Team Name"
-            />
-          </div>
-        </div>
-        <div className={`footer text-center ${styles.footer}`}>
-          <button type="submit" className="btn btn-primary btn-wd btn-lg">
-            Create
-          </button>
-
-          {isError && (
-            <div className="alert alert-danger">
-              <div className="container">
-                <div className="alert-icon">
-                  <i className="material-icons">error_outline</i>
-                </div>
-                <button type="button" className="close" data-dismiss="alert" aria-label="Close">
-                  <span aria-hidden="true">
-                    <i className="material-icons">clear</i>
-                  </span>
-                </button>
-                <b>Error Alert:</b> Damn man! You screwed up the server this time. You should find a good
-                excuse for your Boss...
-              </div>
-            </div>
-          )}
-          {loading && <SimpleSpinner className={styles.spinner} />}
-          {teamCreated && (
-            <div className="alert alert-success">
-              <div className="container">
-                <div className="alert-icon">
-                  <i className="material-icons">check</i>
-                </div>
-                ¡El equipo se creó con éxito!
-              </div>
-            </div>
-          )}
-        </div>
-      </form>
-    </div>
+      </div>
+      <div className="footer text-center">
+        <button type="submit" className="btn btn-primary btn-wd btn-lg">
+          Create
+        </button>
+        {loading && <SimpleSpinner />}
+        {!loading && submitSucceeded && <AlertInfo message="¡El equipo se creó con éxito!" />}
+        {!loading && submitFailed && <AlertInfo icon="error_outline" type="danger" message={error} />}
+      </div>
+    </form>
   );
 }
 
 TeamCreation.propTypes = {
   handleSubmit: PropTypes.func.isRequired,
   loading: PropTypes.bool.isRequired,
-  teamCreated: PropTypes.bool.isRequired,
-  isError: PropTypes.bool
+  error: PropTypes.string,
+  submitFailed: PropTypes.bool,
+  submitSucceeded: PropTypes.bool
 };
 
 export default reduxForm({

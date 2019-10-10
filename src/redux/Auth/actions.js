@@ -1,60 +1,18 @@
-import { push } from 'connected-react-router';
+import { createTypes, completeTypes } from 'redux-recompose';
 
-import * as AuthService from '../../services/AuthServices';
-import Routes from '../../constants/routes';
-import { stringArrayToObject } from '../../utils/array';
+const types = completeTypes(['AUTH_INIT'], ['LOGOUT', 'AUTH_INIT']);
+export const actions = createTypes(types, '@@AUTH');
 
-/* ------------- Auth actions ------------- */
-export const actions = stringArrayToObject(
-  ['LOGIN', 'LOGIN_SUCCESS', 'LOGIN_FAILURE', 'LOGOUT', 'AUTH_INIT'],
-  '@@AUTH'
-);
+const authInit = authData => ({
+  type: actions.AUTH_INIT,
+  target: 'currentUser',
+  payload: { data: authData }
+});
 
-const privateActionCreators = {
-  loginSuccess(authData) {
-    return {
-      type: actions.LOGIN_SUCCESS,
-      payload: { authData }
-    };
-  },
-  loginFailure(err) {
-    return {
-      type: actions.LOGIN_FAILURE,
-      payload: { err }
-    };
-  }
-};
+const logout = () => ({
+  type: actions.LOGOUT,
+  target: 'currentUser',
+  payload: { data: null }
+});
 
-export const actionCreators = {
-  init(user) {
-    return {
-      type: actions.AUTH_INIT,
-      payload: { user }
-    };
-  },
-  login(authData) {
-    return async dispatch => {
-      dispatch({ type: actions.LOGIN });
-      try {
-        const response = await AuthService.login(authData);
-
-        if (response.ok) {
-          await AuthService.setCurrentUser(response.data);
-          dispatch(privateActionCreators.loginSuccess(response.data));
-          dispatch(push(Routes.HOME));
-        } else {
-          throw new Error('Invalid credentials');
-        }
-      } catch (e) {
-        dispatch(privateActionCreators.loginFailure(e));
-      }
-    };
-  },
-  logout() {
-    return async dispatch => {
-      await AuthService.removeCurrentUser();
-      dispatch({ type: actions.LOGOUT });
-      dispatch(push(Routes.LOGIN));
-    };
-  }
-};
+export { authInit, logout };

@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 function RadioOption({ className, inputClassName, labelClassName, label, children, ...rest }) {
   return (
     <div className={className}>
-      {/* eslint-disable-next-line react/forbid-dom-props */}
       <input type="radio" id={label} className={inputClassName} {...rest} />
       {label && (
         <label htmlFor={label} className={labelClassName}>

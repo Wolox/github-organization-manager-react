@@ -2,50 +2,27 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
-import { actionCreators as repositoryActions } from '../../../redux/Repository/actions';
+import repositoryActions from '~redux/Repository/actions';
+import Header from '~components/Header';
 
-import styles from './styles.module.scss';
 import AddOwner from './layout';
 
-import Menu from '~components/Menu';
-
 class AddOwnerToRepoContainer extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      data: []
-    };
-  }
-
   componentDidMount() {
-    repositoryActions.getRepositories().then(response => {
-      this.setState({ data: response });
-    });
+    this.props.getRepositories();
   }
 
-  handleSubmit = values => {
-    this.props.addOwnersToRepo(values);
-  };
+  handleSubmit = values => this.props.addOwnersToRepo(values);
 
   render() {
+    const { data, loading } = this.props;
+    const repos = data.map(repository => ({ label: repository, value: repository }));
     return (
       <>
-        <Menu />
-        <div className={`page-header ${styles.pageHeader}`} data-parallax="true" />
+        <Header />
         <div className="main main-raised">
-          <div className="profile-content">
-            <div className="container">
-              <div className="row">
-                <div className="col-md-6 ml-auto mr-auto">
-                  <AddOwner
-                    onSubmit={this.handleSubmit}
-                    ownerAdded={this.props.ownerAdded}
-                    data={this.state.data.map(repository => ({ label: repository, value: repository }))}
-                    loading={this.props.loading}
-                  />
-                </div>
-              </div>
-            </div>
+          <div className="row col-10 col-md-6 col-xl-4 m-auto">
+            <AddOwner onSubmit={this.handleSubmit} data={repos} loading={loading} />
           </div>
         </div>
       </>
@@ -55,22 +32,23 @@ class AddOwnerToRepoContainer extends Component {
 
 AddOwnerToRepoContainer.propTypes = {
   addOwnersToRepo: PropTypes.func.isRequired,
-  loading: PropTypes.bool,
-  ownerAdded: PropTypes.bool
+  data: PropTypes.arrayOf(PropTypes.string),
+  getRepositories: PropTypes.func,
+  loading: PropTypes.bool
 };
 
 AddOwnerToRepoContainer.defaultProps = {
-  loading: false,
-  ownerAdded: false
+  data: [],
+  loading: false
 };
 
 const mapStateToProps = state => ({
-  // obtener loading, lo cambia el action de registration
-  ownerAdded: state.repository.ownerAdded,
-  loading: state.repository.loading
+  loading: state.repository.addCodeOwnerLoading,
+  data: state.repository.data
 });
 
 const mapDispatchToProps = dispatch => ({
+  getRepositories: () => dispatch(repositoryActions.getRepositories()),
   addOwnersToRepo: values => dispatch(repositoryActions.addOwnerToRepository(values))
 });
 

@@ -2,37 +2,22 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
-import { actionCreators as teamActions } from '../../../redux/Team/actions';
+import teamActions from '~redux/Team/actions';
+import Header from '~components/Header';
 
-import styles from './styles.module.scss';
 import TeamCreation from './layout';
 
-import Menu from '~components/Menu';
-
 class TeamsContainer extends Component {
-  handleSubmit = values => {
-    this.props.createTeam(values);
-  };
+  handleSubmit = values => this.props.createTeam(values);
 
   render() {
+    const { loading } = this.props;
     return (
       <>
-        <Menu />
-        <div className={`page-header ${styles.pageHeader}`} data-parallax="true" />
+        <Header />
         <div className="main main-raised">
-          <div className="profile-content">
-            <div className="container">
-              <div className="row">
-                <div className="col-md-6 ml-auto mr-auto">
-                  <TeamCreation
-                    onSubmit={this.handleSubmit}
-                    isError={this.props.isError}
-                    loading={this.props.loading}
-                    teamCreated={this.props.teamCreated}
-                  />
-                </div>
-              </div>
-            </div>
+          <div className="row col-10 col-md-6 col-xl-4 m-auto">
+            <TeamCreation onSubmit={this.handleSubmit} loading={loading} />
           </div>
         </div>
       </>
@@ -42,22 +27,15 @@ class TeamsContainer extends Component {
 
 TeamsContainer.propTypes = {
   createTeam: PropTypes.func,
-  isError: PropTypes.bool,
-  loading: PropTypes.bool,
-  teamCreated: PropTypes.bool
+  loading: PropTypes.bool
 };
 
 TeamsContainer.defaultProps = {
-  // isError: false,
-  loading: false,
-  teamCreated: false
+  loading: false
 };
 
 const mapStateToProps = state => ({
-  // obtener loading, lo cambia el action de registration
-  isError: state.team.isError,
-  loading: state.team.loading,
-  teamCreated: state.team.teamCreated
+  loading: state.team.creationTeamLoading
 });
 
 const mapDispatchToProps = dispatch => ({

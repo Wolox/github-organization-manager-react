@@ -2,36 +2,22 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
-import { actionCreators as teamActions } from '../../../redux/Repository/actions';
+import repositoryActions from '~redux/Repository/actions';
+import Header from '~components/Header';
 
-import styles from './styles.module.scss';
 import AddMember from './layout';
 
-import Menu from '~components/Menu';
-
 class AddMemberContainer extends Component {
-  handleSubmit = values => {
-    this.props.addMember(values);
-  };
+  handleSubmit = values => this.props.addMember(values);
 
   render() {
+    const { loading } = this.props;
     return (
       <>
-        <Menu />
-        <div className={`page-header ${styles.pageHeader}`} data-parallax="true" />
+        <Header />
         <div className="main main-raised">
-          <div className="profile-content">
-            <div className="container">
-              <div className="row">
-                <div className="col-md-6 ml-auto mr-auto">
-                  <AddMember
-                    onSubmit={this.handleSubmit}
-                    memberAdded={this.props.memberAdded}
-                    loading={this.props.loading}
-                  />
-                </div>
-              </div>
-            </div>
+          <div className="row col-10 col-md-6 col-xl-4 m-auto">
+            <AddMember onSubmit={this.handleSubmit} loading={loading} />
           </div>
         </div>
       </>
@@ -41,23 +27,19 @@ class AddMemberContainer extends Component {
 
 AddMemberContainer.propTypes = {
   addMember: PropTypes.func,
-  loading: PropTypes.bool,
-  memberAdded: PropTypes.bool
+  loading: PropTypes.bool
 };
 
 AddMemberContainer.defaultProps = {
-  loading: false,
-  memberAdded: false
+  loading: false
 };
 
 const mapStateToProps = state => ({
-  // obtener loading, lo cambia el action de registration
-  memberAdded: state.repository.memberAdded,
-  loading: state.repository.loading
+  loading: state.repository.addMemberLoading
 });
 
 const mapDispatchToProps = dispatch => ({
-  addMember: values => dispatch(teamActions.addMemberToOrg(values))
+  addMember: values => dispatch(repositoryActions.addMemberToOrg(values))
 });
 
 export default connect(

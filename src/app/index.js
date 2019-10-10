@@ -1,28 +1,38 @@
-import React, { Component } from 'react';
+import React, { useEffect } from 'react';
 import { Provider } from 'react-redux';
 
-import { apiSetup } from '../config/api';
-import store from '../redux/store';
+import store from '~redux/store';
+import { setCurrentUser, getCurrentUser } from 'services/AuthServices';
+import { authInit, logout } from 'redux/Auth/actions';
+import { useAuth0 } from 'react-auth0-spa';
 
+import { apiSetup } from '../config/api';
+
+import SimpleSpinner from './components/SimpleSpinner';
 import Routes from './components/Routes';
+
 import '../scss/application.scss';
 
-class App extends Component {
-  componentDidMount() {
+function App() {
+  const { getTokenSilently, loading, user, isAuthenticated } = useAuth0();
+  useEffect(() => {
+    const getToken = async () => {
+      const hasToken = await getCurrentUser();
+      if (!loading && !hasToken) {
+        const token = await getTokenSilently();
+        setCurrentUser(token);
+      }
+    };
     apiSetup(store.dispatch);
-  }
+    if (!loading && !isAuthenticated) {
+      store.dispatch(logout());
+    } else {
+      getToken();
+      store.dispatch(authInit(user));
+    }
+  }, [user, isAuthenticated, loading, getTokenSilently]);
 
-  render() {
-    return (
-      <Provider store={store}>
-        <Routes />
-      </Provider>
-    );
-  }
+  return <Provider store={store}>{loading ? <SimpleSpinner center /> : <Routes />}</Provider>;
 }
-
-App.defaultProps = {
-  loading: false
-};
 
 export default App;

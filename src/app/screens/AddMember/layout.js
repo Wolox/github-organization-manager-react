@@ -2,64 +2,50 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Field, reduxForm } from 'redux-form';
 
-import SimpleSpinner from '../../components/SimpleSpinner';
-
-import styles from './styles.module.scss';
-
 import InputLabelNew from '~components/InputLabelNew';
+import SimpleSpinner from '~components/SimpleSpinner';
+import AlertInfo from '~components/AlertInfo';
 
-function AddMember({ handleSubmit, memberAdded, loading }) {
+function AddMember({ handleSubmit, error, loading, submitSucceeded, submitFailed }) {
   return (
-    <div className={`card ${styles.card}`}>
-      <form className="container" onSubmit={handleSubmit}>
-        <div className="card-header text-center">
-          <h4 className="card-title">Add user to Wolox Organization</h4>
+    <form className="card" onSubmit={handleSubmit}>
+      <div className="card-header text-center">
+        <h4 className="card-title">Add user to Wolox Organization</h4>
+      </div>
+      <div className="row card-body">
+        <div className="input-group">
+          <i className="center-icon material-icons">person_add</i>
+          <Field
+            inputClassName="form-control"
+            className="form-control"
+            name="username"
+            component={InputLabelNew}
+            dataFor="username"
+            inputId="username"
+            inputType="text"
+            label="GitHub User"
+            placeholder="GitHub User"
+          />
         </div>
-        <div className={`row ${styles.row}`}>
-          <div className="input-group">
-            <div className="input-group-prepend">
-              <span className="input-group-text">
-                <i className="material-icons">person_add</i>
-              </span>
-            </div>
-            <Field
-              inputClassName="form-control"
-              className="form-control"
-              name="username"
-              component={InputLabelNew}
-              dataFor="username"
-              inputId="username"
-              inputType="text"
-              label="GitHub User"
-              placeholder="GitHub User"
-            />
-          </div>
-        </div>
-        <div className={`footer text-center ${styles.footer}`}>
-          <button type="submit" className="btn btn-primary btn-wd btn-lg">
-            Add member
-          </button>
-          {memberAdded && (
-            <div className="alert alert-success">
-              <div className="container">
-                <div className="alert-icon">
-                  <i className="material-icons">check</i>
-                </div>
-                ¡El miembro se agregó!
-              </div>
-            </div>
-          )}
-          {loading && <SimpleSpinner className={styles.spinner} />}
-        </div>
-      </form>
-    </div>
+      </div>
+      <div className="footer text-center">
+        <button type="submit" className="btn btn-primary btn-wd btn-lg">
+          Add member
+        </button>
+        {loading && <SimpleSpinner />}
+        {!loading && submitSucceeded && <AlertInfo message="¡El miembro se agregó!" />}
+        {!loading && submitFailed && <AlertInfo icon="error_outline" type="danger" message={error} />}
+      </div>
+    </form>
   );
 }
 
 AddMember.propTypes = {
   handleSubmit: PropTypes.func.isRequired,
+  error: PropTypes.string,
   loading: PropTypes.bool,
-  memberAdded: PropTypes.bool
+  submitFailed: PropTypes.bool,
+  submitSucceeded: PropTypes.bool
 };
 
 export default reduxForm({

@@ -1,45 +1,56 @@
-import * as RepositoryService from '../../services/RepositoryService';
-import { stringArrayToObject } from '../../utils/array';
+import { createTypes, completeTypes, withPostFailure } from 'redux-recompose';
+import { SubmissionError } from 'redux-form';
 
-export const actions = stringArrayToObject(
-  [
-    'REPO_CREATION',
-    'REPO_CREATION_SUCCESS',
-    'MEMBER_ADDED',
-    'REPO_CREATION_FAILURE, OWNER_ADDED',
-    'ADDING_CODE_OWNER',
-    'CODE_OWNER_ADDED_SUCCESS',
-    'ADDING_MEMBER'
-  ],
-  '@@REPOSITORY'
-);
+import * as RepositoryService from '~services/RepositoryService';
 
-export const actionCreators = {
-  createRepository(values) {
-    return async dispatch => {
-      // hacer try catch
-      dispatch({ type: actions.REPO_CREATION });
-      await RepositoryService.createRepository(values);
-      // acciones en caso de exitoso o falla
-      dispatch({ type: actions.REPO_CREATION_SUCCESS });
-    };
-  },
-  addMemberToOrg(values) {
-    return async dispatch => {
-      // hacer try catch
-      dispatch({ type: actions.ADDING_MEMBER });
-      await RepositoryService.addMemberToOrg(values);
-      dispatch({ type: actions.MEMBER_ADDED });
-    };
-  },
-  addOwnerToRepository(values) {
-    return async dispatch => {
-      dispatch({ type: actions.ADDING_CODE_OWNER });
-      await RepositoryService.addOwnerToRepo(values);
-      dispatch({ type: actions.CODE_OWNER_ADDED_SUCCESS });
-    };
-  },
-  getRepositories() {
-    return RepositoryService.getRepositories();
-  }
+const types = completeTypes(['REPO_CREATION', 'ADD_MEMBER', 'ADD_CODE_OWNER', 'REQUEST_REPOS']);
+export const actions = createTypes(types, '@@REPOSITORY');
+
+const createRepository = values => ({
+  type: actions.REPO_CREATION,
+  target: 'repoCreation',
+  service: RepositoryService.createRepository,
+  payload: values,
+  injections: [
+    withPostFailure(() => {
+      throw new SubmissionError({ _error: 'Hubo un error en la creación del repositorio' });
+    })
+  ]
+});
+
+const addMemberToOrg = values => ({
+  type: actions.ADD_MEMBER,
+  target: 'addMember',
+  service: RepositoryService.addMemberToOrg,
+  payload: values,
+  injections: [
+    withPostFailure(() => {
+      throw new SubmissionError({ _error: 'Hubo un error al agregar el miembro al repositorio' });
+    })
+  ]
+});
+
+const addOwnerToRepository = values => ({
+  type: actions.ADD_CODE_OWNER,
+  target: 'addCodeOwner',
+  service: RepositoryService.addOwnerToRepo,
+  payload: values,
+  injections: [
+    withPostFailure(() => {
+      throw new SubmissionError({ _error: 'Hubo un error al agregar un Code Owner' });
+    })
+  ]
+});
+
+const getRepositories = () => ({
+  type: actions.REQUEST_REPOS,
+  target: 'data',
+  service: RepositoryService.getRepositories
+});
+
+export default {
+  createRepository,
+  getRepositories,
+  addMemberToOrg,
+  addOwnerToRepository
 };

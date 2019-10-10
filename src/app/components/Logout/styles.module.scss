@@ -1,0 +1,13 @@
+@import 'src/scss/variables/colors';
+
+.logout {
+  align-items: center;
+  color: $white;
+  cursor: pointer;
+  display: flex;
+  user-select: none;
+}
+
+.icon {
+  margin-right: 3px;
+}
