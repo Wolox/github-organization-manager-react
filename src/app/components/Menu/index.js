@@ -1,4 +1,3 @@
-/* eslint-disable react/jsx-max-depth, react/forbid-prop-types  */
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { t } from 'i18next';

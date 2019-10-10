@@ -22,8 +22,8 @@ export function withSpinner({
   }
 
   Spinner.propTypes = {
-    loading: PropTypes.bool,
-    props: PropTypes.object // eslint-disable-line react/forbid-prop-types
+    props: PropTypes.objectOf(PropTypes.any).isRequired,
+    loading: PropTypes.bool
   };
 
   return Spinner;
