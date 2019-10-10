@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Field, reduxForm } from 'redux-form';
+import { t } from 'i18next';
 
 import InputLabelNew from '~components/InputLabelNew';
 import SimpleSpinner from '~components/SimpleSpinner';
@@ -12,7 +13,7 @@ function TeamCreation({ handleSubmit, loading, error, submitSucceeded, submitFai
   return (
     <form className="card" onSubmit={handleSubmit}>
       <div className="card-header text-center">
-        <h4 className="card-title">Create a new team</h4>
+        <h4 className="card-title">{t('addTeam:title')}</h4>
       </div>
       <div className="card-body">
         <div className="input-group">
@@ -25,17 +26,16 @@ function TeamCreation({ handleSubmit, loading, error, submitSucceeded, submitFai
             dataFor={FIELDS.name}
             inputId={FIELDS.name}
             inputType="text"
-            label="Team name"
-            placeholder="Team Name"
+            placeholder={t('addTeam:teamInput')}
           />
         </div>
       </div>
       <div className="footer text-center">
         <button type="submit" className="btn btn-primary btn-wd btn-lg">
-          Create
+          {t('addTeam:createButton')}
         </button>
         {loading && <SimpleSpinner />}
-        {!loading && submitSucceeded && <AlertInfo message="¡El equipo se creó con éxito!" />}
+        {!loading && submitSucceeded && <AlertInfo message={t('addTeam:successMessage')} />}
         {!loading && submitFailed && <AlertInfo icon="error_outline" type="danger" message={error} />}
       </div>
     </form>

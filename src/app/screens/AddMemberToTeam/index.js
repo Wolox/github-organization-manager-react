@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import teamActions from '~redux/Team/actions';
 import Header from '~components/Header';
 
-import AddTeamToMember from './layout';
+import AddMemberToTeam from './layout';
 
 class AddTeamToMemberContainer extends Component {
   componentDidMount() {
@@ -23,7 +23,7 @@ class AddTeamToMemberContainer extends Component {
         <Header />
         <div className="main main-raised">
           <div className="row col-10 col-md-6 col-xl-4 m-auto">
-            <AddTeamToMember onSubmit={this.handleSubmit} data={repos} loading={loading} />
+            <AddMemberToTeam onSubmit={this.handleSubmit} data={repos} loading={loading} />
           </div>
         </div>
       </>

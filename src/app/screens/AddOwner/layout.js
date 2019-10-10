@@ -11,7 +11,7 @@ function AddOwner({ handleSubmit, data, error, loading, submitSucceeded, submitF
   return (
     <form className="card" onSubmit={handleSubmit}>
       <div className="card-header text-center">
-        <h4 className="card-title">Add owner</h4>
+        <h4 className="card-title">{t('AddOwner:title')}</h4>
       </div>
       <div className="card-body">
         <div className="input-group">
@@ -24,8 +24,7 @@ function AddOwner({ handleSubmit, data, error, loading, submitSucceeded, submitF
             dataFor="owners"
             inputId="owners"
             inputType="text"
-            label={t('AddOwner:owners')}
-            placeholder="Usuarios de github"
+            placeholder={t('AddOwner:userInput')}
           />
         </div>
         <div className="input-group">
@@ -42,10 +41,10 @@ function AddOwner({ handleSubmit, data, error, loading, submitSucceeded, submitF
       </div>
       <div className="footer text-center">
         <button type="submit" className="btn btn-primary btn-wd btn-lg">
-          {t('AddOwner:add')}
+          {t('AddOwner:addButton')}
         </button>
         {loading && <SimpleSpinner />}
-        {!loading && submitSucceeded && <AlertInfo message="¡Los code owner se agregaron!" />}
+        {!loading && submitSucceeded && <AlertInfo message={t('AddOwner:successMessage')} />}
         {!loading && submitFailed && <AlertInfo icon="error_outline" type="danger" message={error} />}
       </div>
     </form>

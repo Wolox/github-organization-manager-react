@@ -1,4 +1,5 @@
 import React from 'react';
+import { t } from 'i18next';
 
 import ROUTES from '~constants/routes';
 import Logout from '~components/Logout';
@@ -8,36 +9,36 @@ import styles from './styles.module.scss';
 
 const teamsCards = [
   {
-    info: 'Add a new member to a team',
-    descriptionAction: 'add member',
+    info: t('AddMemberToTeam:title'),
+    descriptionAction: t('AddMemberToTeam:addButton'),
     path: ROUTES.ADD_MEMBER_TO_TEAM,
     icon: 'person_add'
   },
   {
-    info: 'Create a new team',
-    descriptionAction: 'create',
+    info: t('addTeam:title'),
+    descriptionAction: t('addTeam:createButton'),
     path: ROUTES.TEAMS,
     icon: 'group_add'
   }
 ];
 const repositoriesCards = [
   {
-    info: 'Add a new member to a repo',
-    descriptionAction: 'add member',
+    info: t('RepoCreation:title'),
+    descriptionAction: t('RepoCreation:createButton'),
+    path: ROUTES.REPO_CREATION,
+    icon: 'book'
+  },
+  {
+    info: t('AddMemberToOrganization:title'),
+    descriptionAction: t('AddMemberToOrganization:addButton'),
     path: ROUTES.ADD_MEMBER,
     icon: 'add_circle'
   },
   {
-    info: 'Add a owner to a repo',
-    descriptionAction: 'add owner',
+    info: t('AddOwner:title'),
+    descriptionAction: t('AddOwner:addButton'),
     path: ROUTES.ADD_OWNER_TO_REPO,
     icon: 'assignment_ind'
-  },
-  {
-    info: 'Create a new repo',
-    descriptionAction: 'create',
-    path: ROUTES.REPO_CREATION,
-    icon: 'book'
   }
 ];
 

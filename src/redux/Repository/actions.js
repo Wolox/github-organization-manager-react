@@ -1,5 +1,6 @@
 import { createTypes, completeTypes, withPostFailure } from 'redux-recompose';
 import { SubmissionError } from 'redux-form';
+import { t } from 'i18next';
 
 import * as RepositoryService from '~services/RepositoryService';
 
@@ -13,7 +14,7 @@ const createRepository = values => ({
   payload: values,
   injections: [
     withPostFailure(() => {
-      throw new SubmissionError({ _error: 'Hubo un error en la creación del repositorio' });
+      throw new SubmissionError({ _error: t('RepoCreation:failedMessage') });
     })
   ]
 });
@@ -25,7 +26,9 @@ const addMemberToOrg = values => ({
   payload: values,
   injections: [
     withPostFailure(() => {
-      throw new SubmissionError({ _error: 'Hubo un error al agregar el miembro al repositorio' });
+      throw new SubmissionError({
+        _error: t('AddMemberToOrganization:failedMessage')
+      });
     })
   ]
 });
@@ -37,7 +40,7 @@ const addOwnerToRepository = values => ({
   payload: values,
   injections: [
     withPostFailure(() => {
-      throw new SubmissionError({ _error: 'Hubo un error al agregar un Code Owner' });
+      throw new SubmissionError({ _error: t('AddOwner:failedMessage') });
     })
   ]
 });
