@@ -33,7 +33,7 @@ function Menu() {
         <ul className="navbar-nav ml-auto">
           <li className="dropdown nav-item">
             <Link to="#" className="dropdown-toggle nav-link" data-toggle="dropdown">
-              <i className="material-icons">people</i> teams
+              <i className="material-icons">people</i> {t('optionMenu:team')}
             </Link>
             <div className="dropdown-menu dropdown-with-icons">
               <Link to={routes.TEAMS} className="dropdown-item">
@@ -48,7 +48,7 @@ function Menu() {
           </li>
           <li className="dropdown nav-item">
             <Link to="#" className="dropdown-toggle nav-link" data-toggle="dropdown">
-              <i className="material-icons">folder</i> repositories
+              <i className="material-icons">folder</i> {t('optionMenu:repo')}
             </Link>
             <div className="dropdown-menu dropdown-with-icons">
               <Link to={routes.REPO_CREATION} className="dropdown-item">

@@ -7,7 +7,7 @@ i18next.addResources('es', 'RepoCreation', {
   projectName: 'Nombre del proyecto',
   private: 'Privado',
   createButton: 'Crear',
-  labelMenu: 'Crear Repo',
+  labelMenu: 'Crear repo',
   techTitle: 'Tecnologías',
   successMessage: 'El/los repositorios se crearon con éxito.',
   failedMessage: 'Hubo un error en la creación del repositorio.'
