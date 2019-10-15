@@ -35,10 +35,10 @@ CheckboxNew.defaultProps = {
 };
 
 CheckboxNew.propTypes = {
-  input: PropTypes.objectOf(PropTypes.any).isRequired,
   onToggle: PropTypes.func.isRequired,
   className: PropTypes.string,
   disabled: PropTypes.bool,
+  input: PropTypes.objectOf(PropTypes.any),
   inputClassName: PropTypes.string,
   isChecked: PropTypes.bool,
   label: PropTypes.string,
