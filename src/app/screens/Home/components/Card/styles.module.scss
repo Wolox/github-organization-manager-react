@@ -7,6 +7,7 @@
   display: grid;
   grid-gap: 15px;
   grid-template-columns: 1fr 2fr;
+  grid-template-rows: 1fr;
   margin: 10px;
   padding: 10px;
 }
@@ -24,6 +25,7 @@
 
 .card-info {
   font-size: 14px;
+  line-height: 1.5;
   margin: 20px 0;
   padding: 0 5px;
 }
