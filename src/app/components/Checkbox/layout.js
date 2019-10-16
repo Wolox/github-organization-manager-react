@@ -1,4 +1,3 @@
-/* eslint-disable react/forbid-prop-types */
 import React from 'react';
 import PropTypes from 'prop-types';
 
@@ -44,7 +43,7 @@ Checkbox.defaultProps = {
 };
 
 Checkbox.propTypes = {
-  input: PropTypes.object.isRequired,
+  input: PropTypes.objectOf(PropTypes.any).isRequired,
   onToggle: PropTypes.func.isRequired,
   className: PropTypes.string,
   disabled: PropTypes.bool,

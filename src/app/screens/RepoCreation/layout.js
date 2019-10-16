@@ -15,10 +15,10 @@ function RepoCreation({ handleSubmit, loading, error, submitSucceeded, submitFai
   return (
     <form className="card" onSubmit={handleSubmit}>
       <div className="card-header text-center">
-        <h4 className="card-title">{t('RepoCreation:createNewRepository')}</h4>
+        <h4 className="card-title">{t('RepoCreation:title')}</h4>
       </div>
       <div className="card-body">
-        <p>{t('RepoCreation:createNewRepositoryAdvise')}</p>
+        <p>{t('RepoCreation:advise')}</p>
         <div className={`row ${styles.row} input-group`}>
           <i className="center-icon material-icons">create_new_folder</i>
           <Field
@@ -29,7 +29,6 @@ function RepoCreation({ handleSubmit, loading, error, submitSucceeded, submitFai
             dataFor="repositoryName"
             inputId="repositoryName"
             inputType="text"
-            label={t('RepoCreation:projectName')}
             placeholder={t('RepoCreation:projectName')}
           />
         </div>
@@ -38,7 +37,7 @@ function RepoCreation({ handleSubmit, loading, error, submitSucceeded, submitFai
           <Field name="isPrivate" component={CheckboxNew} label={t('RepoCreation:private')} />
         </div>
         <div className={`row ${styles.row}`}>
-          <h4>Tecnologías</h4>
+          <h4>{t('RepoCreation:techTitle')}</h4>
         </div>
         <div className={`row ${styles.row}`}>
           <div className="input-group">
@@ -55,10 +54,10 @@ function RepoCreation({ handleSubmit, loading, error, submitSucceeded, submitFai
       </div>
       <div className="footer text-center">
         <button type="submit" className="btn btn-primary btn-wd btn-lg">
-          {t('RepoCreation:create')}
+          {t('RepoCreation:createButton')}
         </button>
         {loading && <SimpleSpinner />}
-        {!loading && submitSucceeded && <AlertInfo message="¡El/los repositorios se crearon con éxito!" />}
+        {!loading && submitSucceeded && <AlertInfo message={t('RepoCreation:successMessage')} />}
         {!loading && submitFailed && <AlertInfo icon="error_outline" type="danger" message={error} />}
       </div>
     </form>

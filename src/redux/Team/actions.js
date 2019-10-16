@@ -1,5 +1,6 @@
 import { createTypes, completeTypes, withPostFailure } from 'redux-recompose';
 import { SubmissionError } from 'redux-form';
+import { t } from 'i18next';
 
 import * as TeamService from '~services/TeamServices';
 
@@ -13,7 +14,7 @@ const addMembersToTeam = values => ({
   payload: values,
   injections: [
     withPostFailure(() => {
-      throw new SubmissionError({ _error: 'Hubo un error al agregar el miembro.' });
+      throw new SubmissionError({ _error: t('AddMemberToTeam:failedMessage') });
     })
   ]
 });
@@ -25,7 +26,7 @@ const createTeam = values => ({
   payload: values,
   injections: [
     withPostFailure(() => {
-      throw new SubmissionError({ _error: 'Hubo un error en la creación del team' });
+      throw new SubmissionError({ _error: t('addTeam:failedMessage') });
     })
   ]
 });

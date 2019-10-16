@@ -7,11 +7,11 @@ import InputLabelNew from '~components/InputLabelNew';
 import SimpleSpinner from '~components/SimpleSpinner';
 import AlertInfo from '~components/AlertInfo';
 
-function AddTeamToMember({ handleSubmit, data, error, loading, submitSucceeded, submitFailed }) {
+function AddMemberToTeam({ handleSubmit, data, error, loading, submitSucceeded, submitFailed }) {
   return (
     <form className="card" onSubmit={handleSubmit}>
       <div className="card-header text-center">
-        <h4 className="card-title">Add a member to team</h4>
+        <h4 className="card-title">{t('AddMemberToTeam:title')}</h4>
       </div>
       <div className="card-body">
         <div className="input-group">
@@ -24,8 +24,7 @@ function AddTeamToMember({ handleSubmit, data, error, loading, submitSucceeded, 
             dataFor="usernames"
             inputId="usernames"
             inputType="text"
-            label={t('AddTeamToMember:teams')}
-            placeholder="Usuarios de github"
+            placeholder={t('AddMemberToTeam:userInput')}
           />
         </div>
         <div className="input-group">
@@ -42,17 +41,17 @@ function AddTeamToMember({ handleSubmit, data, error, loading, submitSucceeded, 
       </div>
       <div className="footer text-center">
         <button type="submit" className="btn btn-primary btn-wd btn-lg">
-          {t('AddTeamToMember:add')}
+          {t('AddMemberToTeam:addButton')}
         </button>
         {loading && <SimpleSpinner />}
-        {!loading && submitSucceeded && <AlertInfo message="¡Los miembros se agregaron!" />}
+        {!loading && submitSucceeded && <AlertInfo message={t('AddMemberToTeam:successMessage')} />}
         {!loading && submitFailed && <AlertInfo icon="error_outline" type="danger" message={error} />}
       </div>
     </form>
   );
 }
 
-AddTeamToMember.propTypes = {
+AddMemberToTeam.propTypes = {
   handleSubmit: PropTypes.func.isRequired,
   loading: PropTypes.bool.isRequired,
   data: PropTypes.arrayOf(PropTypes.any),
@@ -62,5 +61,5 @@ AddTeamToMember.propTypes = {
 };
 
 export default reduxForm({
-  form: 'AddTeamToMember'
-})(AddTeamToMember);
+  form: 'AddMemberToTeam'
+})(AddMemberToTeam);

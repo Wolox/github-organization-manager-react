@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Field, reduxForm } from 'redux-form';
+import { t } from 'i18next';
 
 import InputLabelNew from '~components/InputLabelNew';
 import SimpleSpinner from '~components/SimpleSpinner';
@@ -10,7 +11,7 @@ function AddMember({ handleSubmit, error, loading, submitSucceeded, submitFailed
   return (
     <form className="card" onSubmit={handleSubmit}>
       <div className="card-header text-center">
-        <h4 className="card-title">Add user to Wolox Organization</h4>
+        <h4 className="card-title">{t('AddMemberToOrganization:title')}</h4>
       </div>
       <div className="row card-body">
         <div className="input-group">
@@ -23,17 +24,16 @@ function AddMember({ handleSubmit, error, loading, submitSucceeded, submitFailed
             dataFor="username"
             inputId="username"
             inputType="text"
-            label="GitHub User"
-            placeholder="GitHub User"
+            placeholder={t('AddMemberToOrganization:userInput')}
           />
         </div>
       </div>
       <div className="footer text-center">
         <button type="submit" className="btn btn-primary btn-wd btn-lg">
-          Add member
+          {t('AddMemberToOrganization:addButton')}
         </button>
         {loading && <SimpleSpinner />}
-        {!loading && submitSucceeded && <AlertInfo message="¡El miembro se agregó!" />}
+        {!loading && submitSucceeded && <AlertInfo message={t('AddMemberToOrganization:successMessage')} />}
         {!loading && submitFailed && <AlertInfo icon="error_outline" type="danger" message={error} />}
       </div>
     </form>

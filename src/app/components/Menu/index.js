@@ -1,6 +1,6 @@
-/* eslint-disable react/jsx-max-depth, react/forbid-prop-types  */
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { t } from 'i18next';
 
 import routes from '~constants/routes';
 import Logout from '~components/Logout';
@@ -33,30 +33,35 @@ function Menu() {
         <ul className="navbar-nav ml-auto">
           <li className="dropdown nav-item">
             <Link to="#" className="dropdown-toggle nav-link" data-toggle="dropdown">
-              <i className="material-icons">people</i> teams
+              <i className="material-icons">people</i> {t('optionMenu:team')}
             </Link>
             <div className="dropdown-menu dropdown-with-icons">
               <Link to={routes.TEAMS} className="dropdown-item">
-                <i className="material-icons">people_outline</i> Create teams
+                <i className="material-icons">group_add</i>
+                {t('addTeam:labelMenu')}
               </Link>
               <Link to={routes.ADD_MEMBER_TO_TEAM} className="dropdown-item">
-                <i className="material-icons">person_add</i> Add member to team
+                <i className="material-icons">person_add</i>
+                {t('AddMemberToTeam:labelMenu')}
               </Link>
             </div>
           </li>
           <li className="dropdown nav-item">
             <Link to="#" className="dropdown-toggle nav-link" data-toggle="dropdown">
-              <i className="material-icons">folder</i> repositories
+              <i className="material-icons">folder</i> {t('optionMenu:repo')}
             </Link>
             <div className="dropdown-menu dropdown-with-icons">
               <Link to={routes.REPO_CREATION} className="dropdown-item">
-                <i className="material-icons">create_new_folder</i> Create repo
+                <i className="material-icons">book</i>
+                {t('RepoCreation:labelMenu')}
               </Link>
               <Link to={routes.ADD_MEMBER} className="dropdown-item">
-                <i className="material-icons">person_add</i> Add member
+                <i className="material-icons">add_circle</i>
+                {t('AddMemberToOrganization:labelMenu')}
               </Link>
               <Link to={routes.ADD_OWNER_TO_REPO} className="dropdown-item">
-                <i className="material-icons">assignment_turned_in</i> Add owner
+                <i className="material-icons">assignment_ind</i>
+                {t('AddOwner:labelMenu')}
               </Link>
             </div>
           </li>
