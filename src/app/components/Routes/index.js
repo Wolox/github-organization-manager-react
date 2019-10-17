@@ -26,7 +26,7 @@ function AppRoutes() {
           <Route path={Routes.LOGIN} component={Login} />
           <AuthenticatedRoute path={Routes.HOME} exact component={Home} />
           <AuthenticatedRoute path={Routes.REPO_CREATION} exact component={RepoCreation} />
-          <AuthenticatedRoute path={Routes.TEAMS} exact component={Teams} />
+          <AuthenticatedRoute path={Routes.NEW_TEAM} exact component={Teams} />
           <AuthenticatedRoute path={Routes.ADD_MEMBER_TO_TEAM} exact component={AddMemberToTeam} />
           <AuthenticatedRoute path={Routes.ADD_MEMBER} exact component={AddMember} />
           <AuthenticatedRoute path={Routes.ADD_OWNER_TO_REPO} exact component={AddOwnerToRepo} />

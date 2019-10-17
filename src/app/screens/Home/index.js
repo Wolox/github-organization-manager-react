@@ -17,7 +17,7 @@ const teamsCards = [
   {
     info: t('addTeam:title'),
     descriptionAction: t('addTeam:createButton'),
-    path: ROUTES.TEAMS,
+    path: ROUTES.NEW_TEAM,
     icon: 'group_add'
   }
 ];
