@@ -5,44 +5,30 @@ import PropTypes from 'prop-types';
 import teamActions from '~redux/Team/actions';
 import Header from '~components/Header';
 
-import TeamCreation from './layout';
-
 class TeamsContainer extends Component {
-  handleSubmit = values => this.props.createTeam(values);
+  handleSubmit = () => {
+    this.props.getTeams();
+  };
 
   render() {
-    const { loading } = this.props;
     return (
       <>
         <Header />
-        <div className="main main-raised">
-          <div className="row col-10 col-md-6 col-xl-4 m-auto">
-            <TeamCreation onSubmit={this.handleSubmit} loading={loading} />
-          </div>
-        </div>
+        <div>Soy una lista de equipo</div>
       </>
     );
   }
 }
 
 TeamsContainer.propTypes = {
-  createTeam: PropTypes.func,
-  loading: PropTypes.bool
+  getTeams: PropTypes.func
 };
-
-TeamsContainer.defaultProps = {
-  loading: false
-};
-
-const mapStateToProps = state => ({
-  loading: state.team.creationTeamLoading
-});
 
 const mapDispatchToProps = dispatch => ({
-  createTeam: values => dispatch(teamActions.createTeam(values))
+  getTeams: () => dispatch(teamActions.getTeams())
 });
 
 export default connect(
-  mapStateToProps,
+  null,
   mapDispatchToProps
 )(TeamsContainer);

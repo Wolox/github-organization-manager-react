@@ -9,38 +9,34 @@ import AlertInfo from '~components/AlertInfo';
 
 function AddOwner({ handleSubmit, data, error, loading, submitSucceeded, submitFailed }) {
   return (
-    <form className="card" onSubmit={handleSubmit}>
-      <div className="card-header text-center">
-        <h4 className="card-title">{t('AddOwner:title')}</h4>
+    <form className="card card-body" onSubmit={handleSubmit}>
+      <h4 className="card-title">{t('AddOwner:title')}</h4>
+      <div className="input-group">
+        <i className="center-icon material-icons">people</i>
+        <Field
+          inputClassName="form-control"
+          className="form-control"
+          name="owners"
+          component={InputLabelNew}
+          dataFor="owners"
+          inputId="owners"
+          inputType="text"
+          placeholder={t('AddOwner:userInput')}
+        />
       </div>
-      <div className="card-body">
-        <div className="input-group">
-          <i className="center-icon material-icons">people</i>
-          <Field
-            inputClassName="form-control"
-            className="form-control"
-            name="owners"
-            component={InputLabelNew}
-            dataFor="owners"
-            inputId="owners"
-            inputType="text"
-            placeholder={t('AddOwner:userInput')}
-          />
-        </div>
-        <div className="input-group">
-          <i className="center-icon material-icons">list</i>
-          <Field name="repository" component="select" className="form-control selectpicker">
-            <option value="" />
-            {data.map(opt => (
-              <option key={opt.label} value={opt.label}>
-                {opt.label}
-              </option>
-            ))}
-          </Field>
-        </div>
+      <div className="input-group">
+        <i className="center-icon material-icons">list</i>
+        <Field name="repository" component="select" className="form-control selectpicker">
+          <option value="" />
+          {data.map(opt => (
+            <option key={opt.label} value={opt.label}>
+              {opt.label}
+            </option>
+          ))}
+        </Field>
       </div>
       <div className="footer text-center">
-        <button type="submit" className="btn btn-primary btn-wd btn-lg">
+        <button type="submit" className="btn btn-primary btn-wd">
           {t('AddOwner:addButton')}
         </button>
         {loading && <SimpleSpinner />}

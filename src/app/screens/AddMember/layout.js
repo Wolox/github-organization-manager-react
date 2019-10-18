@@ -9,27 +9,23 @@ import AlertInfo from '~components/AlertInfo';
 
 function AddMember({ handleSubmit, error, loading, submitSucceeded, submitFailed }) {
   return (
-    <form className="card" onSubmit={handleSubmit}>
-      <div className="card-header text-center">
-        <h4 className="card-title">{t('AddMemberToOrganization:title')}</h4>
-      </div>
-      <div className="row card-body">
-        <div className="input-group">
-          <i className="center-icon material-icons">person_add</i>
-          <Field
-            inputClassName="form-control"
-            className="form-control"
-            name="username"
-            component={InputLabelNew}
-            dataFor="username"
-            inputId="username"
-            inputType="text"
-            placeholder={t('AddMemberToOrganization:userInput')}
-          />
-        </div>
+    <form className="card card-body" onSubmit={handleSubmit}>
+      <h4 className="card-title">{t('AddMemberToOrganization:title')}</h4>
+      <div className="input-group">
+        <i className="center-icon material-icons">person_add</i>
+        <Field
+          inputClassName="form-control"
+          className="form-control"
+          name="username"
+          component={InputLabelNew}
+          dataFor="username"
+          inputId="username"
+          inputType="text"
+          placeholder={t('AddMemberToOrganization:userInput')}
+        />
       </div>
       <div className="footer text-center">
-        <button type="submit" className="btn btn-primary btn-wd btn-lg">
+        <button type="submit" className="btn btn-primary btn-wd">
           {t('AddMemberToOrganization:addButton')}
         </button>
         {loading && <SimpleSpinner />}

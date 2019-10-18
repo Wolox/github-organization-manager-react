@@ -2,13 +2,13 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
-import repositoryActions from '~redux/Repository/actions';
+import teamActions from '~redux/Team/actions';
 import Header from '~components/Header';
 
-import AddMember from './layout';
+import TeamCreation from './layout';
 
-class AddMemberContainer extends Component {
-  handleSubmit = values => this.props.addMember(values);
+class TeamsContainer extends Component {
+  handleSubmit = values => this.props.createTeam(values);
 
   render() {
     const { loading } = this.props;
@@ -16,31 +16,31 @@ class AddMemberContainer extends Component {
       <>
         <Header />
         <div className="row col-10 col-md-6 col-xl-4 m-auto">
-          <AddMember onSubmit={this.handleSubmit} loading={loading} />
+          <TeamCreation onSubmit={this.handleSubmit} loading={loading} />
         </div>
       </>
     );
   }
 }
 
-AddMemberContainer.propTypes = {
-  addMember: PropTypes.func,
+TeamsContainer.propTypes = {
+  createTeam: PropTypes.func,
   loading: PropTypes.bool
 };
 
-AddMemberContainer.defaultProps = {
+TeamsContainer.defaultProps = {
   loading: false
 };
 
 const mapStateToProps = state => ({
-  loading: state.repository.addMemberLoading
+  loading: state.team.creationTeamLoading
 });
 
 const mapDispatchToProps = dispatch => ({
-  addMember: values => dispatch(repositoryActions.addMemberToOrg(values))
+  createTeam: values => dispatch(teamActions.createTeam(values))
 });
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(AddMemberContainer);
+)(TeamsContainer);
