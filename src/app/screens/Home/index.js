@@ -9,6 +9,12 @@ import styles from './styles.module.scss';
 
 const teamsCards = [
   {
+    info: t('teams:title'),
+    descriptionAction: t('teams:addButton'),
+    path: ROUTES.TEAMS,
+    icon: 'view_list'
+  },
+  {
     info: t('AddMemberToTeam:title'),
     descriptionAction: t('AddMemberToTeam:addButton'),
     path: ROUTES.ADD_MEMBER_TO_TEAM,
