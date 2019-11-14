@@ -51,7 +51,4 @@ const mapDispatchToProps = dispatch => ({
   getTeams: () => dispatch(teamActions.getTeams())
 });
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(AddTeamToMemberContainer);
+export default connect(mapStateToProps, mapDispatchToProps)(AddTeamToMemberContainer);

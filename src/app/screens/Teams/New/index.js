@@ -40,7 +40,4 @@ const mapDispatchToProps = dispatch => ({
   createTeam: values => dispatch(teamActions.createTeam(values))
 });
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(TeamsContainer);
+export default connect(mapStateToProps, mapDispatchToProps)(TeamsContainer);

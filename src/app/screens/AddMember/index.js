@@ -40,7 +40,4 @@ const mapDispatchToProps = dispatch => ({
   addMember: values => dispatch(repositoryActions.addMemberToOrg(values))
 });
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(AddMemberContainer);
+export default connect(mapStateToProps, mapDispatchToProps)(AddMemberContainer);

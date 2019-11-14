@@ -50,7 +50,4 @@ const mapDispatchToProps = dispatch => ({
   addOwnersToRepo: values => dispatch(repositoryActions.addOwnerToRepository(values))
 });
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(AddOwnerToRepoContainer);
+export default connect(mapStateToProps, mapDispatchToProps)(AddOwnerToRepoContainer);
