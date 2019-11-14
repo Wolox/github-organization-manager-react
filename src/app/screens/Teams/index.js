@@ -18,7 +18,7 @@ class TeamsContainer extends Component {
     return (
       <>
         <Header />
-        <div className={`${styles.content} card card-body`}>
+        <div className={`${styles.content} col-10 card card-body`}>
           <div className={styles.header}>
             <div className={`${styles.cell} title`}>Nombre</div>
             <div className={`${styles.cell} title`}>Descripción</div>
