@@ -26,7 +26,7 @@ class TeamsContainer extends Component {
           </div>
           <div className={styles.body}>
             {loading ? (
-              <SimpleSpinner classNameContainer={styles.spinner} />
+              <SimpleSpinner center classNameContainer={styles.spinner} />
             ) : (
               data.map(team => (
                 <div className={styles.row} key={team.id}>

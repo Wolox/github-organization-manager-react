@@ -22,5 +22,15 @@
 }
 
 .body {
+  height: 60vh;
+  overflow: auto;
   text-align: center;
+}
+
+.spinner {
+  align-items: center;
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  width: 100%;
 }
