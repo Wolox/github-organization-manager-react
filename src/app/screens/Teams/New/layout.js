@@ -11,27 +11,23 @@ import { FIELDS } from './constants';
 
 function TeamCreation({ handleSubmit, loading, error, submitSucceeded, submitFailed }) {
   return (
-    <form className="card" onSubmit={handleSubmit}>
-      <div className="card-header text-center">
-        <h4 className="card-title">{t('addTeam:title')}</h4>
-      </div>
-      <div className="card-body">
-        <div className="input-group">
-          <i className="center-icon material-icons">people</i>
-          <Field
-            inputClassName="form-control"
-            className="form-control"
-            name={FIELDS.name}
-            component={InputLabelNew}
-            dataFor={FIELDS.name}
-            inputId={FIELDS.name}
-            inputType="text"
-            placeholder={t('addTeam:teamInput')}
-          />
-        </div>
+    <form className="card card-body" onSubmit={handleSubmit}>
+      <h4 className="card-title">{t('addTeam:title')}</h4>
+      <div className="input-group">
+        <i className="center-icon material-icons">people</i>
+        <Field
+          inputClassName="form-control"
+          className="form-control"
+          name={FIELDS.name}
+          component={InputLabelNew}
+          dataFor={FIELDS.name}
+          inputId={FIELDS.name}
+          inputType="text"
+          placeholder={t('addTeam:teamInput')}
+        />
       </div>
       <div className="footer text-center">
-        <button type="submit" className="btn btn-primary btn-wd btn-lg">
+        <button type="submit" className="btn btn-primary btn-wd">
           {t('addTeam:createButton')}
         </button>
         {loading && <SimpleSpinner />}

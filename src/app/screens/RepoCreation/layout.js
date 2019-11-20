@@ -13,47 +13,39 @@ import styles from './styles.module.scss';
 
 function RepoCreation({ handleSubmit, loading, error, submitSucceeded, submitFailed }) {
   return (
-    <form className="card" onSubmit={handleSubmit}>
-      <div className="card-header text-center">
-        <h4 className="card-title">{t('RepoCreation:title')}</h4>
+    <form className="card card-body" onSubmit={handleSubmit}>
+      <h4 className="card-title">{t('RepoCreation:title')}</h4>
+      <p className={`description ${styles.description}`}>{t('RepoCreation:advise')}</p>
+      <div className={`${styles.row} input-group`}>
+        <i className="center-icon material-icons">create_new_folder</i>
+        <Field
+          inputClassName="form-control"
+          className="form-control"
+          name="repositoryName"
+          component={InputLabelNew}
+          dataFor="repositoryName"
+          inputId="repositoryName"
+          inputType="text"
+          placeholder={t('RepoCreation:projectName')}
+        />
       </div>
-      <div className="card-body">
-        <p>{t('RepoCreation:advise')}</p>
-        <div className={`row ${styles.row} input-group`}>
-          <i className="center-icon material-icons">create_new_folder</i>
+      <div className={`${styles.row} input-group`}>
+        <i className="center-icon material-icons">lock</i>
+        <Field name="isPrivate" component={CheckboxNew} label={t('RepoCreation:private')} />
+      </div>
+      <h4 className="card-title">{t('RepoCreation:techTitle')}</h4>
+      <div className={`${styles.row} input-group`}>
+        {Object.keys(TECHNOLOGIES).map(technology => (
           <Field
-            inputClassName="form-control"
-            className="form-control"
-            name="repositoryName"
-            component={InputLabelNew}
-            dataFor="repositoryName"
-            inputId="repositoryName"
-            inputType="text"
-            placeholder={t('RepoCreation:projectName')}
+            key={technology}
+            name={technology}
+            component={CheckboxNew}
+            label={TECHNOLOGIES[technology]}
           />
-        </div>
-        <div className={`row ${styles.row} input-group`}>
-          <i className="center-icon material-icons">lock</i>
-          <Field name="isPrivate" component={CheckboxNew} label={t('RepoCreation:private')} />
-        </div>
-        <div className={`row ${styles.row}`}>
-          <h4>{t('RepoCreation:techTitle')}</h4>
-        </div>
-        <div className={`row ${styles.row}`}>
-          <div className="input-group">
-            {Object.keys(TECHNOLOGIES).map(technology => (
-              <Field
-                key={technology}
-                name={technology}
-                component={CheckboxNew}
-                label={TECHNOLOGIES[technology]}
-              />
-            ))}
-          </div>
-        </div>
+        ))}
       </div>
       <div className="footer text-center">
-        <button type="submit" className="btn btn-primary btn-wd btn-lg">
+        <button type="submit" className="btn btn-primary btn-wd">
           {t('RepoCreation:createButton')}
         </button>
         {loading && <SimpleSpinner />}

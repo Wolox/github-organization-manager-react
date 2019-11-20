@@ -15,10 +15,8 @@ class AddMemberContainer extends Component {
     return (
       <>
         <Header />
-        <div className="main main-raised">
-          <div className="row col-10 col-md-6 col-xl-4 m-auto">
-            <AddMember onSubmit={this.handleSubmit} loading={loading} />
-          </div>
+        <div className="row col-10 col-md-6 col-xl-4 m-auto">
+          <AddMember onSubmit={this.handleSubmit} loading={loading} />
         </div>
       </>
     );
@@ -42,7 +40,4 @@ const mapDispatchToProps = dispatch => ({
   addMember: values => dispatch(repositoryActions.addMemberToOrg(values))
 });
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(AddMemberContainer);
+export default connect(mapStateToProps, mapDispatchToProps)(AddMemberContainer);

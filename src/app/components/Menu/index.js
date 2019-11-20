@@ -37,6 +37,10 @@ function Menu() {
             </Link>
             <div className="dropdown-menu dropdown-with-icons">
               <Link to={routes.TEAMS} className="dropdown-item">
+                <i className="material-icons">view_list</i>
+                {t('teams:labelMenu')}
+              </Link>
+              <Link to={routes.NEW_TEAM} className="dropdown-item">
                 <i className="material-icons">group_add</i>
                 {t('addTeam:labelMenu')}
               </Link>

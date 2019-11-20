@@ -18,7 +18,7 @@ function Login() {
     <div className={`card card-login ${styles.form}`}>
       <span className="card-title card-header text-center">{t('Login:login')}</span>
       <div className={`footer text-center ${styles.footer}`}>
-        <button type="button" onClick={loginWithRedirect} className="btn btn-primary btn-wd btn-lg">
+        <button type="button" onClick={loginWithRedirect} className="btn btn-primary btn-wd">
           {t('Login:enter')}
         </button>
       </div>

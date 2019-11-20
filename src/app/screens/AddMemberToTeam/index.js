@@ -21,10 +21,8 @@ class AddTeamToMemberContainer extends Component {
     return (
       <>
         <Header />
-        <div className="main main-raised">
-          <div className="row col-10 col-md-6 col-xl-4 m-auto">
-            <AddMemberToTeam onSubmit={this.handleSubmit} data={repos} loading={loading} />
-          </div>
+        <div className="row col-10 col-md-6 col-xl-4 m-auto">
+          <AddMemberToTeam onSubmit={this.handleSubmit} data={repos} loading={loading} />
         </div>
       </>
     );
@@ -53,7 +51,4 @@ const mapDispatchToProps = dispatch => ({
   getTeams: () => dispatch(teamActions.getTeams())
 });
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(AddTeamToMemberContainer);
+export default connect(mapStateToProps, mapDispatchToProps)(AddTeamToMemberContainer);

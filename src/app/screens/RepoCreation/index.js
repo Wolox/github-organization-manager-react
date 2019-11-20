@@ -16,10 +16,8 @@ class RepoCreationContainer extends Component {
     return (
       <>
         <Header />
-        <div className="main main-raised">
-          <div className="row col-10 col-md-6 col-xl-4 m-auto">
-            <RepoCreation onSubmit={this.handleSubmit} loading={repoCreationLoading} />
-          </div>
+        <div className="row col-10 col-md-6 col-xl-4 m-auto">
+          <RepoCreation onSubmit={this.handleSubmit} loading={repoCreationLoading} />
         </div>
       </>
     );
@@ -46,7 +44,4 @@ const mapDispatchToProps = dispatch => ({
   }
 });
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(RepoCreationContainer);
+export default connect(mapStateToProps, mapDispatchToProps)(RepoCreationContainer);

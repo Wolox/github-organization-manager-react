@@ -9,38 +9,34 @@ import AlertInfo from '~components/AlertInfo';
 
 function AddMemberToTeam({ handleSubmit, data, error, loading, submitSucceeded, submitFailed }) {
   return (
-    <form className="card" onSubmit={handleSubmit}>
-      <div className="card-header text-center">
-        <h4 className="card-title">{t('AddMemberToTeam:title')}</h4>
+    <form className="card card-body" onSubmit={handleSubmit}>
+      <h4 className="card-title">{t('AddMemberToTeam:title')}</h4>
+      <div className="input-group">
+        <i className="center-icon material-icons">people</i>
+        <Field
+          inputClassName="form-control"
+          className="form-control"
+          name="usernames"
+          component={InputLabelNew}
+          dataFor="usernames"
+          inputId="usernames"
+          inputType="text"
+          placeholder={t('AddMemberToTeam:userInput')}
+        />
       </div>
-      <div className="card-body">
-        <div className="input-group">
-          <i className="center-icon material-icons">people</i>
-          <Field
-            inputClassName="form-control"
-            className="form-control"
-            name="usernames"
-            component={InputLabelNew}
-            dataFor="usernames"
-            inputId="usernames"
-            inputType="text"
-            placeholder={t('AddMemberToTeam:userInput')}
-          />
-        </div>
-        <div className="input-group">
-          <i className="center-icon material-icons">list</i>
-          <Field name="team" component="select" className="form-control selectpicker">
-            <option value="" />
-            {data.map(opt => (
-              <option key={opt.value.id} value={opt.value.id}>
-                {opt.label}
-              </option>
-            ))}
-          </Field>
-        </div>
+      <div className="input-group">
+        <i className="center-icon material-icons">list</i>
+        <Field name="team" component="select" className="form-control selectpicker">
+          <option value="" />
+          {data.map(opt => (
+            <option key={opt.value.id} value={opt.value.id}>
+              {opt.label}
+            </option>
+          ))}
+        </Field>
       </div>
       <div className="footer text-center">
-        <button type="submit" className="btn btn-primary btn-wd btn-lg">
+        <button type="submit" className="btn btn-primary btn-wd">
           {t('AddMemberToTeam:addButton')}
         </button>
         {loading && <SimpleSpinner />}

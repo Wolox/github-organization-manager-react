@@ -1,0 +1,36 @@
+@import 'src/scss/variables/colors';
+
+.content {
+  background: $white;
+  display: grid;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.row {
+  display: flex;
+}
+
+.cell {
+  flex: 1;
+  margin: 5px;
+  padding: 15px;
+  text-align: left;
+}
+
+.body {
+  height: 60vh;
+  overflow: auto;
+  text-align: center;
+}
+
+.spinner {
+  align-items: center;
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  width: 100%;
+}

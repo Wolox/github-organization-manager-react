@@ -13,6 +13,7 @@ import AuthenticatedRoute from './components/AuthenticatedRoute';
 const Home = lazy(() => import('~screens/Home'));
 const Login = lazy(() => import('~screens/Login'));
 const RepoCreation = lazy(() => import('~screens/RepoCreation'));
+const NewTeam = lazy(() => import('~screens/Teams/New'));
 const Teams = lazy(() => import('~screens/Teams'));
 const AddMemberToTeam = lazy(() => import('~screens/AddMemberToTeam'));
 const AddMember = lazy(() => import('~screens/AddMember'));
@@ -26,6 +27,7 @@ function AppRoutes() {
           <Route path={Routes.LOGIN} component={Login} />
           <AuthenticatedRoute path={Routes.HOME} exact component={Home} />
           <AuthenticatedRoute path={Routes.REPO_CREATION} exact component={RepoCreation} />
+          <AuthenticatedRoute path={Routes.NEW_TEAM} exact component={NewTeam} />
           <AuthenticatedRoute path={Routes.TEAMS} exact component={Teams} />
           <AuthenticatedRoute path={Routes.ADD_MEMBER_TO_TEAM} exact component={AddMemberToTeam} />
           <AuthenticatedRoute path={Routes.ADD_MEMBER} exact component={AddMember} />
