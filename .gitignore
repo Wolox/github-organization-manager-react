@@ -20,6 +20,7 @@
 .env.development
 .env.test.local
 .env.production.local
+aws.js
 
 #debug
 npm-debug.log*
