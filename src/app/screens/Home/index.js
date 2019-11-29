@@ -50,7 +50,7 @@ const repositoriesCards = [
 
 function Home() {
   return (
-    <div className={styles.container}>
+    <>
       <div className={`page-header ${styles.pageHeader}`} data-parallax="true">
         <span className={styles.title}>Wolox Repo Manager</span>
         <Logout className={styles.logout} />
@@ -71,7 +71,7 @@ function Home() {
           ))}
         </div>
       </div>
-    </div>
+    </>
   );
 }
 

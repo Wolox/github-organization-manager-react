@@ -9,4 +9,5 @@ export const addOwnerToRepo = values =>
     codeowners: values.owners.split(',')
   });
 
-export const getRepositories = () => api.get('/repositories?limit=100&page=2');
+export const searchRepositories = (page = 1, query = '') =>
+  api.get(`/search/repositories?limit=100&page=${page}&query=${query}`);
