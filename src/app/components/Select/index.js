@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import AsyncPaginate from 'react-select-async-paginate';
+import { t } from 'i18next';
 
 const customStyles = {
   control: provided => ({
@@ -13,13 +14,16 @@ const customStyles = {
   })
 };
 
-const Select = ({ loadOptions }) => (
+const Select = ({ loadOptions, onChange, value }) => (
   <AsyncPaginate
     styles={customStyles}
     loadOptions={loadOptions}
     className="select"
     debounceTimeout={300}
     isClearable
+    value={value}
+    placeholder={t('Select:placeholder')}
+    onChange={onChange}
     additional={{
       page: 1
     }}
@@ -27,7 +31,9 @@ const Select = ({ loadOptions }) => (
 );
 
 Select.propTypes = {
-  loadOptions: PropTypes.func
+  loadOptions: PropTypes.func,
+  value: PropTypes.objectOf(PropTypes.any),
+  onChange: PropTypes.func
 };
 
 export default Select;
