@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { t } from 'i18next';
 import { Field, reduxForm } from 'redux-form';
@@ -10,9 +10,10 @@ import Select from 'app/components/Select';
 import { searchRepositories } from 'services/RepositoryService';
 import { parseArrayToObjectOfSelect } from 'utils/array';
 
-function AddOwner({ handleSubmit, error, loading, submitSucceeded, submitFailed }) {
-  const limit = 100;
+function AddOwner({ handleSubmit, onSubmit, reset, error, loading, submitSucceeded, submitFailed }) {
+  const [repository, setRepository] = useState(null);
 
+  const limit = 100;
   const loadPageOptions = async (q, prevOptions, { page }) => {
     const {
       data: { data }
@@ -29,8 +30,25 @@ function AddOwner({ handleSubmit, error, loading, submitSucceeded, submitFailed 
     };
   };
 
+  const handleChangeRepository = e => {
+    setRepository(e);
+  };
+
+  const handleReset = () => {
+    reset();
+    setRepository(null);
+  };
+
   return (
-    <form className="card card-body" onSubmit={handleSubmit}>
+    <form
+      className="card card-body"
+      onSubmit={handleSubmit(e => {
+        if (e.owners) {
+          onSubmit({ ...e, repository: repository.value });
+          handleReset();
+        }
+      })}
+    >
       <h4 className="card-title">{t('AddOwner:title')}</h4>
       <div className="input-group">
         <i className="center-icon material-icons">people</i>
@@ -47,10 +65,12 @@ function AddOwner({ handleSubmit, error, loading, submitSucceeded, submitFailed 
       </div>
       <div className="input-group">
         <i className="center-icon material-icons">list</i>
-        <Field
-          name="repository"
-          component={props => <Select {...props} loadOptions={loadPageOptions} />}
+        <Select
+          name="select"
           className="form-control select"
+          value={repository}
+          onChange={handleChangeRepository}
+          loadOptions={loadPageOptions}
         />
       </div>
       <div className="footer text-center">
@@ -69,10 +89,10 @@ AddOwner.propTypes = {
   handleSubmit: PropTypes.func.isRequired,
   error: PropTypes.string,
   loading: PropTypes.bool,
+  reset: PropTypes.func,
   submitFailed: PropTypes.bool,
-  submitSucceeded: PropTypes.bool
+  submitSucceeded: PropTypes.bool,
+  onSubmit: PropTypes.func
 };
 
-export default reduxForm({
-  form: 'AddOwner'
-})(AddOwner);
+export default reduxForm({ form: 'AddOwner' })(AddOwner);
