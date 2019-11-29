@@ -57,7 +57,6 @@ function AddOwner({ handleSubmit, onSubmit, reset, error, loading, submitSucceed
           className="form-control"
           name="owners"
           component={InputLabelNew}
-          onBlur={e => e.preventDefault()}
           dataFor="owners"
           inputId="owners"
           inputType="text"
