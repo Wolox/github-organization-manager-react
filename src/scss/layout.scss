@@ -1,5 +1,11 @@
+@import './src/scss/variables/colors';
+
 * {
   font-family: $font;
+}
+
+body {
+  background: $alabaster;
 }
 
 .page-header {
@@ -28,7 +34,7 @@
 }
 
 .select {
-  margin-top: 30px;
+  flex: 1;
 }
 
 .button {
