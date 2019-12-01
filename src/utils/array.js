@@ -32,17 +32,3 @@ export function arrayOfIndices(length) {
     .fill(null)
     .map((_, index) => index);
 }
-
-/**
- * Receives an array of values, and returns an array of objets and each one has keys admits on Select Component
- * E.G:
- * parseArrayToObjectOfSelect(['A', 'B']) // [{ label: 'A', value: 'A' }, { label: 'B', value: 'B' }]
- * @param {array} valuesArray
- */
-
-export function parseArrayToObjectOfSelect(valuesArray) {
-  if (!valuesArray || !valuesArray.length) {
-    throw new Error('Array must not be empty');
-  }
-  return valuesArray.map(elem => ({ label: elem, value: elem }));
-}

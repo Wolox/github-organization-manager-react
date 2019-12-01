@@ -8,18 +8,17 @@ import SimpleSpinner from '~components/SimpleSpinner';
 import AlertInfo from '~components/AlertInfo';
 import Select from 'app/components/Select';
 import { searchRepositories } from 'services/RepositoryService';
-import { parseArrayToObjectOfSelect } from 'utils/array';
 
 function AddOwner({ handleSubmit, onSubmit, reset, error, loading, submitSucceeded, submitFailed }) {
   const [repository, setRepository] = useState(null);
 
   const limit = 100;
-  const loadPageOptions = async (q, prevOptions, { page }) => {
+  const loadPageOptions = async (query, prevOptions, { page }) => {
     const {
       data: { data }
-    } = await searchRepositories(page, q);
+    } = await searchRepositories(page, query);
 
-    const options = data.length ? parseArrayToObjectOfSelect(data.map(e => e.split('/')[1])) : [];
+    const options = data.map(e => e.split('/')[1]).map(elem => ({ label: elem, value: elem }));
 
     return {
       options,
