@@ -28,7 +28,7 @@ function RepoCreation({ handleSubmit, loading, error, submitSucceeded, submitFai
           dataFor="repositoryName"
           inputId="repositoryName"
           inputType="text"
-          placeholder={t('RepoCreation:projectName')}
+          placeholder={t('RepoCreation:repositoryName')}
         />
       </div>
       <div className={`${styles.row} input-group`}>

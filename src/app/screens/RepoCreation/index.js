@@ -9,7 +9,7 @@ import RepoCreation from './layout';
 
 class RepoCreationContainer extends Component {
   handleSubmit = values => {
-    const techs = Object.entries(values.techs)
+    const techs = Object.entries(values.techs || {})
       .filter(e => e[1])
       .map(e => e[0]);
     return this.props.createRepo({ ...values, techs });
