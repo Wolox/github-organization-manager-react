@@ -21,8 +21,8 @@ const teamsCards = [
     icon: 'person_add'
   },
   {
-    info: t('addTeam:title'),
-    descriptionAction: t('addTeam:createButton'),
+    info: t('teamCreation:title'),
+    descriptionAction: t('teamCreation:createButton'),
     path: ROUTES.NEW_TEAM,
     icon: 'group_add'
   }

@@ -6,10 +6,13 @@ import { Field, reduxForm } from 'redux-form';
 import InputLabelNew from '~components/InputLabelNew';
 import SimpleSpinner from '~components/SimpleSpinner';
 import AlertInfo from '~components/AlertInfo';
-import Select from 'app/components/Select';
+import SubmitButton from '~components/Buttons/Submit';
+import Select from '~components/Select';
 import { searchRepositories } from 'services/RepositoryService';
 
-function AddOwner({ handleSubmit, onSubmit, reset, error, loading, submitSucceeded, submitFailed }) {
+import { isRequired } from './validation';
+
+function AddOwner({ handleSubmit, onSubmit, reset, error, loading, submitSucceeded, submitFailed, invalid }) {
   const [repository, setRepository] = useState(null);
 
   const limit = 100;
@@ -56,10 +59,11 @@ function AddOwner({ handleSubmit, onSubmit, reset, error, loading, submitSucceed
           className="form-control"
           name="owners"
           component={InputLabelNew}
+          validate={[isRequired]}
           dataFor="owners"
           inputId="owners"
           inputType="text"
-          placeholder={t('AddOwner:userInput')}
+          placeholder={t('AddOwner:owners')}
         />
       </div>
       <div className="input-group">
@@ -73,9 +77,7 @@ function AddOwner({ handleSubmit, onSubmit, reset, error, loading, submitSucceed
         />
       </div>
       <div className="footer text-center">
-        <button type="submit" className="btn btn-primary btn-wd">
-          {t('AddOwner:addButton')}
-        </button>
+        <SubmitButton invalid={invalid}>{t('AddOwner:addButton')}</SubmitButton>
         {loading && <SimpleSpinner />}
         {!loading && submitSucceeded && <AlertInfo message={t('AddOwner:successMessage')} />}
         {!loading && submitFailed && <AlertInfo icon="error_outline" type="danger" message={error} />}
@@ -87,6 +89,7 @@ function AddOwner({ handleSubmit, onSubmit, reset, error, loading, submitSucceed
 AddOwner.propTypes = {
   handleSubmit: PropTypes.func.isRequired,
   error: PropTypes.string,
+  invalid: PropTypes.bool,
   loading: PropTypes.bool,
   reset: PropTypes.func,
   submitFailed: PropTypes.bool,

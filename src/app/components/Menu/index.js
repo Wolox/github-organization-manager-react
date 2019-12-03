@@ -42,7 +42,7 @@ function Menu() {
               </Link>
               <Link to={routes.NEW_TEAM} className="dropdown-item">
                 <i className="material-icons">group_add</i>
-                {t('addTeam:labelMenu')}
+                {t('teamCreation:labelMenu')}
               </Link>
               <Link to={routes.ADD_MEMBER_TO_TEAM} className="dropdown-item">
                 <i className="material-icons">person_add</i>
