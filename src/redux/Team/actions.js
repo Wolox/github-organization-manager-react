@@ -34,8 +34,8 @@ const createTeam = values => ({
 const getTeams = () => ({
   type: actions.REQUEST_TEAMS,
   target: 'data',
-  service: TeamService.getTeams,
-  successSelector: response => response.data.teams
+  service: TeamService.getAllTeams,
+  successSelector: response => response.data
 });
 
 export default {

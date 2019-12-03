@@ -7,4 +7,39 @@ export const addMembersToTeam = values =>
     usernames: values.usernames.split(',')
   });
 
-export const getTeams = () => api.get('/teams');
+export const getTeams = (page = 1) =>
+  api.get('/teams', {
+    page
+  });
+
+export const getAllTeams = () =>
+  new Promise(resolve => {
+    const requests = {
+      to: 1,
+      [Symbol.asyncIterator]() {
+        return {
+          current: this.to,
+          async next() {
+            let dataRequest = [];
+            await getTeams(this.current++)
+              .then(({ data: { teams } }) => (dataRequest = teams))
+              .catch(() => {
+                resolve({ ok: false });
+              });
+            if (dataRequest.length) {
+              return { done: false, value: dataRequest };
+            }
+            return { done: true };
+          }
+        };
+      }
+    };
+
+    (async () => {
+      let data = [];
+      for await (const value of requests) {
+        data = [...data, ...value];
+      }
+      resolve({ data, ok: true });
+    })();
+  });
