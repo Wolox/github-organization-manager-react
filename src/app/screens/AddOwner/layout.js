@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { t } from 'i18next';
 import { Field, reduxForm } from 'redux-form';
@@ -6,10 +6,48 @@ import { Field, reduxForm } from 'redux-form';
 import InputLabelNew from '~components/InputLabelNew';
 import SimpleSpinner from '~components/SimpleSpinner';
 import AlertInfo from '~components/AlertInfo';
+import Select from 'app/components/Select';
+import { searchRepositories } from 'services/RepositoryService';
 
-function AddOwner({ handleSubmit, data, error, loading, submitSucceeded, submitFailed }) {
+function AddOwner({ handleSubmit, onSubmit, reset, error, loading, submitSucceeded, submitFailed }) {
+  const [repository, setRepository] = useState(null);
+
+  const limit = 100;
+  const loadPageOptions = async (query, prevOptions, { page }) => {
+    const {
+      data: { data }
+    } = await searchRepositories(page, query);
+
+    const options = data.map(e => e.split('/')[1]).map(elem => ({ label: elem, value: elem }));
+
+    return {
+      options,
+      hasMore: options.length + 1 >= limit,
+      additional: {
+        page: page + 1
+      }
+    };
+  };
+
+  const handleChangeRepository = e => {
+    setRepository(e);
+  };
+
+  const handleReset = () => {
+    reset();
+    setRepository(null);
+  };
+
   return (
-    <form className="card card-body" onSubmit={handleSubmit}>
+    <form
+      className="card card-body"
+      onSubmit={handleSubmit(e => {
+        if (e.owners) {
+          onSubmit({ ...e, repository: repository.value });
+          handleReset();
+        }
+      })}
+    >
       <h4 className="card-title">{t('AddOwner:title')}</h4>
       <div className="input-group">
         <i className="center-icon material-icons">people</i>
@@ -26,14 +64,13 @@ function AddOwner({ handleSubmit, data, error, loading, submitSucceeded, submitF
       </div>
       <div className="input-group">
         <i className="center-icon material-icons">list</i>
-        <Field name="repository" component="select" className="form-control selectpicker">
-          <option value="" />
-          {data.map(opt => (
-            <option key={opt.label} value={opt.label}>
-              {opt.label}
-            </option>
-          ))}
-        </Field>
+        <Select
+          name="select"
+          className="form-control select"
+          value={repository}
+          onChange={handleChangeRepository}
+          loadOptions={loadPageOptions}
+        />
       </div>
       <div className="footer text-center">
         <button type="submit" className="btn btn-primary btn-wd">
@@ -49,13 +86,12 @@ function AddOwner({ handleSubmit, data, error, loading, submitSucceeded, submitF
 
 AddOwner.propTypes = {
   handleSubmit: PropTypes.func.isRequired,
-  data: PropTypes.arrayOf(PropTypes.any),
   error: PropTypes.string,
   loading: PropTypes.bool,
+  reset: PropTypes.func,
   submitFailed: PropTypes.bool,
-  submitSucceeded: PropTypes.bool
+  submitSucceeded: PropTypes.bool,
+  onSubmit: PropTypes.func
 };
 
-export default reduxForm({
-  form: 'AddOwner'
-})(AddOwner);
+export default reduxForm({ form: 'AddOwner' })(AddOwner);

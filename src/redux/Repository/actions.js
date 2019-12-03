@@ -4,7 +4,7 @@ import { t } from 'i18next';
 
 import * as RepositoryService from '~services/RepositoryService';
 
-const types = completeTypes(['REPO_CREATION', 'ADD_MEMBER', 'ADD_CODE_OWNER', 'REQUEST_REPOS']);
+const types = completeTypes(['REPO_CREATION', 'ADD_MEMBER', 'ADD_CODE_OWNER']);
 export const actions = createTypes(types, '@@REPOSITORY');
 
 const createRepository = values => ({
@@ -45,15 +45,8 @@ const addOwnerToRepository = values => ({
   ]
 });
 
-const getRepositories = () => ({
-  type: actions.REQUEST_REPOS,
-  target: 'data',
-  service: RepositoryService.getRepositories
-});
-
 export default {
   createRepository,
-  getRepositories,
   addMemberToOrg,
   addOwnerToRepository
 };
