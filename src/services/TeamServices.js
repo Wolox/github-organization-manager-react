@@ -19,6 +19,7 @@ export const getAllTeams = () =>
       [Symbol.asyncIterator]() {
         return {
           current: this.to,
+          limitRequest: 100,
           async next() {
             let dataRequest = [];
             await getTeams(this.current++)
@@ -26,7 +27,7 @@ export const getAllTeams = () =>
               .catch(() => {
                 resolve({ ok: false });
               });
-            if (dataRequest.length) {
+            if (dataRequest.length === this.limitRequest) {
               return { done: false, value: dataRequest };
             }
             return { done: true };
