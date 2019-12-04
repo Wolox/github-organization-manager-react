@@ -1,15 +1,45 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { t } from 'i18next';
 import { Field, reduxForm } from 'redux-form';
+import Select from 'react-select';
 
 import InputLabelNew from '~components/InputLabelNew';
 import SimpleSpinner from '~components/SimpleSpinner';
 import AlertInfo from '~components/AlertInfo';
+import { customStylesSelect } from 'app/components/Select/constants';
 
-function AddMemberToTeam({ handleSubmit, data, error, loading, submitSucceeded, submitFailed }) {
+function AddMemberToTeam({
+  handleSubmit,
+  onSubmit,
+  reset,
+  data,
+  error,
+  loading,
+  submitSucceeded,
+  submitFailed
+}) {
+  const [team, setTeam] = useState(null);
+
+  const options = data.map(elem => ({ label: elem.label, value: elem.value.id }));
+
+  const handleChange = value => setTeam(value);
+
+  const handleReset = () => {
+    reset();
+    setTeam(null);
+  };
+
   return (
-    <form className="card card-body" onSubmit={handleSubmit}>
+    <form
+      className="card card-body"
+      onSubmit={handleSubmit(values => {
+        if (values.team) {
+          onSubmit({ ...values, team: values.team.value });
+          handleReset();
+        }
+      })}
+    >
       <h4 className="card-title">{t('AddMemberToTeam:title')}</h4>
       <div className="input-group">
         <i className="center-icon material-icons">people</i>
@@ -26,14 +56,16 @@ function AddMemberToTeam({ handleSubmit, data, error, loading, submitSucceeded, 
       </div>
       <div className="input-group">
         <i className="center-icon material-icons">list</i>
-        <Field name="team" component="select" className="form-control selectpicker">
-          <option value="" />
-          {data.map(opt => (
-            <option key={opt.value.id} value={opt.value.id}>
-              {opt.label}
-            </option>
-          ))}
-        </Field>
+        <Field
+          name="team"
+          dataFor="team"
+          onChange={handleChange}
+          inputId="team"
+          className="form-control selectpicker"
+          component={({ input, ...props }) => (
+            <Select {...input} {...props} value={team} styles={customStylesSelect} options={options} />
+          )}
+        />
       </div>
       <div className="footer text-center">
         <button type="submit" className="btn btn-primary btn-wd">
@@ -52,8 +84,10 @@ AddMemberToTeam.propTypes = {
   loading: PropTypes.bool.isRequired,
   data: PropTypes.arrayOf(PropTypes.any),
   error: PropTypes.string,
+  reset: PropTypes.func,
   submitFailed: PropTypes.bool,
-  submitSucceeded: PropTypes.bool
+  submitSucceeded: PropTypes.bool,
+  onSubmit: PropTypes.func
 };
 
 export default reduxForm({
