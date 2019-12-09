@@ -21,7 +21,6 @@ export const getAllTeams = () =>
           current: this.to,
           limitRequest: 100,
           async next() {
-            // let dataRequest = [];
             const {
               data: { teams },
               ok,
