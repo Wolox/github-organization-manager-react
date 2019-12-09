@@ -5,11 +5,15 @@ import PropTypes from 'prop-types';
 import repositoryActions from '~redux/Repository/actions';
 import Header from '~components/Header';
 
-import { TECHNOLOGIES } from './constants';
 import RepoCreation from './layout';
 
 class RepoCreationContainer extends Component {
-  handleSubmit = values => this.props.createRepo(values);
+  handleSubmit = values => {
+    const techs = Object.entries(values.techs || {})
+      .filter(e => e[1])
+      .map(e => e[0]);
+    return this.props.createRepo({ ...values, techs });
+  };
 
   render() {
     const { repoCreationLoading } = this.props;
@@ -38,10 +42,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  createRepo: values => {
-    const techs = Object.keys(TECHNOLOGIES).filter(tech => values[tech]);
-    return dispatch(repositoryActions.createRepository({ ...values, techs }));
-  }
+  createRepo: values => dispatch(repositoryActions.createRepository(values))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(RepoCreationContainer);

@@ -26,7 +26,7 @@ const createTeam = values => ({
   payload: values,
   injections: [
     withPostFailure(() => {
-      throw new SubmissionError({ _error: t('addTeam:failedMessage') });
+      throw new SubmissionError({ _error: t('teamCreation:failedMessage') });
     })
   ]
 });

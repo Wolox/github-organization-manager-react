@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import styles from './styles.module.scss';
+
 function InputLabelNew({
   inputClassName,
   name,
@@ -9,19 +11,23 @@ function InputLabelNew({
   inputType,
   handleChange,
   disabled,
-  input
+  input,
+  meta: { touched, error }
 }) {
   return (
-    <input
-      className={inputClassName}
-      name={name}
-      placeholder={placeholder}
-      id={inputId}
-      type={inputType}
-      onChange={handleChange}
-      disabled={disabled}
-      {...input}
-    />
+    <div className={styles.content}>
+      <input
+        className={inputClassName}
+        name={name}
+        placeholder={placeholder}
+        id={inputId}
+        type={inputType}
+        onChange={handleChange}
+        disabled={disabled}
+        {...input}
+      />
+      {touched && error && <span className={`${styles.error}`}>{error}</span>}
+    </div>
   );
 }
 
@@ -32,6 +38,7 @@ InputLabelNew.propTypes = {
   disabled: PropTypes.bool,
   handleChange: PropTypes.func,
   inputClassName: PropTypes.string,
+  meta: PropTypes.objectOf(PropTypes.any),
   name: PropTypes.string,
   placeholder: PropTypes.string
 };
