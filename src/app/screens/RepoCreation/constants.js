@@ -5,7 +5,7 @@ export const TECHNOLOGIES = [
   },
   {
     name: 'NodeJS',
-    repositorySufix: 'node-js'
+    repositorySufix: 'node'
   },
   {
     name: 'Java',
@@ -28,8 +28,8 @@ export const TECHNOLOGIES = [
     repositorySufix: 'react'
   },
   {
-    name: 'Vue.js',
-    repositorySufix: 'vue-js'
+    name: 'Vue',
+    repositorySufix: 'vue'
   },
   {
     name: 'Android',
