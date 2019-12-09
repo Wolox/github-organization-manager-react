@@ -23,7 +23,9 @@ function App() {
         setCurrentUser(token);
       }
     };
-    apiSetup(store.dispatch);
+    if (!loading) {
+      apiSetup(store.dispatch);
+    }
     if (!loading && !isAuthenticated) {
       store.dispatch(logout());
     } else {

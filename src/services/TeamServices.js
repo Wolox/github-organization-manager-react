@@ -21,14 +21,18 @@ export const getAllTeams = () =>
           current: this.to,
           limitRequest: 100,
           async next() {
-            let dataRequest = [];
-            await getTeams(this.current++)
-              .then(({ data: { teams } }) => (dataRequest = teams))
-              .catch(() => {
-                resolve({ ok: false });
-              });
-            if (dataRequest.length === this.limitRequest) {
-              return { done: false, value: dataRequest };
+            // let dataRequest = [];
+            const {
+              data: { teams },
+              ok,
+              status
+            } = await getTeams(this.current++);
+
+            if (!ok) {
+              resolve({ ok, status });
+            }
+            if (teams && teams.length === this.limitRequest) {
+              return { done: false, value: teams };
             }
             return { done: true };
           }
