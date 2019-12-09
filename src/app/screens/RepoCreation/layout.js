@@ -7,26 +7,28 @@ import InputLabelNew from '~components/InputLabelNew';
 import CheckboxNew from '~components/CheckboxNew';
 import SimpleSpinner from '~components/SimpleSpinner';
 import AlertInfo from '~components/AlertInfo';
+import SubmitButton from '~components/Buttons/Submit';
 
 import { TECHNOLOGIES } from './constants';
 import styles from './styles.module.scss';
+import { isRequired } from './validation';
 
-function RepoCreation({ handleSubmit, loading, error, submitSucceeded, submitFailed }) {
+function RepoCreation({ handleSubmit, loading, error, submitSucceeded, submitFailed, invalid }) {
   return (
     <form className="card card-body" onSubmit={handleSubmit}>
       <h4 className="card-title">{t('RepoCreation:title')}</h4>
       <p className={`description ${styles.description}`}>{t('RepoCreation:advise')}</p>
-      <div className={`${styles.row} input-group`}>
+      <div className={`${styles.row} ${styles.inputGroup} input-group`}>
         <i className="center-icon material-icons">create_new_folder</i>
         <Field
           inputClassName="form-control"
-          className="form-control"
           name="repositoryName"
+          validate={[isRequired]}
           component={InputLabelNew}
           dataFor="repositoryName"
           inputId="repositoryName"
           inputType="text"
-          placeholder={t('RepoCreation:projectName')}
+          placeholder={t('RepoCreation:repositoryName')}
         />
       </div>
       <div className={`${styles.row} input-group`}>
@@ -35,19 +37,17 @@ function RepoCreation({ handleSubmit, loading, error, submitSucceeded, submitFai
       </div>
       <h4 className="card-title">{t('RepoCreation:techTitle')}</h4>
       <div className={`${styles.row} input-group`}>
-        {Object.keys(TECHNOLOGIES).map(technology => (
+        {TECHNOLOGIES.map(tech => (
           <Field
-            key={technology}
-            name={technology}
+            key={tech.repositorySufix}
+            name={`techs.${tech.repositorySufix}`}
             component={CheckboxNew}
-            label={TECHNOLOGIES[technology]}
+            label={tech.name}
           />
         ))}
       </div>
       <div className="footer text-center">
-        <button type="submit" className="btn btn-primary btn-wd">
-          {t('RepoCreation:createButton')}
-        </button>
+        <SubmitButton invalid={invalid}>{t('RepoCreation:createButton')}</SubmitButton>
         {loading && <SimpleSpinner />}
         {!loading && submitSucceeded && <AlertInfo message={t('RepoCreation:successMessage')} />}
         {!loading && submitFailed && <AlertInfo icon="error_outline" type="danger" message={error} />}
@@ -60,6 +60,7 @@ RepoCreation.propTypes = {
   handleSubmit: PropTypes.func.isRequired,
   loading: PropTypes.bool.isRequired,
   error: PropTypes.string,
+  invalid: PropTypes.bool,
   submitFailed: PropTypes.bool,
   submitSucceeded: PropTypes.bool
 };

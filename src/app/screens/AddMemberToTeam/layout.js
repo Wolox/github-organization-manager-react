@@ -8,11 +8,15 @@ import InputLabelNew from '~components/InputLabelNew';
 import SimpleSpinner from '~components/SimpleSpinner';
 import AlertInfo from '~components/AlertInfo';
 import { customStylesSelect } from 'app/components/Select/constants';
+import SubmitButton from '~components/Buttons/Submit';
+
+import { isRequired } from './validation';
 
 function AddMemberToTeam({
   handleSubmit,
   onSubmit,
   reset,
+  invalid,
   data,
   error,
   loading,
@@ -29,7 +33,6 @@ function AddMemberToTeam({
     reset();
     setTeam(null);
   };
-
   return (
     <form
       className="card card-body"
@@ -47,11 +50,12 @@ function AddMemberToTeam({
           inputClassName="form-control"
           className="form-control"
           name="usernames"
+          validate={[isRequired]}
           component={InputLabelNew}
           dataFor="usernames"
           inputId="usernames"
           inputType="text"
-          placeholder={t('AddMemberToTeam:userInput')}
+          placeholder={t('AddMemberToTeam:usernames')}
         />
       </div>
       <div className="input-group">
@@ -68,9 +72,7 @@ function AddMemberToTeam({
         />
       </div>
       <div className="footer text-center">
-        <button type="submit" className="btn btn-primary btn-wd">
-          {t('AddMemberToTeam:addButton')}
-        </button>
+        <SubmitButton invalid={invalid}>{t('AddMemberToTeam:addButton')}</SubmitButton>
         {loading && <SimpleSpinner />}
         {!loading && submitSucceeded && <AlertInfo message={t('AddMemberToTeam:successMessage')} />}
         {!loading && submitFailed && <AlertInfo icon="error_outline" type="danger" message={error} />}
@@ -84,6 +86,7 @@ AddMemberToTeam.propTypes = {
   loading: PropTypes.bool.isRequired,
   data: PropTypes.arrayOf(PropTypes.any),
   error: PropTypes.string,
+  invalid: PropTypes.bool,
   reset: PropTypes.func,
   submitFailed: PropTypes.bool,
   submitSucceeded: PropTypes.bool,

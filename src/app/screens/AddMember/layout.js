@@ -6,8 +6,11 @@ import { t } from 'i18next';
 import InputLabelNew from '~components/InputLabelNew';
 import SimpleSpinner from '~components/SimpleSpinner';
 import AlertInfo from '~components/AlertInfo';
+import SubmitButton from '~components/Buttons/Submit';
 
-function AddMember({ handleSubmit, error, loading, submitSucceeded, submitFailed }) {
+import { isRequired } from './validation';
+
+function AddMember({ handleSubmit, error, loading, submitSucceeded, submitFailed, invalid }) {
   return (
     <form className="card card-body" onSubmit={handleSubmit}>
       <h4 className="card-title">{t('AddMemberToOrganization:title')}</h4>
@@ -18,6 +21,7 @@ function AddMember({ handleSubmit, error, loading, submitSucceeded, submitFailed
           className="form-control"
           name="username"
           component={InputLabelNew}
+          validate={[isRequired]}
           dataFor="username"
           inputId="username"
           inputType="text"
@@ -25,9 +29,7 @@ function AddMember({ handleSubmit, error, loading, submitSucceeded, submitFailed
         />
       </div>
       <div className="footer text-center">
-        <button type="submit" className="btn btn-primary btn-wd">
-          {t('AddMemberToOrganization:addButton')}
-        </button>
+        <SubmitButton invalid={invalid}>{t('AddMemberToOrganization:addButton')}</SubmitButton>
         {loading && <SimpleSpinner />}
         {!loading && submitSucceeded && <AlertInfo message={t('AddMemberToOrganization:successMessage')} />}
         {!loading && submitFailed && <AlertInfo icon="error_outline" type="danger" message={error} />}
@@ -39,6 +41,7 @@ function AddMember({ handleSubmit, error, loading, submitSucceeded, submitFailed
 AddMember.propTypes = {
   handleSubmit: PropTypes.func.isRequired,
   error: PropTypes.string,
+  invalid: PropTypes.bool,
   loading: PropTypes.bool,
   submitFailed: PropTypes.bool,
   submitSucceeded: PropTypes.bool

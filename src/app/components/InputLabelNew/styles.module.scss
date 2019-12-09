@@ -1,0 +1,13 @@
+@import 'src/scss/variables/colors';
+
+.content {
+  flex-grow: 1;
+  position: relative;
+}
+
+.error {
+  color: $danger-dark;
+  font-size: 12px;
+  position: absolute;
+  top: 40px;
+}
