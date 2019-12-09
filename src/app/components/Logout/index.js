@@ -4,6 +4,7 @@ import { t } from 'i18next';
 
 import { useAuth0 } from 'react-auth0-spa';
 import ROUTES from 'constants/routes';
+import { removeCurrentUser } from 'services/AuthServices';
 
 import styles from './styles.module.scss';
 
@@ -12,6 +13,7 @@ function Logout({ className }) {
 
   function handleLogout() {
     logout({ returnTo: `${window.location.origin}${ROUTES.LOGIN}` });
+    removeCurrentUser();
   }
 
   return (

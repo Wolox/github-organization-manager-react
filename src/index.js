@@ -8,7 +8,7 @@ import '~config/i18n';
 import './scss/application.scss';
 import { register } from './serviceWorker';
 import App from './app';
-import config from './auth_config.json';
+import config from './auth_config';
 import { Auth0Provider } from './react-auth0-spa';
 
 const onRedirectCallback = appState => {
@@ -20,6 +20,7 @@ const render = () => {
     <Auth0Provider
       domain={config.domain}
       client_id={config.clientId}
+      audience={config.audience}
       redirect_uri={window.location.origin}
       onRedirectCallback={onRedirectCallback}
     >
