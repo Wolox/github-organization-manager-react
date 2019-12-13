@@ -56,7 +56,7 @@ export const TECHNOLOGIES = [
     repositorySufix: 'unity'
   },
   {
-    name: 'FrontEnd',
+    name: 'Front-End',
     repositorySufix: 'frontend'
   }
 ];
