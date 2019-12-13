@@ -57,6 +57,6 @@ export const TECHNOLOGIES = [
   },
   {
     name: 'FrontEnd',
-    repositorySufix: 'fronend'
+    repositorySufix: 'frontend'
   }
 ];
