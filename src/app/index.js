@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { Provider } from 'react-redux';
 
 import store from '~redux/store';
-import { setCurrentUser, getCurrentUser } from 'services/AuthServices';
+import { setCurrentUser, getCurrentUser, removeCurrentUser } from 'services/AuthServices';
 import { authInit, logout } from 'redux/Auth/actions';
 import { useAuth0 } from 'react-auth0-spa';
 
@@ -26,8 +26,10 @@ function App() {
     if (!loading) {
       apiSetup(store.dispatch);
     }
+
     if (!loading && !isAuthenticated) {
       store.dispatch(logout());
+      removeCurrentUser();
     } else {
       getToken();
       store.dispatch(authInit(user));
